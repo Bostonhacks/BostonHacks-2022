@@ -2,13 +2,25 @@ import * as React from "react";
 import {
     Link,
 } from "react-router-dom";
+import {
+    Container
+//     Box,
+//     Container,
+//     Row,
+//     Column,
+//     FooterLink,
+//     Heading,
+//     SocialLogo
+  } from "./FooterStyles";
 import NavbarLogo from "./svg/NavbarLogo";
 import SocialMediaIcon from "./svg/SocialMediaIcon";
+
 
 // Navigation bar
 export default function Footer() {
     return (
-        <nav>
+        <Container>
+        <nav style={{'color': 'FBDF94'}}>
             <ul>
                 <li>
                     <Link to="/"><NavbarLogo /></Link>
@@ -29,5 +41,6 @@ export default function Footer() {
                 </li>
             </ul>
         </nav>
+        </Container>
     );
 }
