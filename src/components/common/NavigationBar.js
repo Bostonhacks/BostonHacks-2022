@@ -31,7 +31,7 @@ export default function NavigationBar() {
             <Link to="/settings">Settings</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+              <Link to="/login">Login</Link>
           </li>
         </ul>
         {authed && <button onClick={handleLogout}>Logout</button>}

@@ -12,6 +12,7 @@ import Settings from "./views/Settings";
 import Login from "./views/Login";
 import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
+import Footer from "./components/common/Footer";
 import Application from "./views/Application";
 
 // Redirect to login page, if use tries to access a restricted page
@@ -54,6 +55,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path='*' exact={true} element={<NotFound />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
