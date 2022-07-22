@@ -3,15 +3,8 @@ import {
     Link,
 } from "react-router-dom";
 import {
-    Container
-//     Box,
-//     Container,
-//     Row,
-//     Column,
-//     FooterLink,
-//     Heading,
-//     SocialLogo
-  } from "./FooterStyles";
+    Container 
+} from "./FooterStyles";
 import NavbarLogo from "./svg/NavbarLogo";
 import SocialMediaIcon from "./svg/SocialMediaIcon";
 
