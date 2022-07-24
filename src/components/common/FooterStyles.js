@@ -20,7 +20,7 @@ background: linear-gradient(
     rgba(255, 217, 116, 0.13) 79.44%
   );
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   flex-shrink: 0;
 `
    
