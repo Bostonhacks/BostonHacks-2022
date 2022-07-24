@@ -12,6 +12,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    
+    - name: Build
+      run: yarn install
 
-    - name: Build and Deploy
-      run: yarn install && CI='' yarn run deploy
+    - name: Deploy
+      run: |
+        git config --global user.name 'Marco Raigoza'
+        git config --global user.email 'mraigoza@bu.edu'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        CI='' yarn run deploy
