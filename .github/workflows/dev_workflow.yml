@@ -1,0 +1,20 @@
+name: Dev Workflow
+
+on:
+  push:
+    branches: [ dev ]
+    
+jobs:
+  deploy:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Build
+      run: yarn install
+
+    - name: Deploy
+      run: CI='' yarn run build
