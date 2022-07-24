@@ -28,7 +28,7 @@ export default function NavigationBar() {
             <Link to="/application">Application</Link>
           </li>
           <li>
-            <Link to="/settings">Settings</Link>
+            <Link to="/admin">Admin</Link>
           </li>
           <li>
             <Link to="/login">Login</Link>

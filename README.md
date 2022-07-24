@@ -1,6 +1,6 @@
 # BostonHacks Registration Portal 2022
 
-[![Actions Status](https://github.com/bostonhacks/cacioepepe/workflows/Build/badge.svg)](https://github.com/bostonhacks/cacioepepe/actions)
+[![Actions Status](https://github.com/bostonhacks/bostonhacks-2022/workflows/Production%20Workflow/badge.svg)](https://github.com/Bostonhacks/BostonHacks-2022/actions)
 [![License](http://img.shields.io/badge/License-MIT-brightgreen.svg)](./LICENSE)
 
 ## Project setup

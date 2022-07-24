@@ -8,7 +8,7 @@ import {
 import useAuth from "./components/login/useAuth";
 import Home from "./views/Home";
 import Sponsor from "./views/Sponsor";
-import Settings from "./views/Settings";
+import Admin from "./views/Admin";
 import Login from "./views/Login";
 import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
@@ -31,6 +31,12 @@ function RequireAuth({ children }) {
 export default function App() {
   return (
     <div>
+      <style jsx="true">{`
+        body {
+          margin: 0;
+          padding: 0;
+        }
+      `}</style>
       <NavigationBar />
 
       <Routes>
@@ -45,10 +51,10 @@ export default function App() {
           }
         />
         <Route
-          path="/settings"
+          path="/admin"
           element={
             <RequireAuth>
-              <Settings />
+              <Admin />
             </RequireAuth>
           }
         />

@@ -8,12 +8,12 @@ function SocialMediaIcon(props) {
 
     const platform = props.platform;
     
-    const style = {  "width": "70px", "max-width": "100%"};
+    const style = {  "width": "70px", "maxWidth": "100%"};
 
     switch (String(platform.toLowerCase())) {
         case "facebook":
             return (
-                <a target='_blank' href='https://www.facebook.com/bostonhacks'>
+                <a target='' href='https://www.facebook.com/bostonhacks'>
                     <svg style={style}
                         xmlns="http://www.w3.org/2000/svg"
                         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -29,7 +29,7 @@ function SocialMediaIcon(props) {
             );
         case "instagram":
             return (
-                <a target='_blank' href='https://www.twitter.com/boston_hacks'>
+                <a target='' href='https://www.instagram.com/bostonhacks'>
                     <svg style={style}
                         xmlns="http://www.w3.org/2000/svg"
                         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -45,7 +45,7 @@ function SocialMediaIcon(props) {
             );
         case "twitter":
             return (
-                <a target='_blank' href='https://www.instagram.com/bostonhacks'>
+                <a target='' href='https://www.twitter.com/boston_hacks'>
                     <svg style={style}
                         xmlns="http://www.w3.org/2000/svg"
                         xmlnsXlink="http://www.w3.org/1999/xlink"
