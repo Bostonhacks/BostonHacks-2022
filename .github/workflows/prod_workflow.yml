@@ -17,4 +17,4 @@ jobs:
       run: yarn install
 
     - name: Deploy
-      run: yarn run build
+      run: yarn run deploy
