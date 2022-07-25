@@ -1,121 +1,144 @@
-import React, { Fragment, useState, useEffect, useCallback  } from "react";
-import MaterialTable from "@material-table/core";
+import React, { useState } from "react";
+import CRUDTable,
+{
+  Fields,
+  Field,
+  UpdateForm,
+  DeleteForm,
+} from 'react-crud-table';
 import { db } from "../firebase/firebase-config";
 import {
     collection,
     getDocs,
-    addDoc,
     updateDoc,
     deleteDoc,
     doc,
 } from "firebase/firestore";
+import "./Admin.css";
 
-// Admin page
-export default function Admin() {
-    // List of applications
-    const [users, setUsers] = useState([]);
-    const usersCollectionRef = collection(db, "applications");
+// For sorting
+const SORTERS = {
+  NUMBER_ASCENDING: mapper => (a, b) => mapper(a) - mapper(b),
+  NUMBER_DESCENDING: mapper => (a, b) => mapper(b) - mapper(a),
+  STRING_ASCENDING: mapper => (a, b) => mapper(a).localeCompare(mapper(b)),
+  STRING_DESCENDING: mapper => (a, b) => mapper(b).localeCompare(mapper(a)),
+};
 
-    // List of columns
-    const tableColumns = [
-      { title: "Client", field: "key" },
-      { title: "Name", field: "name" },
-  
-      {
-        title: "booleanValue",
-        field: "booleanValue",
-        editComponent: (props) => {
-        //   console.log(props);
-          return (
-            <input
-              type="checkbox"
-              checked={props.value}
-              onChange={(e) => props.onChange(e.target.checked)}
-            />
-          );
-        },
-        render: (rowdata) => (
-          <input type="checkbox" checked={rowdata.booleanValue} readOnly />
-        )
-      }
-    ];
+const getSorter = (data) => {
+  const mapper = x => x[data.field];
+  let sorter = SORTERS.STRING_ASCENDING(mapper);
 
-    const getUsers = useCallback(async () => {
-        const data = await getDocs(usersCollectionRef);
-        setUsers(data.docs.map((doc) => ({ ...doc.data(), key: doc.id })));
-    }, [usersCollectionRef]);
-
-    const createUser = async (newData) => {
-        await addDoc(usersCollectionRef, newData);
-        // getUsers();
-      };
-    
-    const updateUser = async (id, newData) => {
-        const userDoc = doc(db, "users", id);
-        await updateDoc(userDoc, newData);
-        // getUsers();
-    };
-
-    const deleteUser = async (id) => {
-        const userDoc = doc(db, "users", id);
-        await deleteDoc(userDoc);
-        // getUsers();
-    };
-
-    // Get list of applications
-    useEffect(() => {
-        getUsers();
-    }, [getUsers]);
-  
-    return (
-      <Fragment>
-        <MaterialTable
-          columns={tableColumns}
-          data={users}
-          title="Material Table - Checkbox field  "
-          options={{ search: false, actionsColumnIndex: -1, pageSizeOptions: [5, 10, 20, { value: users.length, label: 'All' }] }}
-          editable={{
-            onRowAdd: (newData) =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    createUser(newData);
-                //   setUsers([...users, newData]);
-  
-                  resolve();
-                }, 1000);
-              }),
-            onRowUpdate: (newData, oldData) =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                //   console.log("old data: ", oldData);
-                //   const dataUpdate = [...users];
-                //   const index = oldData.tableData.id;
-                //   dataUpdate[index] = newData;
-                //   setUsers([...dataUpdate]);
-                  updateUser(oldData.tableData.id, newData);
-  
-                  resolve();
-                }, 1000);
-              }),
-            onRowDelete: (oldData) => {
-                deleteUser(oldData.tableData.key);
-            }
-            //   new Promise((resolve, reject) => {
-            //     setTimeout(() => {
-            //     //   const dataDelete = [...users];
-            //     //   const index = oldData.tableData.id;
-            //     //   dataDelete.splice(index, 1);
-            //     //   setUsers([...dataDelete]);
-            //         console.log("id is");
-            //         console.log(oldData.tableData.id)
-            //         deleteUser(oldData.tableData.id);
-  
-            //       resolve();
-            //     }, 1000);
-            //   })
-          }}
-        />
-      </Fragment>
-    );
+  if (data.field === 'id') {
+    sorter = data.direction === 'ascending' ?
+      SORTERS.NUMBER_ASCENDING(mapper) : SORTERS.NUMBER_DESCENDING(mapper);
+  } else {
+    sorter = data.direction === 'ascending' ?
+      SORTERS.STRING_ASCENDING(mapper) : SORTERS.STRING_DESCENDING(mapper);
   }
-  
+
+  return sorter;
+};
+
+export default function Admin() {
+  const [applications, setApplications] = useState([
+  {
+    id: 1,
+    title: 'Create an example',
+    description: 'Create an example of how to use the component',
+  },
+  {
+    id: 2,
+    title: 'Improve',
+    description: 'Improve the component!',
+  }
+  ]);
+  const applicationsCollectionRef = collection(db, "applications");
+
+  const service = {
+    fetchItems: async (payload) => {
+      const data = await getDocs(applicationsCollectionRef);
+      setApplications(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      result = result.sort(getSorter(payload.sort));
+      return Promise.resolve(result);
+    },
+    update: async (data) => {
+      const application = applications.find(t => t.id === data.id);
+      const userDoc = doc(db, "applications", data.id);
+      await updateDoc(userDoc, data);
+      return Promise.resolve(application);
+    },
+    delete: async (data) => {
+      const application = applications.find(t => t.id === data.id);
+      const userDoc = doc(db, "applications", data.id);
+      await deleteDoc(userDoc);
+      return Promise.resolve(application);
+    },
+  };
+
+  return (
+  <div>
+    <CRUDTable
+      caption="Applications"
+      fetchItems={payload => service.fetchItems(payload)}
+    >
+      <Fields>
+        <Field
+          name="id"
+          label="Id"
+          readOnly
+        />
+        <Field
+          name="name"
+          label="Name"
+          placeholder="Name"
+        />
+        <Field
+          name="status"
+          label="Status"
+          placeholder="Status"
+        />
+      </Fields>
+
+      <UpdateForm
+        title="Application Update Process"
+        message="Update application"
+        trigger="Update"
+        onSubmit={application => service.update(application)}
+        submitText="Update"
+        validate={(values) => {
+          const errors = {};
+
+          if (!values.id) {
+            errors.id = 'Please, provide id';
+          }
+
+          if (!values.name) {
+            errors.name = 'Please, provide application\'s name';
+          }
+
+          if (!values.status) {
+            errors.status = 'Please, provide application\'s status';
+          }
+
+          return errors;
+        }}
+      />
+
+      <DeleteForm
+        title="Application Delete Process"
+        message="Are you sure you want to delete the application?"
+        trigger="Delete"
+        onSubmit={application => service.delete(application)}
+        submitText="Delete"
+        validate={(values) => {
+          const errors = {};
+          if (!values.id) {
+            errors.id = 'Please, provide id';
+          }
+          return errors;
+        }}
+      />
+    </CRUDTable>
+  </div>
+)};
