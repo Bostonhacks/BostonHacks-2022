@@ -15,6 +15,10 @@ import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
 
+//google sign on 
+import { useState, useEffect } from 'react';
+import firebase from './services/firebase';
+
 // Redirect to login page, if use tries to access a restricted page
 function RequireAuth({ children }) {
   const { authed } = useAuth();
@@ -24,6 +28,25 @@ function RequireAuth({ children }) {
     children
   ) : (
     <Navigate to="/login" replace state={{ path: location.pathname }} />
+  );
+}
+
+//display user home page after login
+function Loggedin() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      setUser(user);
+    })
+  }, [])
+
+  console.log(user);
+
+  return (
+    <div>
+      { user ? <Login user={user} /> : <Login/>}
+    </div>
   );
 }
 
@@ -52,10 +75,9 @@ export default function App() {
             </RequireAuth>
           }
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Loggedin />} />
         <Route path='*' exact={true} element={<NotFound />} />
       </Routes>
-
       <Footer />
     </div>
   );

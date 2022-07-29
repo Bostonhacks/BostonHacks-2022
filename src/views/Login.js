@@ -4,6 +4,7 @@ import {
     useLocation
   } from "react-router-dom";
 import useAuth from "../components/login/useAuth";
+import { signInWithGoogle } from '../services/firebase';
 
 // Login page
 export default function Login() {
@@ -12,9 +13,9 @@ export default function Login() {
     const { state } = useLocation();
   
     const handleLogin = () => {
-      login().then(() => {
+      signInWithGoogle().then(login().then(() => {
         navigate(state?.path || "/application");
-      });
+      }));
     };
   
     return (
