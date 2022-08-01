@@ -1,0 +1,19 @@
+span {
+    color: red;
+    padding: 20px;
+    display: none;
+}
+
+.programmingLanguages{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.programmingLevel{
+    display: flex;
+}
+
+.experience{
+    margin-left: 10px;
+}
