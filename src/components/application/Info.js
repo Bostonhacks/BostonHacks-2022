@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select from 'react-select';
-
+import "./styles.css";
 import { countryCodeList, countryList, courseList, programmingList } from "../applicationOptions/applicationOptions";
 
 // Application page
@@ -11,7 +11,6 @@ export default function Application() {
 
     const [loading, setLoading] = React.useState(true);
     const [collegeOptions, setCollegeOptions] = React.useState([]);
-    const [programmingLanguages, setProgrammingLanguages] = React.useState([]);
 
     const inputArr = [
         {
@@ -23,7 +22,8 @@ export default function Application() {
     
       const [arr, setArr] = React.useState(inputArr);
     
-      const addInput = () => {
+      const addInput = (e) => {
+        e.preventDefault()
         setArr(s => {
           const lastId = s[s.length - 1].id;
           return [
@@ -38,7 +38,7 @@ export default function Application() {
     
       const handleChange = e => {
         e.preventDefault();
-    
+
         const index = e.target.id;
         setArr(s => {
           const newArr = s.slice();
@@ -75,7 +75,6 @@ export default function Application() {
 
     return (
         <div>
-            <h1>Application (Private)</h1>
             <p><i>Fields marked with * are required</i></p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,6 +115,8 @@ export default function Application() {
                 <br/><br/>
 
                 <label>Phone Number: *</label>
+            <div className="selecter">
+                <div className="phone">
                 <Controller
                     name="phoneCountryCode"
                     control={control}
@@ -130,12 +131,14 @@ export default function Application() {
                         onChange={val => field.onChange(val.value)}
                     />}
                 />
+                </div>
                 <input
                 type="number"
                 {...register("phoneNumber",
                 { required: true})} />
                 <br/>
                 {(errors.phoneNumber?.type === "required" || errors.phoneCountryCode?.type === "required") && <span>Phone number is required.</span>}
+            </div>
                 <br/><br/>
 
                 <h2>Address Information</h2>
@@ -146,8 +149,10 @@ export default function Application() {
                 <br/>
                 {errors.address && <span>Address is required.</span>}
                 <br/><br/>
+                
 
                 <label>Country: *</label>
+            <div style={{"width":"300px"}}>
                 <Controller
                     name="country"
                     control={control}
@@ -164,6 +169,7 @@ export default function Application() {
                 />
                 <br/>
                 {errors.country && <span>Country is Required</span>}
+            </div>
                 <br/><br/>
 
                 <label>City: *</label>
@@ -218,6 +224,7 @@ export default function Application() {
                 <br/><br/>
 
                 <label>College:</label>
+            <div style={{"width":"500px"}}>
                 <Controller
                     name="college"
                     control={control}
@@ -228,6 +235,7 @@ export default function Application() {
                         onChange={val => field.onChange(val.value)}
                     />}
                 />
+            </div>
                 <br/><br/>
 
                 <label>Year:</label>
@@ -240,6 +248,7 @@ export default function Application() {
                 <br/><br/>
 
                 <label>Major:</label>
+                <div style={{"width":"400px"}}>
                 <Controller
                     name="collegeMajor"
                     control={control}
@@ -253,9 +262,11 @@ export default function Application() {
                         onChange={val => field.onChange(val.value)}
                     />}
                 />
+                </div>
                 <br/><br/>
 
                 <label>Minor:</label>
+                <div style={{"width":"400px"}}>
                 <Controller
                     name="collegeMinor"
                     control={control}
@@ -269,25 +280,35 @@ export default function Application() {
                         onChange={val => field.onChange(val.value)}
                     />}
                 />
+                </div>
                 <br/><br/>
 
                 <h2>Programming Experience</h2>
                 <h4>Select the programming languages/technology you have experience with</h4>
                 <div>
-                    <button onClick={addInput}>+</button>
                     {arr.map((item, i) => {
                         return (
-                        <div className="programmingLevel">
+                        <div className="languageSelect">
                         
-                        <input className="programmingLanguages"
-                            onChange={handleChange}
-                            value={item.value}
-                            id={i}
-                            type={item.type}
-                            size="40"
+                        <Controller
+                            name="language"
+                            control={control}
+                            defaultValue={null}
+                            render={({ field, }) => 
+                            <div className="language" >
+                            <Select 
+                                options={ programmingList.map((language) => { 
+                                    return { label: language, value: language};
+                                })
+                                }
+                                onChange={val => field.onChange(val.value)}
+                            />
+                            </div>
+                        }
                         />
 
-                        <select className="experience" {...register("experienceLevel", { required:true },)}>
+                        <select className="experienceLevel"
+                        {...register("experienceLevel", { required:true },)}>
                             <option value="Novice">Novice</option>
                             <option value="Intermediate">Intermediate</option>
                             <option value="Expert">Expert</option>
@@ -295,6 +316,8 @@ export default function Application() {
                         </div>
                         );
                     })}
+                    
+                    <button onClick={addInput}>Add</button>
                     </div>
                                 
 

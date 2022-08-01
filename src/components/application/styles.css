@@ -4,16 +4,24 @@ span {
     display: none;
 }
 
-.programmingLanguages{
+.languageSelect {
     display: flex;
-    flex-direction: column;
-    width: 150px;
+    margin-bottom: 20px;
 }
 
-.programmingLevel{
-    display: flex;
+.language {
+    width: 300px;
 }
 
-.experience{
-    margin-left: 10px;
+.experienceLevel {
+    margin-left: 20px;
+}
+
+.phone {
+    width: 500px
+}
+
+.selecter{
+    display:flex;
+    width: 500px;
 }
