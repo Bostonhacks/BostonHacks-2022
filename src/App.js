@@ -14,6 +14,8 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
+import Countdown from "./components/common/Countdown"
+
 
 // Redirect to login page, if use tries to access a restricted page
 function RequireAuth({ children }) {
@@ -38,6 +40,7 @@ export default function App() {
         }
       `}</style>
       <NavigationBar />
+      <Countdown />
 
       <Routes>
         <Route path="/" element={<Home />} />
