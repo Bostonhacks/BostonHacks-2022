@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/BostonHacks-2022/static/js/main.abfddc53.js",
-    "static/media/index.cjs": "/BostonHacks-2022/static/media/index.378961ec099f1e66415b.cjs",
+    "main.css": "/BostonHacks-2022/static/css/main.9f40b24a.css",
+    "main.js": "/BostonHacks-2022/static/js/main.e68b96e4.js",
     "index.html": "/BostonHacks-2022/index.html"
   },
   "entrypoints": [
-    "static/js/main.abfddc53.js"
+    "static/css/main.9f40b24a.css",
+    "static/js/main.e68b96e4.js"
   ]
 }
