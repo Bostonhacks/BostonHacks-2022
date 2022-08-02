@@ -1,20 +1,25 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import {
     Link,
-    useNavigate,
+    useNavigate
 } from "react-router-dom";
-import useAuth from "../login/useAuth";
+import { auth, logout } from "../../firebase/firebase-config";
 
 // Navigation bar
 export default function NavigationBar() {
-    const { authed, logout } = useAuth();
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
   
     const handleLogout = () => {
       logout();
       navigate("/");
     };
-  
+
+    useEffect(() => {
+      if (loading) return;
+    }, [loading]);
+
     return (
       <nav>
         <ul>
@@ -34,7 +39,7 @@ export default function NavigationBar() {
             <Link to="/login">Login</Link>
           </li>
         </ul>
-        {authed && <button onClick={handleLogout}>Logout</button>}
+        {user && <button onClick={handleLogout}>Logout</button>}
       </nav>
     );
   }
