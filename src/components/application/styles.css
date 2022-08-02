@@ -1,0 +1,27 @@
+span {
+    color: red;
+    padding: 20px;
+    display: none;
+}
+
+.languageSelect {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.language {
+    width: 300px;
+}
+
+.experienceLevel {
+    margin-left: 20px;
+}
+
+.phone {
+    width: 500px
+}
+
+.selecter{
+    display:flex;
+    width: 500px;
+}
