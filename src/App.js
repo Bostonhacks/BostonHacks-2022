@@ -1,11 +1,12 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import {
   Routes,
   Route,
   Navigate,
   useLocation
 } from "react-router-dom";
-import useAuth from "./components/login/useAuth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase/firebase-config";
 import Home from "./views/Home";
 import Sponsor from "./views/Sponsor";
 import Admin from "./views/Admin";
@@ -16,21 +17,24 @@ import Footer from "./components/common/Footer";
 import Application from "./views/Application";
 import Countdown from "./components/common/Countdown"
 
-
-// Redirect to login page, if use tries to access a restricted page
-function RequireAuth({ children }) {
-  const { authed } = useAuth();
-  const location = useLocation();
-
-  return authed === true ? (
-    children
-  ) : (
-    <Navigate to="/login" replace state={{ path: location.pathname }} />
-  );
-}
-
 // Router
 export default function App() {
+  const [user, loading] = useAuthState(auth);
+  // Redirect to login page, if use tries to access a restricted page
+  function RequireAuth({ children }) {
+    const location = useLocation();
+
+    return user ? (
+      children
+    ) : (
+      <Navigate to="/login" replace state={{ path: location.pathname }} />
+    );
+  }
+
+  useEffect(() => {
+    if (loading) return;
+  }, [loading]);
+
   return (
     <div>
       <style jsx="true">{`
