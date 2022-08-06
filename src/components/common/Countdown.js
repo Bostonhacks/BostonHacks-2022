@@ -21,7 +21,6 @@ const calculateTimeLeft = () => {
             seconds: Math.floor((difference / 1000) % 60)
         };
     }
-    console.log(timeLeft);
     return timeLeft;
 }
 
@@ -40,8 +39,8 @@ export default function Coundown() {
     var time = calculateTimeLeft();
     console.log(time);
     return (
-        <div id="Countdown">
-            <h2>{time.days} Days {time.hours}:{time.minutes}:{time.seconds}</h2>
+        <div id="Countdown" style={{paddingTop:"70px"}}>
+            <h2 style={{margin: "0"}}>{time.days} Days {time.hours}:{time.minutes}:{time.seconds}</h2>
         </div>
     );
 }

@@ -1,0 +1,25 @@
+.footer {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  backdrop-filter: "blur(95px)";
+  bottom: 0;
+  width: 100;
+}
+
+.footer li {
+  float: left;
+}
+
+.footer li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* .footer li a:hover {
+  background-color: #413441;
+} */

@@ -36,7 +36,7 @@ export default function App() {
   }, [loading]);
 
   return (
-    <div>
+    <div style={{ background: "linear-gradient(180deg, #000000 0%, #304773 52.6%, #F5E2F6 99.48%)"    }}>
       <style jsx="true">{`
         body {
           margin: 0;
@@ -44,7 +44,8 @@ export default function App() {
         }
       `}</style>
       <NavigationBar />
-      <Countdown />
+
+      <Countdown/>
 
       <Routes>
         <Route path="/" element={<Home />} />
