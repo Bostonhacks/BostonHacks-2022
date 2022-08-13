@@ -1,16 +1,18 @@
 import * as React from 'react';
 import SponsorTitleSection from '../components/sponsor/svg/SponsorTitleSection';
-import SponsorTable from '../components/sponsor/SponsorTable';
-import BackgroundGradient from '../components/sponsor/svg/BackgroundGradient';
+import TwilioQuote from '../components/sponsor/svg/TwilioQuote';
+import WhoAreWe from '../components/sponsor/svg/WhoAreWe';
+import WhyUs from '../components/sponsor/svg/WhyUs';
+import './Sponsor.css';
 
 // Sponsorship page
 export default function Sponsor() {
   return (
-    <div>
-      <h1>Sponsor (Public)</h1>
-      <SponsorTable />
+    <div className="sponsor">
       <SponsorTitleSection />
-      <BackgroundGradient />
+      <TwilioQuote />
+      <WhoAreWe />
+      <WhyUs />
     </div>
   );
 }
