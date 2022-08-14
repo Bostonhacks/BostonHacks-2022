@@ -4,6 +4,8 @@ import Select from 'react-select';
 import "./styles.css";
 import { countryCodeList, countryList, courseList, programmingList } from "../applicationOptions/applicationOptions";
 
+const GEOAPIFY_KEY = "API-KEY-HERE";
+
 // Application page
 export default function Application() {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
@@ -11,6 +13,20 @@ export default function Application() {
 
     const [loading, setLoading] = React.useState(true);
     const [collegeOptions, setCollegeOptions] = React.useState([]);
+    const [address, setAddress] = React.useState("");
+    const [addressOptions, setAddressOptions] = React.useState([]);
+
+    const addressSearch = (e) => {
+        const formattedAddress = address.replace(/\s/g, "%20");
+
+        fetch("https://api.geoapify.com/v1/geocode/autocomplete?text=" + formattedAddress + "&format=json&apiKey=" + GEOAPIFY_KEY)
+            .then(response => {
+                response.json()
+                .then(data => {
+                    setAddressOptions(data.results);
+                })
+            })
+    }
 
     const inputArr = [
         {
@@ -143,55 +159,34 @@ export default function Application() {
 
                 <h2>Address Information</h2>
                 <label>Address: *</label>
-                <input 
-                {...register("address",
-                { required: true })} />
-                <br/>
-                {errors.address && <span>Address is required.</span>}
-                <br/><br/>
-                
-
-                <label>Country: *</label>
-            <div style={{"width":"300px"}}>
                 <Controller
-                    name="country"
+                    name="address"
                     control={control}
                     defaultValue={null}
                     rules={{ required: true }}
                     render={({ field, fieldState, formState }) => 
-                    <Select 
-                        options={ countryList.map((countryName) => { 
-                            return { label: countryName, value: countryName};
-                        })
-                        }
-                        onChange={val => field.onChange(val.value)}
+                    <input
+                        type="text"
+                        value={address}
+                        onChange={e => {
+                            field.onChange(e.target.value);
+                            setAddress(e.target.value);
+                        }}
                     />}
                 />
+                <div style={{"cursor": "pointer", "backgroundColor": "grey"}} onClick={() => addressSearch()}>
+                    Search
+                </div>
+                {addressOptions.map((option) => {
+                    return <div style={{"cursor": "pointer"}} onClick={() => {
+                        setAddress(option.formatted);
+                        setAddressOptions([]);
+                    }}>
+                        {option.formatted}
+                    </div>
+                })}
                 <br/>
-                {errors.country && <span>Country is Required</span>}
-            </div>
-                <br/><br/>
-
-                <label>City: *</label>
-                <input 
-                {...register("city",
-                { required: true })} />
-                <br/>
-                {errors.city && <span>City is required.</span>}
-                <br/><br/>
-
-                <label>State:</label>
-                <input 
-                {...register("state")} />
-                <br/>
-                <br/><br/>
-
-                <label>Zip Code: *</label>
-                <input 
-                {...register("zipCode",
-                { required: true })} />
-                <br/>
-                {errors.zipCode && <span>Zip Code is required.</span>}
+                {errors.address && <span>Address is required.</span>}
                 <br/><br/>
 
                 <input
@@ -202,8 +197,6 @@ export default function Application() {
                 <label htmlFor="outOfState">
                     Out of State?
                 </label>
-                <br/>
-                {errors.zipCode && <span>Zip Code is required.</span>}
                 <br/><br/>
 
                 <h2>Education Information</h2>
