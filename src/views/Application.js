@@ -11,28 +11,31 @@ export default function Application() {
     const [application, setApplication] = useState({});
     const navigate = useNavigate();
 
-    const fetchUserName = async () => {
+    const fetchApplication = async (intervalId) => {
+        console.log("calling firestore");
         try {
-          const q = query(collection(db, "applications"), where("uid", "==", user.uid));
+          const q = query(collection(db, "applications"), where("uid", "==", user?.uid));
           const doc = await getDocs(q);
-        //   if (doc.docs.length === 0) return;
-          if (doc.docs.length !== 0) setApplication(doc.docs[0].data());
+          if (doc.docs.length !== 0) {
+            setApplication(doc.docs[0].data());
+            // Stop calling the function
+            clearInterval(intervalId) 
+          }
         } catch (err) {
           console.error(err);
           alert("An error occured while fetching user data");
         }
       };
 
-    function isEmpty(object) { for(var i in object) { return true; } return false; }
-
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate("/login");
 
-        fetchUserName();
-
-        if (isEmpty(application)) return;
-    }, [loading]);
+        // Call function every second until it responds
+        var intervalId = window.setInterval(function(){
+            fetchApplication(intervalId)
+          }, 1000);
+    }, [user, loading, navigate]);
 
     return (
 
@@ -40,11 +43,10 @@ export default function Application() {
             <h1>Application (Private)</h1>
 
             {/* Check user's status, if not started show application */}
-            {application.status === "Not Started" && <Info/>}
+            {application?.status === "Not Started" && <Info/>}
 
             {/* Otherwise, show their status */}
-            {application.status !== "Not Started" && <h3>Status is {application.status}</h3>}
-            {console.log(application)}
+            {application?.status !== "Not Started" && <h3>Status is {application?.status}</h3>}
         </div>
     )
 }
