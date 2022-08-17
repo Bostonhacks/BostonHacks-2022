@@ -10,9 +10,9 @@ export default function Application() {
     const [user, loading] = useAuthState(auth);
     const [application, setApplication] = useState({});
     const navigate = useNavigate();
+    const applicationTypes = [ "Submitted", "Waitlisted", "Rejected", "Declined", "Confirmed", "Accepted", "Checked In", ];
 
     const fetchApplication = async (intervalId) => {
-        console.log("calling firestore");
         try {
           const q = query(collection(db, "applications"), where("uid", "==", user?.uid));
           const doc = await getDocs(q);
@@ -38,7 +38,6 @@ export default function Application() {
     }, [user, loading, navigate]);
 
     return (
-
         <div>
             <h1>Application (Private)</h1>
 
@@ -46,7 +45,7 @@ export default function Application() {
             {application?.status === "Not Started" && <Info/>}
 
             {/* Otherwise, show their status */}
-            {application?.status !== "Not Started" && <h3>Status is {application?.status}</h3>}
+            {applicationTypes.includes(application?.status) && <h3>Status is {application?.status}</h3>}
         </div>
     )
 }
