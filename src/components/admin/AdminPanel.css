@@ -1,4 +1,3 @@
-/* CRUD TABLE START */
 .crud-modal-wrapper {
     position: absolute;
     top: 0;
@@ -628,5 +627,3 @@
     font-size: 1.2em;
     margin-top: 37px;
   }
-  
-  /* CRUD TABLE END */
