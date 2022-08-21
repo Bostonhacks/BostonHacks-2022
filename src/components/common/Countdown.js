@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Pie from './Pie';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import './Countdown.css';
 
 /**
  * @author Matt Firmin, Simran Singh
@@ -55,15 +58,46 @@ export default function Coundown() {
         // <div id="Countdown" style={{paddingTop:"70px"}}>
         //     <h2 style={{margin: "0"}}>{time.days} Days {time.hours}:{time.minutes}:{time.seconds}</h2>
         // </div>
-        <div className="Circle">
-            <Pie percentage={currentTimeLeft.days / totalInterval.days * 100} label="DAYS" value={currentTimeLeft.days} colour="lightblue" />
+    <div class="countdown">
+        <ul >
+            {/* <Pie percentage={currentTimeLeft.days / totalInterval.days * 100} label="DAYS" value={currentTimeLeft.days} colour="lightblue" />
             <Pie percentage={currentTimeLeft.hours / 24 * 100} label="HOURS" value={currentTimeLeft.hours} colour="lightblue" />
             <Pie percentage={currentTimeLeft.minutes / 60 * 100} label="MINUTES" value={currentTimeLeft.minutes} colour="lightblue" />
-            <Pie percentage={currentTimeLeft.seconds / 60 * 100} label="SECONDS" value={currentTimeLeft.seconds} colour="lightblue" />
-
-
-            <h3>{currentTimeLeft.days} days, {currentTimeLeft.hours} hours, {currentTimeLeft.minutes} minutes, {currentTimeLeft.seconds} seconds!</h3>
-        </div>    
+            <Pie percentage={currentTimeLeft.seconds / 60 * 100} label="SECONDS" value={currentTimeLeft.seconds} colour="lightblue" /> */}
+            <li>
+            <CircularProgressbar value={currentTimeLeft.days} maxValue={totalInterval.days} text={`${currentTimeLeft.days} Days`} styles={progressStyle} />
+            </li>
+            <li>
+            <CircularProgressbar value={currentTimeLeft.hours} maxValue={24} text={`${currentTimeLeft.hours} Hours`} styles={progressStyle}/>
+            </li>
+            <li>
+            <CircularProgressbar value={currentTimeLeft.minutes} maxValue={60} text={`${currentTimeLeft.minutes} Minutes`} styles={progressStyle}/>
+            </li>
+            <li>
+            <CircularProgressbar value={currentTimeLeft.seconds} maxValue={60} text={`${currentTimeLeft.seconds} Seconds`} styles={progressStyle}/>
+            </li>
+        </ul>
+    </div>
     );
 }
+
+var progressStyle = buildStyles({
+    // Rotation of path and trail, in number of turns (0-1)
+
+    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+    strokeLinecap: 'butt',
+
+
+    // How long animation takes to go from one percentage to another, in seconds
+    pathTransitionDuration: 0.75,
+
+    // Can specify path transition in more detail, or remove it entirely
+    // pathTransition: 'none',
+
+    // Colors
+    pathColor: '#98A5F2',
+    textColor: '#FFFFFF',
+    trailColor: '#FFFFFF',
+  });
+
 
