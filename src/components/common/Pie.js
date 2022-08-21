@@ -26,30 +26,31 @@ const cleanPercentage = (percentage) => {
     );
   };
   
-  const Text = ({ percentage }) => {
+  const Text = ({ value, label }) => {
     return (
       <text
         x="50%"
-        y="50%"
+        y="90%"
         dominantBaseline="central"
         textAnchor="middle"
         color="white"
         fontSize={".9em"}
       >
-        {percentage.toFixed(0)}%
+        {value} {label}
       </text>
+     
     );
   };
   
-  const Pie = ({ percentage, colour }) => {
-    const pct = cleanPercentage(100-percentage);
+  const Pie = ({ percentage, value, label, colour }) => {
+    const pct = cleanPercentage(percentage);
     return (
-      <svg width={100} height={100}>
+      <svg width={100} height={120}>
         <g transform={`rotate(-90 ${"50 100"})`}>
-          <Circle colour="lightblue" />
+          <Circle colour="white" />
           <Circle colour={colour} percentage={pct} />
         </g>
-        <Text percentage={pct} />
+        <Text value={value} label={label} />
       </svg>
     );
   };
