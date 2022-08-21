@@ -2,14 +2,16 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   backdrop-filter: "blur(95px)";
   bottom: 0;
-  width: 100;
+  width: 100%;
+  text-align: center;
 }
 
 .footer li {
-  float: left;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer li a {
