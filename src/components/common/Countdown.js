@@ -1,15 +1,20 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Pie from './Pie';
 
 /**
  * @author Matt Firmin, Simran Singh
  */
 
-const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
-    let deadline = new Date(`11/12/${year}`);   // Will always say the current year >:)
-    deadline.setHours(10, 20, 0);
-    let difference = +deadline - +new Date();
+
+
+/**
+ * Call with current date and also with coundown start date and subtract the two
+ * @returns Gives how many days left until the countdown ends from now
+ */
+const calculateTimeLeft = (fromTime, endTime) => {
+    
+    let difference = +endTime - + fromTime;
 
     let timeLeft = {};
 
@@ -24,8 +29,6 @@ const calculateTimeLeft = () => {
     return timeLeft;
 }
 
-
-
 export default function Coundown() {
     const [cTime, setTime] = useState(Date.now());
 
@@ -35,13 +38,38 @@ export default function Coundown() {
             clearInterval(interval);
         };
     }, []);
+    
+    const countdownStartDate = new Date('August 19, 2022 23:15:30');
 
-    var time = calculateTimeLeft();
-    console.log(time);
+    const deadline = new Date('November 12, 2022 10:20:00');
+    // let year = new Date().getFullYear();
+    // let deadline = new Date(`11/12/${year}`);   // Will always say the current year
+    // deadline.setHours(9, 20, 0);            // Set the deadline to 10:20am (idk why we have an off by one)
+    
+    var totalInterval = calculateTimeLeft(countdownStartDate, deadline);
+    var currentTimeLeft = calculateTimeLeft(Date.now(), deadline);
+
+    var progress = Math.round(( ( Date.now() - countdownStartDate ) / ( deadline - countdownStartDate ) ) * 100);
+
+    // var progress = calculatePercentagePassed(totalInterval, currentTimeLeft);
+
+    
+
+    var time = progress;
+
+    // var totalTime = calculateTimeLeft(countdownStartDate);
+    // var currentTimeLeft = calculateTimeLeft(Date.now());
+    // var time = +totalTime - +currentTimeLeft;
+    // console.log(time);
     return (
-        <div id="Countdown" style={{paddingTop:"70px"}}>
-            <h2 style={{margin: "0"}}>{time.days} Days {time.hours}:{time.minutes}:{time.seconds}</h2>
-        </div>
+        // <div id="Countdown" style={{paddingTop:"70px"}}>
+        //     <h2 style={{margin: "0"}}>{time.days} Days {time.hours}:{time.minutes}:{time.seconds}</h2>
+        // </div>
+        <div className="Circle">
+        <h2>Coming In</h2>
+        <Pie percentage={progress} colour="white" />
+        <h3>{currentTimeLeft.days} days, {currentTimeLeft.hours} hours, {currentTimeLeft.minutes} minutes, {currentTimeLeft.seconds} seconds!</h3>
+    </div>    
     );
 }
 

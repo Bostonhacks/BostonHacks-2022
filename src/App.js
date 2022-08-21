@@ -15,7 +15,6 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
-import Countdown from "./components/common/Countdown"
 
 // Router
 export default function App() {
@@ -44,8 +43,6 @@ export default function App() {
         }
       `}</style>
       <NavigationBar />
-
-      <Countdown/>
 
       <Routes>
         <Route path="/" element={<Home />} />
