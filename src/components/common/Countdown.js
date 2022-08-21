@@ -49,15 +49,7 @@ export default function Coundown() {
     var totalInterval = calculateTimeLeft(countdownStartDate, deadline);
     var currentTimeLeft = calculateTimeLeft(cTime, deadline);
 
-
-
-    
-
-
     return (
-        // <div id="Countdown" style={{paddingTop:"70px"}}>
-        //     <h2 style={{margin: "0"}}>{time.days} Days {time.hours}:{time.minutes}:{time.seconds}</h2>
-        // </div>
     <div class="countdown">
         <ul >
             {/* <Pie percentage={currentTimeLeft.days / totalInterval.days * 100} label="DAYS" value={currentTimeLeft.days} colour="lightblue" />
