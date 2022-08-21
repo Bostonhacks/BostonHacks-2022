@@ -15,7 +15,6 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
-import Countdown from "./components/common/Countdown"
 
 // Router
 export default function App() {
@@ -36,7 +35,7 @@ export default function App() {
   }, [loading]);
 
   return (
-    <div>
+    <div style={{ background: "linear-gradient(180deg, #000000 0%, #304773 52.6%, #F5E2F6 99.48%)"    }}>
       <style jsx="true">{`
         body {
           margin: 0;
@@ -44,7 +43,6 @@ export default function App() {
         }
       `}</style>
       <NavigationBar />
-      <Countdown />
 
       <Routes>
         <Route path="/" element={<Home />} />
