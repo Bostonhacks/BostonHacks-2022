@@ -1,0 +1,21 @@
+.countdown {
+    list-style-type: none;
+    margin: 0;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    backdrop-filter: "blur(95px)";
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+  }
+  
+  .countdown li {
+    display: inline-block;
+    padding-inline: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;;
+  }
+
