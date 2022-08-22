@@ -3,14 +3,48 @@ import { useForm, Controller } from "react-hook-form";
 import Select from 'react-select';
 import "./styles.css";
 import { countryCodeList, countryList, courseList, programmingList } from "../applicationOptions/applicationOptions";
+import { db } from "../../firebase/firebase-config";
+import {
+    updateDoc,
+    doc
+} from "firebase/firestore";
 
 const GEOAPIFY_KEY = "API-KEY-HERE";
 
 // Application page
 export default function Application() {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
-    const onSubmit = (data) => console.log(data);
+    async function onSubmit(data) {
+        console.log(data);
+        const user = user;
+        const userDoc = doc(db, "applications", user.id);
+        await updateDoc(
+            userDoc,
+            {
+                firstName: data.firstName.value,
+                lastName: data.lastName.value,
+                dateOfBirth: data.dateOfBirth.value,
+                email: data.email.value,
+                phoneNumber: data.phoneNumber.value,
+                address: data.address.value,
+                outOfState: data.outOfState.value,
+                highestEducation: data.highestEducation.value,
+                collegeYear: data.collegeYear.value,
+                collegeMajor: data.collegeMajor.value,
+                collegeMinor: data.collegeMinor.value,
+                github: data.github.value,
+                linkedin: data.linkedin.value,
+                personalPortfolio: data.personalPortfolio.value,
+                ethnicity: data.ethnicity.value,
+                dietaryRestrictions: data.dietaryRestrictions.value,
+                sleep: data.sleep.value,
+                autocad: data.autocad.value,
+                bostonhacks: data.bostonhacks.value,
+                codeOfConduct: data.codeOfConduct.value
 
+            }
+        )
+    }
     const [loading, setLoading] = React.useState(true);
     const [collegeOptions, setCollegeOptions] = React.useState([]);
     const [address, setAddress] = React.useState("");
@@ -351,7 +385,7 @@ export default function Application() {
                 <br/><br/>
 
                 <label>Dietary Restrictions:</label>
-                <select {...register("ethinicity", { required:true },)}>
+                <select {...register("dietaryRestrictions", { required:true },)}>
                     <option value="None">None</option>
                     <option value="Gluten-free">Gluten-free</option>
                     <option value="Vegetarian">Vegetarian</option>
