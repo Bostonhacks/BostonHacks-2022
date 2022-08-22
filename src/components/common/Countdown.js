@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Pie from './Pie';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './Countdown.css';
@@ -50,12 +49,9 @@ export default function Coundown() {
     var currentTimeLeft = calculateTimeLeft(cTime, deadline);
 
     return (
-    <div class="countdown">
+    <div className="countdown">
+        <h1 style={{color: "white"}}>Coming Soon</h1>
         <ul >
-            {/* <Pie percentage={currentTimeLeft.days / totalInterval.days * 100} label="DAYS" value={currentTimeLeft.days} colour="lightblue" />
-            <Pie percentage={currentTimeLeft.hours / 24 * 100} label="HOURS" value={currentTimeLeft.hours} colour="lightblue" />
-            <Pie percentage={currentTimeLeft.minutes / 60 * 100} label="MINUTES" value={currentTimeLeft.minutes} colour="lightblue" />
-            <Pie percentage={currentTimeLeft.seconds / 60 * 100} label="SECONDS" value={currentTimeLeft.seconds} colour="lightblue" /> */}
             <li>
             <CircularProgressbar value={currentTimeLeft.days} maxValue={totalInterval.days} text={`${currentTimeLeft.days} Days`} styles={progressStyle} />
             </li>
@@ -63,10 +59,10 @@ export default function Coundown() {
             <CircularProgressbar value={currentTimeLeft.hours} maxValue={24} text={`${currentTimeLeft.hours} Hours`} styles={progressStyle}/>
             </li>
             <li>
-            <CircularProgressbar value={currentTimeLeft.minutes} maxValue={60} text={`${currentTimeLeft.minutes} Minutes`} styles={progressStyle}/>
+            <CircularProgressbar value={currentTimeLeft.minutes} maxValue={60} text={`${currentTimeLeft.minutes} Mins`} styles={progressStyle}/>
             </li>
             <li>
-            <CircularProgressbar value={currentTimeLeft.seconds} maxValue={60} text={`${currentTimeLeft.seconds} Seconds`} styles={progressStyle}/>
+            <CircularProgressbar value={currentTimeLeft.seconds} maxValue={60} text={`${currentTimeLeft.seconds} Secs`} styles={progressStyle}/>
             </li>
         </ul>
     </div>

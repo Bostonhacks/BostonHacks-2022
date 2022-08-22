@@ -24,7 +24,7 @@ export default function NavigationBar() {
 
     return (
       <div>
-        <ul class="nav">
+        <ul className="nav">
           <li>
             <Link to="/"><NavbarLogo /></Link>
           </li>
