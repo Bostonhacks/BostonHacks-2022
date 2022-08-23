@@ -5,6 +5,8 @@ import {
     useNavigate
 } from "react-router-dom";
 import { auth, logout } from "../../firebase/firebase-config";
+import NavbarLogo from "./svg/NavbarLogo";
+import "./NavigationBar.css"
 
 // Navigation bar
 export default function NavigationBar() {
@@ -21,25 +23,24 @@ export default function NavigationBar() {
     }, [loading]);
 
     return (
-      <nav>
-        <ul>
+      <div>
+        <ul className="nav">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/"><NavbarLogo /></Link>
           </li>
           <li>
-            <Link to="/sponsor">Sponsor</Link>
+            {user && <button onClick={handleLogout} style={{	background: "none",	color: "white",	border: "none",	padding: 0,	font: "inherit",	cursor: "pointer",	outline: "inherit"}}>Logout</button>}
           </li>
-          <li>
-            <Link to="/application">Application</Link>
+          <li style={{float: "right"}}>
+            <Link to="/sponsor">Sponsors</Link>
           </li>
-          <li>
+          <li style={{float: "right"}}>
             <Link to="/admin">Admin</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
+          <li style={{float: "right"}}>
+            <Link to="/application">Apply</Link>
           </li>
         </ul>
-        {user && <button onClick={handleLogout}>Logout</button>}
-      </nav>
+      </div>
     );
   }
