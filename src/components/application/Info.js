@@ -4,44 +4,45 @@ import Select from 'react-select';
 import "./styles.css";
 import { countryCodeList, countryList, courseList, programmingList } from "../applicationOptions/applicationOptions";
 import { db } from "../../firebase/firebase-config";
-import {
-    updateDoc,
-    doc
+import { query,
+getDocs,
+collection,
+where,
+doc,
+updateDoc,
 } from "firebase/firestore";
 
 // Application page
-export default function Application() {
+export default function Application({applicationId}) {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
     async function onSubmit(data) {
-        console.log(data);
-        const user = user;
-        const userDoc = doc(db, "applications", user.id);
+        const userDoc = doc(db, "applications", applicationId);
         await updateDoc(
             userDoc,
             {
-                firstName: data.firstName.value,
-                lastName: data.lastName.value,
-                dateOfBirth: data.dateOfBirth.value,
-                email: data.email.value,
-                phoneNumber: data.phoneNumber.value,
-                address: data.address.value,
-                outOfState: data.outOfState.value,
-                highestEducation: data.highestEducation.value,
-                collegeYear: data.collegeYear.value,
-                collegeMajor: data.collegeMajor.value,
-                collegeMinor: data.collegeMinor.value,
-                github: data.github.value,
-                linkedin: data.linkedin.value,
-                personalPortfolio: data.personalPortfolio.value,
-                ethnicity: data.ethnicity.value,
-                dietaryRestrictions: data.dietaryRestrictions.value,
-                sleep: data.sleep.value,
-                autocad: data.autocad.value,
-                bostonhacks: data.bostonhacks.value,
-                codeOfConduct: data.codeOfConduct.value
-
+                firstName: data.firstName,
+                lastName: data.lastName,
+                dateOfBirth: data.dateOfBirth,
+                email: data.email,
+                phoneNumber: data.phoneNumber,
+                address: data.address,
+                outOfState: data.outOfState,
+                highestEducation: data.highestEducation,
+                collegeYear: data.collegeYear,
+                collegeMajor: data.collegeMajor,
+                collegeMinor: data.collegeMinor,
+                github: data.github,
+                linkedin: data.linkedin,
+                personalPortfolio: data.personalPortfolio,
+                ethnicity: data.ethnicity,
+                dietaryRestrictions: data.dietaryRestrictions,
+                sleep: data.sleep,
+                autocad: data.autocad,
+                bostonhacks: data.bostonhacks,
+                status: "Submitted"
             }
         )
+        window.location.reload(false);
     }
     const [loading, setLoading] = React.useState(true);
     const [collegeOptions, setCollegeOptions] = React.useState([]);
@@ -369,7 +370,7 @@ export default function Application() {
                 <h2>Miscellaneous Questions</h2>
 
                 <label>Race/Ethnicity:</label>
-                <select {...register("ethinicity", { required:true })}>
+                <select {...register("ethnicity", { required:true })}>
                     <option value="Hispanic or Latino">Hispanic or Latino</option>
                     <option value="White">White</option>
                     <option value="Black or African American">Black or African American</option>
@@ -422,21 +423,13 @@ export default function Application() {
                 { required: true })} />
                 <br/><br/>
                 
-                <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" 
-                target="_blank"
-                rel="noreferrer"
-                htmlFor="codeOfConduct" 
-                {...register("codeOfConudct", {required: true})}
-                >Do you agree to the MLH Code of Conduct?</a>
-                <input 
-                    style={{"marginLeft":"5px"}}
-                    type="checkbox"
-                    {...register("codeOfConduct")}
-                    id="codeOfConduct"
-                />
+                <div className="form-group form-check">
+                    <label htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
+                    <input name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                    <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
+                </div>
                 <br/>
                 <br></br>
-
 
                 <input type="Submit"/>
             </form>
