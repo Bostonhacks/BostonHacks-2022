@@ -11,10 +11,12 @@ where,
 doc,
 updateDoc,
 } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 // Application page
 export default function Application({applicationId}) {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
+    const navigate = useNavigate();
     async function onSubmit(data) {
         const userDoc = doc(db, "applications", applicationId);
         await updateDoc(
@@ -42,7 +44,7 @@ export default function Application({applicationId}) {
                 status: "Submitted"
             }
         )
-        window.location.reload(false);
+        navigate("/login");
     }
     const [loading, setLoading] = React.useState(true);
     const [collegeOptions, setCollegeOptions] = React.useState([]);
