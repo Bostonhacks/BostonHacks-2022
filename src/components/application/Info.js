@@ -9,8 +9,6 @@ import {
     doc
 } from "firebase/firestore";
 
-const GEOAPIFY_KEY = "API-KEY-HERE";
-
 // Application page
 export default function Application() {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
@@ -53,7 +51,7 @@ export default function Application() {
     const addressSearch = (e) => {
         const formattedAddress = address.replace(/\s/g, "%20");
 
-        fetch("https://api.geoapify.com/v1/geocode/autocomplete?text=" + formattedAddress + "&format=json&apiKey=" + GEOAPIFY_KEY)
+        fetch("https://api.geoapify.com/v1/geocode/autocomplete?text=" + formattedAddress + "&format=json&apiKey=" + process.env.REACT_APP_GEOAPIFY_KEY)
             .then(response => {
                 response.json()
                 .then(data => {
