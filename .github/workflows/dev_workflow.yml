@@ -17,6 +17,4 @@ jobs:
     
     - name: Build
       run: yarn install
-
-    - name: Deploy
       run: CI='' yarn run build

@@ -1,5 +1,18 @@
 {
   "projects": {
-    "default": "bhacks2022-48274"
-  }
+    "default": "bostonhacks-cacioepepe"
+  },
+  "targets": {
+    "bostonhacks-cacioepepe": {
+      "hosting": {
+        "production": [
+          "bostonhacks-cacioepepe"
+        ],
+        "staging": [
+          "bostonhacks-cacioepepe-staging"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

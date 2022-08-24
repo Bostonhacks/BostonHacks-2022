@@ -6,7 +6,7 @@ on:
     
 jobs:
   deploy:
-    name: Build and Deploy
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -15,10 +15,4 @@ jobs:
     
     - name: Build
       run: yarn install
-
-    - name: Deploy
-      run: |
-        git config --global user.name 'Marco Raigoza'
-        git config --global user.email 'mraigoza@bu.edu'
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        CI='' yarn run deploy
+      run: CI='' yarn run build
