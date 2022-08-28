@@ -1,3 +1,11 @@
-.sponsor {
-  background-image: url('../components/sponsor/svg/background-gradient.svg');
+.inner {
+}
+.title-section {
+}
+.twillio-quote {
+  position: relative;
+  bottom: 400px;
+}
+svg {
+  width: 100%;
 }
