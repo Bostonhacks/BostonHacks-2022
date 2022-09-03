@@ -49,8 +49,19 @@ export default function AdminPanel() {
       setApplications(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
-      // test
+      // check
+      const [word, setWord] = useState("");
+      const [size, setSize] = useState(400);
+      const [bgColor, setBgColor] = useState("ffffff");
+      const [qrCode, setQrCode] = useState("");
+   
+      useEffect(() => {
+        setQrCode
+        (`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`)
+      }, [word, size, bgColor]);
       
+      result.forEach((id,doc)=>setWord(doc));
+
       result = result.sort(getSorter(payload.sort));
       return Promise.resolve(result);
     },
@@ -89,6 +100,12 @@ export default function AdminPanel() {
           name="status"
           label="Status"
           placeholder="Status"
+        />
+        <Field
+          name="qrcode"
+          label="qrcode"
+          img src={qrCode} alt=""
+          placeholder="none"
         />
       </Fields>
 
