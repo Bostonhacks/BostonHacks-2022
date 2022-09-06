@@ -125,7 +125,7 @@ export default function Application({applicationId}) {
     }
 
     return (
-        <div>
+        <div className="background">
             <p><i>Fields marked with * are required</i></p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -407,7 +407,7 @@ export default function Application({applicationId}) {
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
-                <br/><br/>
+                <br/><br/><br/>
 
                 <label>Autcad Experience?:</label>
                 <select {...register("autocad", { required:true },)}>

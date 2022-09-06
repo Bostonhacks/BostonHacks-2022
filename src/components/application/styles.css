@@ -4,6 +4,25 @@ span {
     display: none;
 }
 
+h2, label {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: "Inter";
+    font-style: normal;
+}
+
+label {
+    display: block;
+    float: left;
+    width: 200px;
+}
+
+input {
+    background: #e5e5ec;
+    border: none;
+}
+
 .languageSelect {
     display: flex;
     margin-bottom: 20px;
@@ -24,4 +43,9 @@ span {
 .selecter{
     display:flex;
     width: 500px;
+}
+
+.background {
+    background: linear-gradient(rgb(0, 0, 0) 0%, rgb(48, 71, 115) 52.6%, rgb(245, 226, 246) 99.48%);
+    padding: 0 5% 0 5%;
 }
