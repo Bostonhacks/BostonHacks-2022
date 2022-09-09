@@ -15,6 +15,7 @@ export default function Admin() {
     if (!user) return navigate("/login");
 
     if (!admins.includes(user.email)) return navigate("/application");
+    console.log(window.location.href);
   }, [user, loading, navigate]); 
 
   return (

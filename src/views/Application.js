@@ -9,6 +9,7 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 export default function Application() {
     const [user, loading] = useAuthState(auth);
     const [application, setApplication] = useState({});
+    const [qrCode, setQrCode] = useState("");
     const navigate = useNavigate();
     const applicationTypes = [ "Submitted", "Waitlisted", "Rejected", "Declined", "Confirmed", "Accepted", "Checked In" ];
 
@@ -20,6 +21,8 @@ export default function Application() {
         if (doc.docs.length !== 0) {
           // setApplication(doc.docs[0].data());
           setApplication({ ...doc.docs[0].data(), id: doc.docs[0].id });
+          const word = "http:/bostonhacks.io/admin/checkin/" + doc.docs[0].id;
+          setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${word}&size=400x400&bgcolor=ffffff`);
           // Stop calling the function
           clearInterval(intervalId) 
         }
@@ -45,6 +48,16 @@ export default function Application() {
 
             {/* Otherwise, show their status */}
             {applicationTypes.includes(application?.status) && <h3>Status is {application?.status}</h3>}
+
+            {/* Check user's status, if accepted show qr code */}
+            {application?.status === "Accepted" && 
+              <img
+                className="img-fluid"
+                src={qrCode}
+                width={150} height={150} alt='None' 
+              />
+              }
+
         </div>
     )
 }
