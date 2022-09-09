@@ -42,22 +42,28 @@ const getSorter = (data) => {
 export default function AdminPanel() {
   const [applications, setApplications] = useState([]);
   const applicationsCollectionRef = collection(db, "applications");
-  //check
   const [word, setWord] = useState("");
   const [size, setSize] = useState(400);
   const [bgColor, setBgColor] = useState("ffffff");
   const [qrCode, setQrCode] = useState("");
 
   useEffect(() => {
-    setQrCode
-    (`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`)
+    setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`);
   }, [word, size, bgColor]);
 
   const service = {
     fetchItems: async (payload) => {
       const data = await getDocs(applicationsCollectionRef);
       setApplications(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id, 
+      qrcode : (
+          <img
+            className="img-fluid"
+            src={qrCode}
+            width={150} height={150} alt='None' 
+          />
+      )
+      })));
       
       result.forEach((id,doc)=>setWord(doc));
 
@@ -77,6 +83,12 @@ export default function AdminPanel() {
       return Promise.resolve(application);
     },
   };
+
+  if (!qrCode) {
+    return (
+      <div />
+    )
+  }
 
   return (
   <div>
@@ -102,9 +114,8 @@ export default function AdminPanel() {
         />
         <Field
           name="qrcode"
-          label="qrcode"
-          img src={qrCode} alt=""
-          placeholder="none"
+          label="Qr Code"
+          placeholder="Qr Code"
         />
       </Fields>
 
