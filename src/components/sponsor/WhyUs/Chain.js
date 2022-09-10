@@ -3,7 +3,12 @@ import Chain from '../svg/chain.svg';
 
 const chain = () => {
   return (
-    <img src={Chain} style={{ width: '36%', height: 'auto' }} alt="Chain" />
+    <img
+      className="chain"
+      src={Chain}
+      style={{ width: '36%', height: 'auto' }}
+      alt="Chain"
+    />
   );
 };
 

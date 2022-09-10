@@ -6,10 +6,11 @@ import SponsorOpps from '../components/sponsor/SponsorOpps/SponsorOpps';
 import ReviewSection from '../components/sponsor/ReviewSection/ReviewSection';
 import SponsorUs from '../components/sponsor/SponsorUs/SponsorUs';
 import WhyUs from '../components/sponsor/WhyUs/WhyUs';
-import Chain from '../components/sponsor/WhoAreWe/Chain';
-import './Sponsor.css';
+import Chain from '../components/sponsor/WhyUs/Chain';
 import TwillioBubble from '../components/sponsor/TwilioQuote/TwilioBubble';
-
+import WhyUsBubble from '../components/sponsor/WhyUs/WhyUsBubble';
+import StatisticsSection from '../components/sponsor/StatisticsSection/StatisticsSection';
+import './Sponsor.css';
 // Sponsorship page
 export default function Sponsor() {
   return (
@@ -19,10 +20,12 @@ export default function Sponsor() {
       <TwillioBubble />
       <WhoAreWe />
       <WhyUs />
+      <Chain />
+      <WhyUsBubble />
       <SponsorOpps />
+      <StatisticsSection />
       <ReviewSection />
       <SponsorUs />
-      <Chain />
     </div>
   );
 }

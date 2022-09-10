@@ -1,11 +1,66 @@
-.inner {
+svg {
+  width: 100%;
+}
+
+.sponsor {
+  background: linear-gradient(
+    180deg,
+    #000000 0%,
+    #304773 52.6%,
+    #f5e2f6 99.48%
+  );
+  height: auto;
 }
 .title-section {
 }
-.twillio-quote {
+
+.twilio-quote {
   position: relative;
-  bottom: 400px;
+  bottom: 500px;
 }
-svg {
-  width: 100%;
+.twilio-bubble {
+  position: absolute;
+  top: 1980px;
+  right: 0px;
+}
+
+.who-are-we {
+}
+
+.why-us {
+  position: relative;
+  top: 380px;
+  left: 30px;
+}
+.why-us-bubble {
+  position: absolute;
+  top: 4300px;
+  left: 0px;
+}
+.chain {
+  position: absolute;
+  top: 5900px;
+  left: 0px;
+}
+
+.sponsor-opps {
+  position: relative;
+  top: 1000px;
+}
+
+.statistics-section {
+  position: relative;
+  top: 1000px;
+  left: 400px;
+  width: 50%;
+}
+
+.review-section {
+  position: relative;
+  top: 1300px;
+}
+
+button {
+  position: relative;
+  top: 5000px;
 }

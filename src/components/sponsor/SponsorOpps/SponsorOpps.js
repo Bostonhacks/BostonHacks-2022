@@ -3,6 +3,7 @@ import React from 'react';
 const SponsorOpps = () => {
   return (
     <svg
+      className="sponsor-opps"
       width="1208"
       height="2541"
       viewBox="0 0 1208 2541"

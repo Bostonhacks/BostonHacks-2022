@@ -1,8 +1,8 @@
 import React from 'react';
 import Bubble from '../svg/TwilioBubble.svg';
 
-const TwillioBubble = () => {
-  return <img src={Bubble} alt="Twillio Bubble" />;
+const TwilioBubble = () => {
+  return <img className="twilio-bubble" src={Bubble} alt="Twillio Bubble" />;
 };
 
-export default TwillioBubble;
+export default TwilioBubble;

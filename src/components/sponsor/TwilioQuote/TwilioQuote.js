@@ -3,7 +3,7 @@ import React from 'react';
 const TwilioQuote = () => {
   return (
     <svg
-      className="twillio-quote"
+      className="twilio-quote"
       width="1124"
       height="835"
       viewBox="0 0 1124 835"
