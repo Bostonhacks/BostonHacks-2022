@@ -78,6 +78,10 @@ export default function Application({applicationId}) {
       const addInput = (e) => {
         e.preventDefault()
         setArr(s => {
+            if (s.length == 5){
+                return s
+            }
+            else {
           const lastId = s[s.length - 1].id;
           return [
             ...s,
@@ -86,8 +90,23 @@ export default function Application({applicationId}) {
               value: ""
             }
           ];
+            };
         });
       };
+
+      const removeInput = (e) => {
+        e.preventDefault()
+        setArr(s => {
+            if (s.length == 1){
+                return s
+            }
+            else {
+          const lastId = s[s.length - 1].id;
+          return s.slice(0, s.length-1)
+            };
+        });
+      };
+      
     
       const handleChange = e => {
         e.preventDefault();
@@ -320,9 +339,10 @@ export default function Application({applicationId}) {
                 </div>}
                 
                 {currSubForm === 3 && <div className="form-programming-experience">
+                <div className="questionBreak">
                     <h2>Programming Experience</h2>
-                    <label>Select the programming languages/technology you have experience with</label>
-                    <div>
+                    <div className="programmingSection">
+                    <label style={{"width": "500px", "paddingBottom":"30px"}}>Select the programming languages/technology you have experience with(Add up to 5)</label>
                         {arr.map((item, i) => {
                             return (
                             <div className="languageSelect">
@@ -354,16 +374,22 @@ export default function Application({applicationId}) {
                             );
                         })}
                         
-                        <button onClick={addInput}>Add</button>
+                        <div className="addRemove">
+                        <div className="addRemoveSpace">
+                        <button onClick={addInput} style={{"width":"300px"}}>Add</button>
                         </div>
-                    <br/><br/>
-
+                        <button onClick={removeInput} style={{"width":"300px"}}>Remove</button>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <div className="questionBreak">
                     <label>Number of Past Hackathons: *</label>         
                     <input
                     type="number"
                     {...register("pastHackathons",
                     { required: true})} />
-                    <br/><br/>
+                    </div>
 
                     <label>Upload Resume: *</label>
                     <input
@@ -371,32 +397,48 @@ export default function Application({applicationId}) {
                     {...register("resume",
                     { required: true})} />
                     <br/>
-                </div>}
+                </div>
+                }
 
                 {currSubForm === 4 && <div className="form-links">
-                    <h2>Personal Links</h2>
-                    <label>Github Profile: *</label>
+                <div className="section">
+                    <h2 style={{"paddingBottom":"50px"}}>Personal Links(Please submit any links you would like to share)</h2>
+
+                    <div className="questionPage">
+                    <div className="field">
+                    <label>Github Profile: </label>
                     <input 
                     {...register("github",)} />
+                    </div>
                     <br/>
                     <br/><br/>
 
-                    <label>Linkedin Profile: *</label>
+                    <div className="field">
+                    <label>Linkedin Profile: </label>
                     <input 
                     {...register("linkedin",)} />
+                    </div>
                     <br/>
                     <br/><br/>
 
-                    <label>Personal Portfolio: *</label>
+                    <div className="field">
+                    <label>Personal Portfolio: </label>
                     <input 
                     {...register("personalPortfolio",)} />
+                    </div>
                     <br/>
                     <br/><br/>
-                </div>}
+                </div>
+                </div>
+                </div>
+                }
 
                 {currSubForm === 5 && <div className="form-misc">
-                    <h2>Miscellaneous Questions</h2>
+                
+                <div className="section">
+                    <h2 style={{"paddingBottom":"30px"}}>Miscellaneous Questions</h2>
 
+                    <div className="field">
                     <label>Race/Ethnicity: *</label>
                     <select {...register("ethnicity", { required:true })}>
                         <option value="Hispanic or Latino">Hispanic or Latino</option>
@@ -409,8 +451,9 @@ export default function Application({applicationId}) {
                         <option value="Multiracial non-Hispanic">Multiracial non-Hispanic</option>
                         <option value="Prefer not to answer">Prefer not to answer</option>
                     </select>
-                    <br/><br/>
+                    </div>
 
+                    <div className="field">
                     <label>Dietary Restrictions: *</label>
                     <select {...register("dietaryRestrictions", { required:true },)}>
                         <option value="None">None</option>
@@ -426,54 +469,66 @@ export default function Application({applicationId}) {
                         <option value="Paleo">Paleo</option>
                         <option value="Other">Other</option>
                     </select>
-                    <br/><br/>
+                    </div>
 
+                    <div className="field">
                     <label>Need Sleep Accomodations?: *</label>
                     <select {...register("sleep", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
-                    <br/><br/><br/>
+                    </div>
 
+                    <div className="field">
                     <label>Autcad Experience?: *</label>
                     <select {...register("autocad", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
-                    <br/><br/>
+                    </div>
 
+                    <div className="field">
                     <label>Participating in Team Formation?: *</label>
                     <select {...register("teamFormation", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
-                    <br/><br/>
-                </div>}
+                    </div>
+                </div>
+                </div>
+                }
                 
                 {currSubForm === 6 && <div className="form-bostonhacks">
+                    <div className="questionRow">
                     <h2>Why bostonhacks?</h2>
-                    <label>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): *</label>
+                    <div className="field">
+                    <label style={{"width":"500px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): *</label>
                     <br/><br/>
                     <textarea style={{"width":"50%", "height":"200px", "resize":"none"}}
                     {...register("bostonhacks",
                     { required: true , maxLength: 200, minLength: 50})} />
+                    </div>
                     <br/><br/>
                     
                     <div className="form-group form-check">
-                        <label htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
+                    <div className="field">
+                        <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
                         <input name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
                         <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
                     </div>
+                    </div>
                     <br/>
                     <br></br>
-                </div>}
+                </div>
+                </div>
+                }
 
                 <div className="form-pagination-container">
                     {currSubForm > 0 && <button type="button" onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
                     {currSubForm < 6 && <button type="button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
+                    {currSubForm == 6 && <input className="submitButton" type="Submit"/>}
                 </div>
 
-                <input type="Submit"/>
             </form>
         </div>
     )
