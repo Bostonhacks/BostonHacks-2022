@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase-config";
-import Home from "./views/Home";
 import Sponsor from "./views/Sponsor";
 import Admin from "./views/Admin";
 import Login from "./views/Login";
@@ -48,7 +47,7 @@ export default function App() {
       <div style={{paddingTop: "75px"}}/>
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/sponsor" element={<Sponsor />} />
         <Route
           path="/application"
@@ -68,9 +67,9 @@ export default function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path='*' exact={true} element={<NotFound />} />
+
       </Routes>
 
-      <Homepage />
       <Footer />
     </div>
   );
