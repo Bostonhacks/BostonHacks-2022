@@ -1,7 +1,6 @@
 import React from 'react';
-import Countdown from './Countdown';
-import FAQBlock from './FAQBlock';
-
+import '../components/home/Homepage.css';
+import FAQBlock from '../components/home/FAQBlock';
 
 var FAQData = [
     {
@@ -33,7 +32,7 @@ var FAQData = [
         "a": "We want to ensure a positive experience for all participants. We encourage you to read the Code of Conduct."
     }
 ];
-export default function Homepage() {
+export default function Home() {
     return (
         <div id='homepage'>
             <FAQBlock pairs={FAQData}/>

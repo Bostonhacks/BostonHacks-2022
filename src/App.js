@@ -14,7 +14,7 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
-import Homepage from "./components/home/Homepage"
+import Home from "./views/Home";
 
 // Router
 export default function App() {
@@ -47,7 +47,7 @@ export default function App() {
       <div style={{paddingTop: "75px"}}/>
 
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/sponsor" element={<Sponsor />} />
         <Route
           path="/application"
