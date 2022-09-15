@@ -4,6 +4,7 @@ import Info from "../components/application/Info"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase/firebase-config";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import "./Application.css";
 
 // Application page
 export default function Application() {
@@ -39,12 +40,15 @@ export default function Application() {
     }, [user, loading, navigate]);
 
     return (
-        <div style={{    background: "rgb(245, 226, 246)", minWidth: "600px"}}>
+        <div>
             {/* Check user's status, if not started show application */}
             {application?.status === "Not Started" && <Info applicationId={application.id}/>}
 
             {/* Otherwise, show their status */}
-            {applicationTypes.includes(application?.status) && <h3>Status is {application?.status}</h3>}
+            {applicationTypes.includes(application?.status) && <div className="application-status">
+              <h1 className="application-status-header">Status:</h1>
+              <button className="application-status-bar">{application?.status}</button>
+            </div>}
         </div>
     )
 }
