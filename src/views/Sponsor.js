@@ -18,6 +18,8 @@ import WhyUsGradient2 from '../components/sponsor/WhyUs/WhyUsGradient2';
 import Chain from '../components/sponsor/WhyUs/Chain';
 import WhyUsBubble from '../components/sponsor/WhyUs/WhyUsBubble';
 import StatisticsSection from '../components/sponsor/StatisticsSection/StatisticsSection';
+
+import BostonHaxButton from '../components/sponsor/SponsorUs/BhaxButton';
 import StatisticsBubble from '../components/sponsor/StatisticsSection/StatisticsBubble';
 import StatisticsGradient from '../components/sponsor/StatisticsSection/StatisticsGradient';
 import SponsorUs from '../components/sponsor/SponsorUs/SponsorUs';
@@ -47,6 +49,7 @@ export default function Sponsor() {
       <StatisticsBubble />
       <StatisticsGradient />
       <ReviewSection />
+      <BostonHaxButton buttonText="Sponsor Us" />
       <ReviewBubble1 />
       <ReviewBubble2 />
       <ReviewGradient />

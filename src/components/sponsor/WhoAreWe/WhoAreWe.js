@@ -3,6 +3,7 @@ import React from 'react';
 const WhoAreWe = () => {
   return (
     <svg
+      className="who-are-we"
       width="928"
       height="764"
       viewBox="0 0 928 764"
