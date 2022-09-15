@@ -102,17 +102,21 @@ svg {
   position: relative;
   top: 2100px;
 }
-
 .review-bubble-1 {
   position: absolute;
   top: 12200px;
   right: 0px;
 }
-
 .review-bubble-2 {
   position: absolute;
   top: 13400px;
   left: 0px;
+}
+.review-gradient {
+  position: absolute;
+  top: 13200px;
+  left: -100px;
+  z-index: 0;
 }
 
 button {
@@ -125,9 +129,14 @@ button {
   left: 300px;
   top: 14700px;
 }
-
 .sponsor-us-bubble {
   position: absolute;
   right: 0px;
   top: 14900px;
+}
+.sponsor-us-gradient {
+  position: absolute;
+  left: -500px;
+  top: 15000px;
+  z-index: 0;
 }

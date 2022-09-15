@@ -11,6 +11,7 @@ import SponsorOppsGradient3 from '../components/sponsor/SponsorOpps/SponsorOppsG
 import ReviewSection from '../components/sponsor/ReviewSection/ReviewSection';
 import ReviewBubble1 from '../components/sponsor/ReviewSection/ReviewBubble1';
 import ReviewBubble2 from '../components/sponsor/ReviewSection/ReviewBubble2';
+import ReviewGradient from '../components/sponsor/ReviewSection/ReviewGradient';
 import WhyUs from '../components/sponsor/WhyUs/WhyUs';
 import WhyUsGradient1 from '../components/sponsor/WhyUs/WhyUsGradient1';
 import WhyUsGradient2 from '../components/sponsor/WhyUs/WhyUsGradient2';
@@ -22,6 +23,7 @@ import StatisticsGradient from '../components/sponsor/StatisticsSection/Statisti
 import SponsorUs from '../components/sponsor/SponsorUs/SponsorUs';
 import ChromeBar from '../components/sponsor/SponsorUs/ChromeBar';
 import SponsorUsBubble from '../components/sponsor/SponsorUs/SponsorUsBubble';
+import SponsorUsGradient from '../components/sponsor/SponsorUs/SponsorUsGradient';
 import './Sponsor.css';
 // Sponsorship page
 export default function Sponsor() {
@@ -47,9 +49,11 @@ export default function Sponsor() {
       <ReviewSection />
       <ReviewBubble1 />
       <ReviewBubble2 />
+      <ReviewGradient />
       <SponsorUs />
       <ChromeBar />
       <SponsorUsBubble />
+      <SponsorUsGradient />
     </div>
   );
 }
