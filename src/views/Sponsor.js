@@ -4,12 +4,12 @@ import TwilioQuote from '../components/sponsor/TwilioQuote/TwilioQuote';
 import WhoAreWe from '../components/sponsor/WhoAreWe/WhoAreWe';
 import SponsorOpps from '../components/sponsor/SponsorOpps/SponsorOpps';
 import ReviewSection from '../components/sponsor/ReviewSection/ReviewSection';
-import SponsorUs from '../components/sponsor/SponsorUs/SponsorUs';
 import WhyUs from '../components/sponsor/WhyUs/WhyUs';
 import Chain from '../components/sponsor/WhyUs/Chain';
 import TwillioBubble from '../components/sponsor/TwilioQuote/TwilioBubble';
 import WhyUsBubble from '../components/sponsor/WhyUs/WhyUsBubble';
 import StatisticsSection from '../components/sponsor/StatisticsSection/StatisticsSection';
+import BostonHaxButton from '../components/sponsor/SponsorUs/BhaxButton';
 import './Sponsor.css';
 // Sponsorship page
 export default function Sponsor() {
@@ -25,7 +25,7 @@ export default function Sponsor() {
       <SponsorOpps />
       <StatisticsSection />
       <ReviewSection />
-      <SponsorUs />
+      <BostonHaxButton buttonText="Sponsor Us" />
     </div>
   );
 }
