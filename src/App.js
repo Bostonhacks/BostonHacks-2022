@@ -15,6 +15,7 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
+import Homepage from "./components/home/Homepage"
 
 // Router
 export default function App() {
@@ -69,6 +70,7 @@ export default function App() {
         <Route path='*' exact={true} element={<NotFound />} />
       </Routes>
 
+      <Homepage />
       <Footer />
     </div>
   );
