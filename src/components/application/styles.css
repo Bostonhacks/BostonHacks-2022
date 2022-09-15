@@ -12,19 +12,18 @@ h2, label {
     font-style: normal;
 }
 
-a {
-    color: blue;
-}
-
 label {
     display: block;
     float: left;
-    width: 275px;
-}
+    width: 275px;}
 
 input {
-    background: #e5e5ec;
-    border: none;
+    background: none;
+    border: #e5e5ec;
+    box-shadow: inset 0 0 10px #e5e5ec;
+    border-radius: 3px; 
+    color: #e5e5ec;
+    font-weight: bold;
 }
 
 .languageSelect {
@@ -41,18 +40,38 @@ input {
 }
 
 .phone {
-    width: 500px
+    width: 900px
 }
 
 .selecter{
     display:flex;
-    width: 500px;
+    background:none;
+    width: 300px;
+    margin-right: 1.5rem;
 }
 
 .background {
     background: linear-gradient(rgb(0, 0, 0) 0%, rgb(48, 71, 115) 52.6%, rgb(245, 226, 246) 99.48%);
     padding: 0 5% 0 5%;
     height: 100vh;
+}
+
+button {
+    background: none;
+    border: #e5e5ec;
+    box-shadow: inset 0 0 10px #e5e5ec;
+    border-radius: 3px; 
+    color: #e5e5ec;
+    font-weight: bold;  
+}
+
+.form-pagination-container {
+    display: absolute;
+
+}
+
+a {
+    color: blue;
 }
 
 .questionRow {

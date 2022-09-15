@@ -12,6 +12,7 @@ doc,
 updateDoc,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import shadows from "@material-ui/core/styles/shadows";
 
 // Application page
 export default function Application({applicationId}) {
@@ -90,23 +91,22 @@ export default function Application({applicationId}) {
               value: ""
             }
           ];
-            };
-        });
-      };
+        };
+    });
+  };
 
-      const removeInput = (e) => {
-        e.preventDefault()
-        setArr(s => {
-            if (s.length == 1){
-                return s
-            }
-            else {
-          const lastId = s[s.length - 1].id;
-          return s.slice(0, s.length-1)
-            };
+  const removeInput = (e) => {
+    e.preventDefault()
+    setArr(s => {
+        if (s.length == 1){
+            return s
+        }
+        else {
+      const lastId = s[s.length - 1].id;
+      return s.slice(0, s.length-1)
+        };
         });
       };
-      
     
       const handleChange = e => {
         e.preventDefault();
@@ -179,7 +179,7 @@ export default function Application({applicationId}) {
 
                     <label>Email: *</label>
                     <input type="email"
-                    placeholder="john@gmail.com"
+                    placeholder="  john@gmail.com"
                     {...register("email", 
                     { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })}/>
                     <br/>
@@ -205,7 +205,8 @@ export default function Application({applicationId}) {
                             />}
                         />
                         </div>
-                        <input
+                        <input 
+                        style={{paddingLeft:'60px'}}
                         type="number"
                         {...register("phoneNumber",
                         { required: true})} />
@@ -219,6 +220,13 @@ export default function Application({applicationId}) {
                     <h2>Current Semester Address Information</h2>
                     <label>Address: *</label>
                     <Controller
+                        style = {{
+                            backgroundColor: 'none',
+                            border: 'none',
+                            background:'none',
+                            color:'white',
+                            fontWeight:'bold',
+                        }}
                         name="address"
                         control={control}
                         defaultValue={null}
@@ -377,28 +385,30 @@ export default function Application({applicationId}) {
                         <div className="addRemove">
                         <div className="addRemoveSpace">
                         <button onClick={addInput} style={{"width":"300px"}}>Add</button>
+
                         </div>
                         <button onClick={removeInput} style={{"width":"300px"}}>Remove</button>
                         </div>
                     </div>
                     </div>
-                    
+
                     <div className="questionBreak">
+                        
                     <label>Number of Past Hackathons: *</label>         
                     <input
                     type="number"
                     {...register("pastHackathons",
                     { required: true})} />
+                    <br/><br/>
                     </div>
-
+                    
                     <label>Upload Resume: *</label>
                     <input
                     type="file"
                     {...register("resume",
                     { required: true})} />
                     <br/>
-                </div>
-                }
+                </div>}
 
                 {currSubForm === 4 && <div className="form-links">
                 <div className="section">
@@ -524,10 +534,22 @@ export default function Application({applicationId}) {
                 }
 
                 <div className="form-pagination-container">
-                    {currSubForm > 0 && <button type="button" onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
-                    {currSubForm < 6 && <button type="button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
-                    {currSubForm == 6 && <input className="submitButton" type="Submit"/>}
+                    {currSubForm > 0 && <button type="button" style={{     
+                    padding: '15px',
+                    position: 'flex',
+                    left: '25%',
+                    top: '97%'
+
+                    }} onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
+
+                    {currSubForm < 6 && <button type="button" style={{
+                    padding: '15px',
+                    position: 'flex',
+                    left: '60%',
+                    top: '97%'
+                    }}onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
                 </div>
+
 
             </form>
         </div>
