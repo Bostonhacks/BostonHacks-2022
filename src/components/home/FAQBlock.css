@@ -2,9 +2,6 @@
     display: inline;
     margin-left:  100px;
     margin-right: 500px;
-    padding-left: 25%;
-    padding-right: 25%;
-    width: 25%;
     text-align: center;
 
     border-collapse: collapse;
@@ -18,7 +15,7 @@
     margin-right: auto;
     padding-left: 15%;
     padding-right: 15%;
-    width: 50%;
+    width: 55%;
     text-align: center;
 
     /* margin-top: 15px;
@@ -43,8 +40,9 @@
     padding-top: 12px;
     padding-bottom: 12px;
     
+    font-family: 'Inter';
     font-style: normal;
-    font-weight: 300;
+    font-weight: 100;
     font-size: 28px;
     line-height: 34px;
     align-items: center;  
