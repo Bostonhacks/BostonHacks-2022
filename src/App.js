@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase-config";
-import Home from "./views/Home";
 import Sponsor from "./views/Sponsor";
 import Admin from "./views/Admin";
 import Login from "./views/Login";
@@ -15,6 +14,7 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
+import Home from "./views/Home";
 
 // Router
 export default function App() {
@@ -67,6 +67,7 @@ export default function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path='*' exact={true} element={<NotFound />} />
+
       </Routes>
 
       <Footer />
