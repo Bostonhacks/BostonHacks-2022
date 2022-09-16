@@ -21,7 +21,7 @@ export default function Application() {
         if (doc.docs.length !== 0) {
           // setApplication(doc.docs[0].data());
           setApplication({ ...doc.docs[0].data(), id: doc.docs[0].id });
-          const word = "http:/bostonhacks.io/admin/checkin/" + doc.docs[0].id;
+          const word = "http:/bostonhacks.io/admin?id=" + doc.docs[0].id;
           setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${word}&size=400x400&bgcolor=ffffff`);
           // Stop calling the function
           clearInterval(intervalId) 
