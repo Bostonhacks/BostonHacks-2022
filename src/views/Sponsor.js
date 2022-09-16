@@ -15,15 +15,15 @@ import ReviewGradient from '../components/sponsor/ReviewSection/ReviewGradient';
 import WhyUs from '../components/sponsor/WhyUs/WhyUs';
 import WhyUsGradient1 from '../components/sponsor/WhyUs/WhyUsGradient1';
 import WhyUsGradient2 from '../components/sponsor/WhyUs/WhyUsGradient2';
-import Chain from '../components/sponsor/WhyUs/Chain';
+// import Chain from '../components/sponsor/WhyUs/Chain';
 import WhyUsBubble from '../components/sponsor/WhyUs/WhyUsBubble';
 import StatisticsSection from '../components/sponsor/StatisticsSection/StatisticsSection';
-import BostonHaxButton from '../components/sponsor/SponsorUs/BhaxButton';
+// import BostonHaxButton from '../components/sponsor/SponsorUs/BhaxButton';
 import StatisticsBubble from '../components/sponsor/StatisticsSection/StatisticsBubble';
 import StatisticsGradient from '../components/sponsor/StatisticsSection/StatisticsGradient';
-import ChromeBar from '../components/sponsor/SponsorUs/ChromeBar';
-import SponsorUsBubble from '../components/sponsor/SponsorUs/SponsorUsBubble';
-import SponsorUsGradient from '../components/sponsor/SponsorUs/SponsorUsGradient';
+// import ChromeBar from '../components/sponsor/SponsorUs/ChromeBar';
+// import SponsorUsBubble from '../components/sponsor/SponsorUs/SponsorUsBubble';
+// import SponsorUsGradient from '../components/sponsor/SponsorUs/SponsorUsGradient';
 import './Sponsor.css';
 
 // Sponsorship page
@@ -38,7 +38,7 @@ export default function Sponsor() {
       <WhyUs />
       <WhyUsGradient1 />
       <WhyUsGradient2 />
-      <Chain />
+      {/* <Chain /> */}
       <WhyUsBubble />
       <SponsorOpps />
       <SponsorOppsGradient1 />
@@ -48,13 +48,13 @@ export default function Sponsor() {
       <StatisticsBubble />
       <StatisticsGradient />
       <ReviewSection />
-      <BostonHaxButton buttonText="Sponsor Us" />
+      {/* <BostonHaxButton buttonText="Sponsor Us" /> */}
       <ReviewBubble1 />
       <ReviewBubble2 />
       <ReviewGradient />
-      <ChromeBar />
+      {/* <ChromeBar />
       <SponsorUsBubble />
-      <SponsorUsGradient />
+      <SponsorUsGradient /> */}
     </div>
   );
 }
