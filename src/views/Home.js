@@ -5,7 +5,7 @@ import FAQBlock from '../components/home/FAQBlock';
 var FAQData = [
     {
         "q": "What is BostonHacks?",
-        "a": "BostonHacks is a 36-hour event where students from different backgrounds gather together to use technology to create cool projects. Come to BostonHacks to expand your knowledge and skills, make new friends, win prizes and network with recruiters from our corporate sponsors! "
+        "a": "BostonHacks is a 24-hour event where students from different backgrounds gather together to use technology to create cool projects. Come to BostonHacks to expand your knowledge and skills, make new friends, win prizes and network with recruiters from our corporate sponsors! "
     },
     {
         "q": "When and where is BostonHacks?",
@@ -29,7 +29,7 @@ var FAQData = [
     },
     {
         "q": "Are there any rules?",
-        "a": "We want to ensure a positive experience for all participants. We encourage you to read the Code of Conduct."
+        "a": "We want to ensure a positive experience for all participants. We encourage you to read the MLH Code of Conduct."
     }
 ];
 export default function Home() {
@@ -39,6 +39,3 @@ export default function Home() {
         </div>
     );
 }
-
-
-// I'm sorry... the identical data is stored in ./FAQ/faqs.json but I don't want to bother with load/parse it
