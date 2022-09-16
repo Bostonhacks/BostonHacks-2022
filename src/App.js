@@ -19,16 +19,6 @@ import Home from "./views/Home";
 // Router
 export default function App() {
   const [user, loading] = useAuthState(auth);
-  // Redirect to login page, if use tries to access a restricted page
-  function RequireAuth({ children }) {
-    const location = useLocation();
-
-    return user ? (
-      children
-    ) : (
-      <Navigate to="/login" replace state={{ path: location.pathname }} />
-    );
-  }
 
   useEffect(() => {
     if (loading) return;
@@ -52,17 +42,13 @@ export default function App() {
         <Route
           path="/application"
           element={
-            <RequireAuth>
-              <Application />
-            </RequireAuth>
+            <Application />
           }
         />
         <Route
           path="/admin"
           element={
-            <RequireAuth>
-              <Admin />
-            </RequireAuth>
+            <Admin />
           }
         />
         <Route path="/login" element={<Login />} />
