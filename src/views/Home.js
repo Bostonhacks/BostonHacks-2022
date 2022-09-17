@@ -1,7 +1,7 @@
 import React from 'react';
-import '../components/home/Homepage.css';
 import FAQBlock from '../components/home/FAQBlock';
-
+import Title from '../components/home/svgs/title'
+import './Home.css'
 var FAQData = [
     {
         "q": "What is BostonHacks?",
@@ -34,8 +34,10 @@ var FAQData = [
 ];
 export default function Home() {
     return (
-        <div id='homepage'>
+        <div className='home'>
+            <Title/>
             <FAQBlock pairs={FAQData}/>
         </div>
+
     );
 }
