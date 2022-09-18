@@ -12,6 +12,7 @@ doc,
 updateDoc,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import shadows from "@material-ui/core/styles/shadows";
 
 // Application page
 export default function Application({applicationId}) {
@@ -90,6 +91,10 @@ export default function Application({applicationId}) {
       const addInput = (e) => {
         e.preventDefault()
         setArr(s => {
+            if (s.length == 5){
+                return s
+            }
+            else {
           const lastId = s[s.length - 1].id;
           return [
             ...s,
@@ -98,6 +103,20 @@ export default function Application({applicationId}) {
               value: ""
             }
           ];
+        };
+    });
+  };
+
+  const removeInput = (e) => {
+    e.preventDefault()
+    setArr(s => {
+        if (s.length == 1){
+            return s
+        }
+        else {
+      const lastId = s[s.length - 1].id;
+      return s.slice(0, s.length-1)
+        };
         });
       };
     
@@ -171,7 +190,7 @@ export default function Application({applicationId}) {
 
                     <label>Email: <i>*</i></label>
                     <input type="email"
-                    placeholder="john@gmail.com"
+                    placeholder="  john@gmail.com"
                     {...register("email", 
                     { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })}/>
                     <br/>
@@ -196,7 +215,8 @@ export default function Application({applicationId}) {
                             />}
                         />
                         </div>
-                        <input
+                        <input 
+                        style={{paddingLeft:'60px'}}
                         type="number"
                         {...register("phoneNumber",
                         { required: true})} />
@@ -211,6 +231,13 @@ export default function Application({applicationId}) {
                     <p><i>Fields marked with * are required</i></p>
                     <label>Address: <i>*</i></label>
                     <Controller
+                        style = {{
+                            backgroundColor: 'none',
+                            border: 'none',
+                            background:'none',
+                            color:'white',
+                            fontWeight:'bold',
+                        }}
                         name="address"
                         control={control}
                         defaultValue={null}
@@ -241,10 +268,12 @@ export default function Application({applicationId}) {
                     <br/><br/>
                     
                     <label>Out of State?: <i>*</i></label>
-                    <select {...register("outOfState", { required:true },)}>
-                        <option value="No">No</option>
-                        <option value="Yes">Yes</option>
-                    </select>
+                    <div className="field">
+                        <select {...register("outOfState", { required:true },)}>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
                     <br/>
                     {errors.outOfState?.type === "required" && <span>Please enter a value</span>}
                 </div>
@@ -326,10 +355,11 @@ export default function Application({applicationId}) {
                 </div>
                 
                 <div className={currSubForm !== 3 ? "hide-form" : ""}>
+                <div className="questionBreak">
                     <h2>Programming Experience</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <label>Select the programming languages/technology you have experience with</label>
-                    <div>
+                    <div className="programmingSection">
+                    <label style={{"width": "500px", "paddingBottom":"30px"}}>Select the programming languages/technology you have experience with(Add up to 5)</label>
                         {arr.map((item, i) => {
                             return (
                             <div className="languageSelect">
@@ -361,10 +391,18 @@ export default function Application({applicationId}) {
                             );
                         })}
                         
-                        <button onClick={addInput}>Add</button>
-                        </div>
-                    <br/><br/>
+                        <div className="addRemove">
+                        <div className="addRemoveSpace">
+                        <button onClick={addInput} style={{"width":"300px"}}>Add</button>
 
+                        </div>
+                        <button onClick={removeInput} style={{"width":"300px"}}>Remove</button>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div className="questionBreak">
+                        
                     <label>Number of Past Hackathons: <i>*</i></label>         
                     <input
                     type="number"
@@ -373,7 +411,8 @@ export default function Application({applicationId}) {
                     <br/>
                     {errors.pastHackathons?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
-
+                    </div>
+                    
                     <label>Upload Resume: <i>*</i></label>
                     <input
                     type="file"
@@ -384,32 +423,44 @@ export default function Application({applicationId}) {
                 </div>
 
                 <div className={currSubForm !== 4 ? "hide-form" : ""}>
-                    <h2>Personal Links</h2>
-                    <p><i>Fields marked with * are required</i></p>
-                    <label>Github Profile:</label>
+                <div className="section">
+                    <h2 style={{"paddingBottom":"50px"}}>Personal Links(Please submit any links you would like to share)</h2>
+
+                    <div className="questionPage">
+                    <div className="field">
+                    <label>Github Profile: </label>
                     <input 
-                    {...register("github")} />
+                    {...register("github",)} />
+                    </div>
                     <br/>
                     <br/><br/>
 
-                    <label>Linkedin Profile:</label>
+                    <div className="field">
+                    <label>Linkedin Profile: </label>
                     <input 
-                    {...register("linkedin")} />
+                    {...register("linkedin",)} />
+                    </div>
                     <br/>
                     <br/><br/>
 
-                    <label>Personal Portfolio:</label>
+                    <div className="field">
+                    <label>Personal Portfolio: </label>
                     <input 
-                    {...register("personalPortfolio")} />
+                    {...register("personalPortfolio",)} />
+                    </div>
                     <br/>
                     <br/><br/>
                 </div>
+                </div>
+                </div>
 
                 <div className={currSubForm !== 5 ? "hide-form" : ""}>
-                    <h2>Miscellaneous Questions</h2>
-                    <p><i>Fields marked with * are required</i></p>
+                
+                <div className="section">
+                    <h2 style={{"paddingBottom":"30px"}}>Miscellaneous Questions</h2>
 
-                    <label>Race/Ethnicity: <i>*</i></label>
+                    <div className="field">
+                    <label>Race/Ethnicity: *</label>
                     <select {...register("ethnicity", { required:true })}>
                         <option value="Hispanic or Latino">Hispanic or Latino</option>
                         <option value="White">White</option>
@@ -421,10 +472,12 @@ export default function Application({applicationId}) {
                         <option value="Multiracial non-Hispanic">Multiracial non-Hispanic</option>
                         <option value="Prefer not to answer">Prefer not to answer</option>
                     </select>
+                    </div>
                     <br/>
                     {errors.ethnicity?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
 
+                    <div className="field">
                     <label>Dietary Restrictions: <i>*</i></label>
                     <select {...register("dietaryRestrictions", { required:true },)}>
                         <option value="None">None</option>
@@ -443,63 +496,89 @@ export default function Application({applicationId}) {
                     <br/>
                     {errors.dietaryRestrictions?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
+                    </div>
 
+                    <div className="field">
                     <label>Need Sleep Accomodations?: <i>*</i></label>
                     <select {...register("sleep", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
+                    </div>
                     <br/>
                     {errors.sleep?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
 
-                    <label>Autcad Experience?: <i>*</i></label>
+                    <div className="field">
+                    <label>Autcad Experience?: *</label>
                     <select {...register("autocad", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
+                    </div>
                     <br/>
                     {errors.autocad?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
 
                     <label>Participating in Team Formation?: <i>*</i></label>
+                    <div className="field">
                     <select {...register("teamFormation", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
+                    </div>
                     <br/>
                     {errors.teamFormation?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
                 </div>
-                
+                </div>
+
                 <div className={currSubForm !== 6 ? "hide-form" : ""}>
+                    <div className="questionRow">
                     <h2>Why bostonhacks?</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <label>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
+                    <div className="field">
+                    <label style={{"width":"500px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): *</label>
                     <br/><br/>
                     <textarea style={{"width":"50%", "height":"200px", "resize":"none"}}
                     {...register("bostonhacks",
-                    { required: true , minLength: 50, maxLength: 200})} />
+                    { required: true , maxLength: 200, minLength: 50})} />
+                    </div>
                     {errors.bostonhacks?.type === "required" && <span>Please enter a value</span>}
                     {errors.bostonhacks?.type === "minLength" && <span>Answer is too short</span>}
                     {errors.bostonhacks?.type === "maxLength" && <span>Answer is too long</span>}
                     <br/><br/>
                     
                     <div className="form-group form-check">
-                        <label htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
+                    <div className="field">
+                        <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
                         <input name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
                         <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
                     </div>
+                    </div>
                     <br/>
                     <br></br>
+                    </div>
                 </div>
 
                 <div className="form-pagination-container">
-                    {currSubForm > 0 && <button type="button" onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
-                    {currSubForm < 6 && <button type="button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
+                    {currSubForm > 0 && <button type="button" style={{     
+                    padding: '15px',
+                    position: 'flex',
+                    left: '25%',
+                    top: '97%'
+
+                    }} onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
+
+                    {currSubForm < 6 && <button type="button" style={{
+                    padding: '15px',
+                    position: 'flex',
+                    left: '60%',
+                    top: '97%'
+                    }}onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
                 </div>
 
-                <input type="Submit"/>
+
             </form>
         </div>
     )

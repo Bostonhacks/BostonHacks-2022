@@ -13,12 +13,15 @@ h2, label {
 label {
     display: block;
     float: left;
-    width: 200px;
-}
+    width: 275px;}
 
 input {
-    background: #e5e5ec;
-    border: none;
+    background: none;
+    border: #e5e5ec;
+    box-shadow: inset 0 0 10px #e5e5ec;
+    border-radius: 3px; 
+    color: #e5e5ec;
+    font-weight: bold;
 }
 
 .languageSelect {
@@ -35,12 +38,14 @@ input {
 }
 
 .phone {
-    width: 500px
+    width: 900px
 }
 
 .selecter{
     display:flex;
-    width: 500px;
+    background:none;
+    width: 300px;
+    margin-right: 1.5rem;
 }
 
 .background {
@@ -55,4 +60,77 @@ i {
 
 .hide-form {
     display: none;
+}
+
+button {
+    background: none;
+    border: #e5e5ec;
+    box-shadow: inset 0 0 10px #e5e5ec;
+    border-radius: 3px; 
+    color: #e5e5ec;
+    font-weight: bold;  
+}
+
+.form-pagination-container {
+    display: absolute;
+
+}
+
+a {
+    color: blue;
+}
+
+.questionRow {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionBreak {
+    padding-bottom: 70px;
+}
+
+input, select {
+    padding: 10px;
+    width: 300px;
+}
+
+.field {
+    flex: 1;
+    padding-bottom: 70px;
+    position:relative;
+}
+
+.questionPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    width: auto;
+}
+
+.submitButton {
+    width: 80px;
+    padding: 5px;
+    color: red;
+}
+
+.programmingSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.addRemove {
+    display: flex;
+}
+
+.addRemoveSpace {
+    margin-right: 20px;
 }
