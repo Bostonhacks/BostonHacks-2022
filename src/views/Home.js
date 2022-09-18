@@ -1,6 +1,8 @@
-import React from 'react';
-import FAQBlock from '../components/home/FAQBlock';
+import React from 'react'
+import FAQBlock from '../components/home/FAQBlock'
 import Title from '../components/home/svgs/title'
+import Theme from '../components/home/svgs/theme'
+import Tracks from '../components/home/svgs/tracks'
 import './Home.css'
 var FAQData = [
     {
@@ -36,6 +38,8 @@ export default function Home() {
     return (
         <div className='home'>
             <Title/>
+            <Theme/>
+            <Tracks/>
             <FAQBlock pairs={FAQData}/>
         </div>
 
