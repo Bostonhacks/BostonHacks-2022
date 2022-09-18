@@ -1,7 +1,5 @@
 span {
     color: red;
-    padding: 20px;
-    display: none;
 }
 
 h2, label {
@@ -49,4 +47,12 @@ input {
     background: linear-gradient(rgb(0, 0, 0) 0%, rgb(48, 71, 115) 52.6%, rgb(245, 226, 246) 99.48%);
     padding: 0 5% 0 5%;
     height: 100vh;
+}
+
+i {
+    color: red;
+}
+
+.hide-form {
+    display: none;
 }
