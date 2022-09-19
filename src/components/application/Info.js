@@ -55,7 +55,6 @@ export default function Application({applicationId}) {
 
                 languageExperience: data.languageExperience,
                 pastHackathons: data.pastHackathons,
-                resume: data.resume,
 
                 github: data.github,
                 linkedin: data.linkedin,
@@ -414,14 +413,13 @@ export default function Application({applicationId}) {
                     {errors.pastHackathons?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
                     
-                    <label>Upload Resume: <i>*</i></label>
-                    <input
-                    type="file"
-                    {...register("resume",
-                    { required: true})} />
-                    <br/><br/>
-                    {errors.resume?.type === "required" && <span>Please select a file</span>}
-                    <br/><br/>
+                    <div className="form-group form-check">
+                    <div className="field">
+                        <label style={{"width":"200px"}} htmlFor="acceptTerms1" className="form-check-label">Email your resume to tech@bostonhacks.io<i>*</i></label>
+                        <input style={{"width":"50px"}} name="acceptTerms1" type="checkbox" {...register('acceptTerms1')} id="acceptTerms1" className={`form-check-input ${errors.acceptTerms1 ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.acceptTerms1?.message}</div>
+                    </div>
+                    </div>
                 </div>
 
                 <div className={currSubForm !== 4 ? "hide-form" : ""}>
@@ -557,7 +555,7 @@ export default function Application({applicationId}) {
                 </div>
 
                 <input className={currSubForm !== 6 ? "hide-form" : "submit-button"} type="submit"/>
-                {console.log(errors)}
+                {/* {console.log(errors)} */}
             </form>
         </div>
     )

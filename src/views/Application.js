@@ -85,6 +85,13 @@ export default function Application() {
               </div>
             }
 
+            {/* Check user's status, if submitted say hello */}
+            {application?.status === "Submitted" && 
+              <div style={{color: "white", background: "rgba(255, 255, 255, 0.15)", width: "80%", height: "auto", fontSize: "25px", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+                <h3 style={{textAlign: "center"}}>Thank you for applying to BostonHacks 2022! We will review your application and update you when our decisions are released!</h3>
+              </div>
+              }
+
             {/* Check user's status, if accepted show confirmation button */}
             {application?.status === "Accepted" && 
               <div style={{color: "white", background: "rgba(255, 255, 255, 0.15)", width: "80%", height: "auto", fontSize: "25px", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", paddingBottom: "60px"}}>
