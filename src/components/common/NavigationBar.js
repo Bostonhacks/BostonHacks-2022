@@ -35,9 +35,6 @@ export default function NavigationBar() {
             <Link to="/sponsor">Sponsors</Link>
           </li>
           <li style={{float: "right"}}>
-            <Link to="/admin">Admin</Link>
-          </li>
-          <li style={{float: "right"}}>
             <Link to="/application">Apply</Link>
           </li>
         </ul>
