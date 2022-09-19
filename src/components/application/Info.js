@@ -359,7 +359,7 @@ export default function Application({applicationId}) {
                     <h2>Programming Experience</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <div className="programmingSection">
-                    <label style={{"width": "500px", "paddingBottom":"30px"}}>Select the programming languages/technology you have experience with(Add up to 5)</label>
+                    <label style={{"width": "500px", "paddingBottom":"30px"}}>Select the programming languages/technology you have experience with (Add up to 5):</label>
                         {arr.map((item, i) => {
                             return (
                             <div className="languageSelect">
@@ -400,8 +400,6 @@ export default function Application({applicationId}) {
                         </div>
                     </div>
                     </div>
-
-                    <div className="questionBreak">
                         
                     <label>Number of Past Hackathons: <i>*</i></label>         
                     <input
@@ -411,7 +409,6 @@ export default function Application({applicationId}) {
                     <br/>
                     {errors.pastHackathons?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
-                    </div>
                     
                     <label>Upload Resume: <i>*</i></label>
                     <input
@@ -420,14 +417,15 @@ export default function Application({applicationId}) {
                     { required: true})} />
                     <br/>
                     {errors.resume?.type === "required" && <span>Please select a file</span>}
+                    <br/><br/>
                 </div>
 
                 <div className={currSubForm !== 4 ? "hide-form" : ""}>
                 <div className="section">
-                    <h2 style={{"paddingBottom":"50px"}}>Personal Links(Please submit any links you would like to share)</h2>
+                    <h2 style={{"paddingBottom":"50px"}}>Personal Links (Please submit any links you would like to share)</h2>
 
                     <div className="questionPage">
-                    <div className="field">
+                    <div className="link-field">
                     <label>Github Profile: </label>
                     <input 
                     {...register("github",)} />
@@ -435,7 +433,7 @@ export default function Application({applicationId}) {
                     <br/>
                     <br/><br/>
 
-                    <div className="field">
+                    <div className="link-field">
                     <label>Linkedin Profile: </label>
                     <input 
                     {...register("linkedin",)} />
@@ -443,7 +441,7 @@ export default function Application({applicationId}) {
                     <br/>
                     <br/><br/>
 
-                    <div className="field">
+                    <div className="link-field">
                     <label>Personal Portfolio: </label>
                     <input 
                     {...register("personalPortfolio",)} />
@@ -455,12 +453,10 @@ export default function Application({applicationId}) {
                 </div>
 
                 <div className={currSubForm !== 5 ? "hide-form" : ""}>
-                
-                <div className="section">
                     <h2 style={{"paddingBottom":"30px"}}>Miscellaneous Questions</h2>
 
                     <div className="field">
-                    <label>Race/Ethnicity: *</label>
+                    <label>Race/Ethnicity: <i>*</i></label>
                     <select {...register("ethnicity", { required:true })}>
                         <option value="Hispanic or Latino">Hispanic or Latino</option>
                         <option value="White">White</option>
@@ -510,22 +506,14 @@ export default function Application({applicationId}) {
                     
 
                     <div className="field">
-                    <label>Autcad Experience?: *</label>
+                    <label>Autcad Experience?: <i>*</i></label>
                     <select {...register("autocad", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
                     </div>
-                    
                     {errors.autocad?.type === "required" && <span>Please enter a value</span>}
-                    
-                  
-                    
-                   
-                    
-                    {errors.teamFormation?.type === "required" && <span>Please enter a value</span>}
-                   
-                </div>
+
                 <label>Participating in Team Formation?: <i>*</i></label>
                     <div className="field">
                     <select {...register("teamFormation", { required:true },)}>
@@ -533,19 +521,18 @@ export default function Application({applicationId}) {
                         <option value="Yes">Yes</option>
                     </select>
                     </div>
+                    {errors.teamFormation?.type === "required" && <span>Please enter a value</span>}
                 </div> 
 
                 <div className={currSubForm !== 6 ? "hide-form" : ""}>
                     <div className="questionRow">
                     <h2>Why bostonhacks?</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <div className="field">
-                    <label style={{"width":"500px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): *</label>
+                    <label style={{"width":"500px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
                     <br/><br/>
                     <textarea style={{"width":"50%", "height":"200px", "resize":"none"}}
                     {...register("bostonhacks",
                     { required: true , maxLength: 200, minLength: 50})} />
-                    </div>
                     {errors.bostonhacks?.type === "required" && <span>Please enter a value</span>}
                     {errors.bostonhacks?.type === "minLength" && <span>Answer is too short</span>}
                     {errors.bostonhacks?.type === "maxLength" && <span>Answer is too long</span>}
@@ -564,23 +551,11 @@ export default function Application({applicationId}) {
                 </div>
 
                 <div className="form-pagination-container">
-                    {currSubForm > 0 && <button type="button" style={{     
-                    padding: '15px',
-                    position: 'flex',
-                    left: '25%',
-                    top: '97%'
-
-                    }} onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
-
-                    {currSubForm < 6 && <button type="button" style={{
-                    padding: '15px',
-                    position: 'flex',
-                    left: '60%',
-                    top: '97%'
-                    }}onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
+                    {currSubForm > 0 && <button type="button" className="form-pagination-button" onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
+                    {currSubForm < 6 && <button type="button" className="form-pagination-button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
                 </div>
 
-
+                <input className={currSubForm !== 6 ? "hide-form" : "submit-button"} type="submit"/>
             </form>
         </div>
     )
