@@ -473,9 +473,9 @@ export default function Application({applicationId}) {
                         <option value="Prefer not to answer">Prefer not to answer</option>
                     </select>
                     </div>
-                    <br/>
+                
                     {errors.ethnicity?.type === "required" && <span>Please enter a value</span>}
-                    <br/><br/>
+                   
 
                     <div className="field">
                     <label>Dietary Restrictions: <i>*</i></label>
@@ -493,9 +493,9 @@ export default function Application({applicationId}) {
                         <option value="Paleo">Paleo</option>
                         <option value="Other">Other</option>
                     </select>
-                    <br/>
+                  
                     {errors.dietaryRestrictions?.type === "required" && <span>Please enter a value</span>}
-                    <br/><br/>
+                    
                     </div>
 
                     <div className="field">
@@ -505,9 +505,9 @@ export default function Application({applicationId}) {
                         <option value="Yes">Yes</option>
                     </select>
                     </div>
-                    <br/>
+                   
                     {errors.sleep?.type === "required" && <span>Please enter a value</span>}
-                    <br/><br/>
+                    
 
                     <div className="field">
                     <label>Autcad Experience?: *</label>
@@ -516,22 +516,24 @@ export default function Application({applicationId}) {
                         <option value="Yes">Yes</option>
                     </select>
                     </div>
-                    <br/>
+                    
                     {errors.autocad?.type === "required" && <span>Please enter a value</span>}
-                    <br/><br/>
-
-                    <label>Participating in Team Formation?: <i>*</i></label>
+                    
+                  
+                    
+                   
+                    
+                    {errors.teamFormation?.type === "required" && <span>Please enter a value</span>}
+                   
+                </div>
+                <label>Participating in Team Formation?: <i>*</i></label>
                     <div className="field">
                     <select {...register("teamFormation", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>
                     </div>
-                    <br/>
-                    {errors.teamFormation?.type === "required" && <span>Please enter a value</span>}
-                    <br/><br/>
-                </div>
-                </div>
+                </div> 
 
                 <div className={currSubForm !== 6 ? "hide-form" : ""}>
                     <div className="questionRow">
