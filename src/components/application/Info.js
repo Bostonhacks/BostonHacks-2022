@@ -215,7 +215,6 @@ export default function Application({applicationId}) {
                         </div> */}
                         <input 
                         style={{paddingLeft:'60px'}}
-                        type="number"
                         {...register("phoneNumber",
                         { required: true})} />
                     </div>
