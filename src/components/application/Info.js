@@ -158,9 +158,9 @@ export default function Application({applicationId}) {
     }
 
     return (
-        <div className="background">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={currSubForm !== 0 ? "hide-form" : ""}>
+        <div className="background" style={{color: "white", background: "transparent"}}>
+            <form onSubmit={handleSubmit(onSubmit)} >
+                <div className={currSubForm !== 0 ? "hide-form" : ""} >
                     <h2>General Information:</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <label>First Name: <i>*</i></label>
@@ -230,6 +230,8 @@ export default function Application({applicationId}) {
                     <h2>Current Semester Address Information</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <label>Address: <i>*</i></label>
+                    
+                    <div  >
                     <Controller
                         style = {{
                             backgroundColor: 'none',
@@ -243,6 +245,7 @@ export default function Application({applicationId}) {
                         defaultValue={null}
                         rules={{ required: true }}
                         render={({ field, fieldState, formState }) => 
+                        
                         <input
                             type="text"
                             value={address}
@@ -251,10 +254,18 @@ export default function Application({applicationId}) {
                                 setAddress(e.target.value);
                             }}
                         />}
+                        
                     />
-                    <div style={{"cursor": "pointer", "backgroundColor": "grey"}} onClick={() => addressSearch()}>
+                     <div style={{
+                        "cursor": "pointer", 
+                        display: "none",
+                        "backgroundColor": "white", 
+                        "width": "45px",
+                        }} onClick={() => addressSearch()}>
                         Search
                     </div>
+                    </div>
+                   
                     {addressOptions.map((option) => {
                         return <div style={{"cursor": "pointer"}} onClick={() => {
                             setAddress(option.formatted);
@@ -298,7 +309,7 @@ export default function Application({applicationId}) {
                     <br/><br/>
 
                     <label>College:</label>
-                <div style={{"width":"500px"}}>
+                <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
                     <Controller
                         name="college"
                         control={control}
@@ -312,16 +323,16 @@ export default function Application({applicationId}) {
                     <br/><br/>
 
                     <label>Year:</label>
-                    <select {...register("collegeYear")}>
+                    <select {...register("collegeYear")} style={{"width":"300px", color: "black", fontSize: "15px"}}>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
                         <option value="2025">2025</option>
                         <option value="2026">2026</option>
                     </select>
-                    <br/><br/>
+                    <br/><br/><br/>
 
                     <label>Major:</label>
-                    <div style={{"width":"400px"}}>
+                    <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
                     <Controller
                         name="collegeMajor"
                         control={control}
@@ -337,7 +348,7 @@ export default function Application({applicationId}) {
                     <br/><br/>
 
                     <label>Minor:</label>
-                    <div style={{"width":"400px"}}>
+                    <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
                     <Controller
                         name="collegeMinor"
                         control={control}
@@ -369,7 +380,7 @@ export default function Application({applicationId}) {
                                 control={control}
                                 defaultValue={null}
                                 render={({ field, }) => 
-                                <div className="language" >
+                                <div className="language" style={{"width":"300px", color: "black", fontSize: "15px"}}>
                                 <Select 
                                     options={ programmingList.map((language) => { 
                                         return { label: language, value: language};
@@ -393,10 +404,11 @@ export default function Application({applicationId}) {
                         
                         <div className="addRemove">
                         <div className="addRemoveSpace">
-                        <button onClick={addInput} style={{"width":"300px"}}>Add</button>
+                        <button onClick={addInput} style={{"width":"300px", fontSize:"15px"}}>Add</button>
 
+                        
+                        <button onClick={removeInput} style={{"width":"300px", fontSize:"15px", marginLeft:"20px"}}>Remove</button>
                         </div>
-                        <button onClick={removeInput} style={{"width":"300px"}}>Remove</button>
                         </div>
                     </div>
                     </div>
@@ -415,7 +427,7 @@ export default function Application({applicationId}) {
                     type="file"
                     {...register("resume",
                     { required: true})} />
-                    <br/>
+                    <br/><br/>
                     {errors.resume?.type === "required" && <span>Please select a file</span>}
                     <br/><br/>
                 </div>
@@ -430,7 +442,6 @@ export default function Application({applicationId}) {
                     <input 
                     {...register("github",)} />
                     </div>
-                    <br/>
                     <br/><br/>
 
                     <div className="link-field">
@@ -438,7 +449,6 @@ export default function Application({applicationId}) {
                     <input 
                     {...register("linkedin",)} />
                     </div>
-                    <br/>
                     <br/><br/>
 
                     <div className="link-field">
@@ -446,7 +456,6 @@ export default function Application({applicationId}) {
                     <input 
                     {...register("personalPortfolio",)} />
                     </div>
-                    <br/>
                     <br/><br/>
                 </div>
                 </div>
@@ -528,7 +537,7 @@ export default function Application({applicationId}) {
                     <div className="questionRow">
                     <h2>Why bostonhacks?</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <label style={{"width":"500px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
+                    <label style={{"width":"800px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
                     <br/><br/>
                     <textarea style={{"width":"50%", "height":"200px", "resize":"none"}}
                     {...register("bostonhacks",
@@ -546,7 +555,7 @@ export default function Application({applicationId}) {
                     </div>
                     </div>
                     <br/>
-                    <br></br>
+                    
                     </div>
                 </div>
 
