@@ -3,8 +3,15 @@
     height: auto;
 }
 svg {
+    width: 80%;
+    padding-left: 10%;
+    height: auto;
+}
+
+.fullSVG {
     width: 100%;
     height: auto;
+    padding-left: 0;
 }
 .button1 {
     width: 20%;

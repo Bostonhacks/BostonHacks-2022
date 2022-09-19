@@ -32,26 +32,26 @@ export default function Sponsor() {
     <div className="sponsor">
       <SponsorTitleSection />
       <TwilioQuote />
-      <TwilioBubble />
+      {/* <TwilioBubble /> */}
       <WhoAreWe />
-      <WhoAreWeGradient />
+      {/* <WhoAreWeGradient /> */}
       <WhyUs />
-      <WhyUsGradient1 />
-      <WhyUsGradient2 />
+      {/* <WhyUsGradient1 /> */}
+      {/* <WhyUsGradient2 /> */}
       {/* <Chain /> */}
       <WhyUsBubble />
       <SponsorOpps />
-      <SponsorOppsGradient1 />
-      <SponsorOppsGradient2 />
-      <SponsorOppsGradient3 />
+      {/* <SponsorOppsGradient1 /> */}
+      {/* <SponsorOppsGradient2 /> */}
+      {/* <SponsorOppsGradient3 /> */}
       <StatisticsSection />
       <StatisticsBubble />
-      <StatisticsGradient />
+      {/* <StatisticsGradient /> */}
       <ReviewSection />
       {/* <BostonHaxButton buttonText="Sponsor Us" /> */}
-      <ReviewBubble1 />
-      <ReviewBubble2 />
-      <ReviewGradient />
+      {/* <ReviewBubble1 /> */}
+      {/* <ReviewBubble2 /> */}
+      {/* <ReviewGradient /> */}
       {/* <ChromeBar />
       <SponsorUsBubble />
       <SponsorUsGradient /> */}

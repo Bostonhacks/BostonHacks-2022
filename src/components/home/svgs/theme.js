@@ -2,7 +2,7 @@ import React from 'react';
 
 const Theme = () => {
     return (
-        <svg width="1440" height="1318" viewBox="0 0 1440 1318" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="fullSVG" width="1440" height="1318" viewBox="0 0 1440 1318" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <rect width="861.808" height="558.907" transform="matrix(-0.272372 -0.962192 -0.962192 0.272372 671.542 1165.1)" fill="url(#pattern0)"/>
         <g filter="url(#filter0_f_835_3929)">
         <ellipse cx="1060.62" cy="546.97" rx="98.6025" ry="323.27" transform="rotate(57.8756 1060.62 546.97)" fill="#F2E2F6" fill-opacity="0.5"/>

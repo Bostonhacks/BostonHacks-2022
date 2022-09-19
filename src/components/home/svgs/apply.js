@@ -2,7 +2,7 @@ import React from 'react';
 
 const Apply = () => {
     return (
-        <svg width="1427" height="1573" viewBox="0 0 1427 1573" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="fullSVG" width="1427" height="1573" viewBox="0 0 1427 1573" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <g filter="url(#filter0_f_289_1085)">
         <ellipse cx="291.013" cy="696.72" rx="261.096" ry="496.163" transform="rotate(86.4911 291.013 696.72)" fill="#F194E2" fill-opacity="0.68"/>
         </g>

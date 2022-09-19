@@ -1,22 +1,25 @@
 /* * {
   z-index: 10;
 } */
-svg {
-  width: 100%;
-}
+/* svg {
+  width: 80%;
+  padding-left: 10%;
+} */
 
 .sponsor {
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 16000px;
-}
-
-.title-section {
   height: auto;
 }
 
-.twilio-quote {
+.title-section {
+  width: 100%;
+  padding-left: 0;
+  height: auto;
+}
+
+/* .twilio-quote {
   position: relative;
   bottom: 500px;
 }
@@ -77,16 +80,16 @@ svg {
   position: absolute;
   top: 9700px;
   right: -550px;
-}
+} */
 
 .statistics-section {
-  position: relative;
-  top: 1760px;
-  left: 15%;
+  /* position: relative;
+  top: 1760px; */
+  padding-left: 15%;
   width: 70%;
 }
 
-.statistics-bubble {
+/* .statistics-bubble {
   position: absolute;
   top: 9650px;
   left: 0px;
@@ -139,4 +142,4 @@ button {
   left: -500px;
   top: 15000px;
   z-index: 0;
-}
+} */
