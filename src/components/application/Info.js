@@ -20,6 +20,20 @@ export default function Application({applicationId}) {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
     const navigate = useNavigate();
     async function onSubmit(data) {
+        // Allow null college minor
+        if (!data.collegeMinor) {
+            data.collegeMinor = "N/A"
+        }
+
+        // Convert programming experience jsons to one string
+        let strings = []
+        programmingInputs.forEach(function(language) {
+            strings.push(JSON.stringify(language))
+        })
+        data.languageExperience = strings.join(", ")
+
+        console.log("submit")
+        console.log(data)
         const userDoc = doc(db, "applications", applicationId);
         await updateDoc(
             userDoc,
@@ -28,7 +42,6 @@ export default function Application({applicationId}) {
                 lastName: data.lastName,
                 dateOfBirth: data.dateOfBirth,
                 email: data.email,
-                phoneCountryCode: data.phoneCountryCode,
                 phoneNumber: data.phoneNumber,
 
                 address: data.address,
@@ -40,7 +53,7 @@ export default function Application({applicationId}) {
                 collegeMajor: data.collegeMajor,
                 collegeMinor: data.collegeMinor,
 
-                languageExperience: data.programmingExperience,
+                languageExperience: data.languageExperience,
                 pastHackathons: data.pastHackathons,
                 resume: data.resume,
 
@@ -74,7 +87,7 @@ export default function Application({applicationId}) {
         values[index].language = event.value
         values[index].experienceLevel = values[index].experienceLevel === '' ? "Novice" : values[index].experienceLevel
         setProgrammingInputs(values)
-        console.log(values)
+        // console.log(values)
     }
 
     const handleChangeExperience = (index, event) => {
@@ -186,7 +199,7 @@ export default function Application({applicationId}) {
 
                     <label>Phone Number: <i>*</i></label>
                     <div className="selecter">
-                        <div className="phone">
+                        {/* <div className="phone">
                         <Controller
                             name="phoneCountryCode"
                             control={control}
@@ -200,7 +213,7 @@ export default function Application({applicationId}) {
                                 {...field}
                             />}
                         />
-                        </div>
+                        </div> */}
                         <input 
                         style={{paddingLeft:'60px'}}
                         type="number"
@@ -544,6 +557,7 @@ export default function Application({applicationId}) {
                 </div>
 
                 <input className={currSubForm !== 6 ? "hide-form" : "submit-button"} type="submit"/>
+                {console.log(errors)}
             </form>
         </div>
     )

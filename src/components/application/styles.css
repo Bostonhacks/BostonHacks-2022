@@ -91,7 +91,7 @@ button {
 
 .form-pagination-button {
     padding: 15px;
-    width: 9%;
+    width: auto;
     margin-right: 5%;
     text-align: center;
     cursor: pointer;
