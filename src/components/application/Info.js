@@ -13,6 +13,7 @@ updateDoc,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import shadows from "@material-ui/core/styles/shadows";
+import { Container, IconButton } from "@material-ui/core";
 
 // Application page
 export default function Application({applicationId}) {
@@ -39,6 +40,7 @@ export default function Application({applicationId}) {
                 collegeMajor: data.collegeMajor,
                 collegeMinor: data.collegeMinor,
 
+                languageExperience: data.programmingExperience,
                 pastHackathons: data.pastHackathons,
                 resume: data.resume,
 
@@ -63,6 +65,42 @@ export default function Application({applicationId}) {
     const [collegeOptions, setCollegeOptions] = React.useState([]);
     const [address, setAddress] = React.useState("");
     const [addressOptions, setAddressOptions] = React.useState([]);
+    const [programmingInputs, setProgrammingInputs] = React.useState([
+        { language: '', experienceLevel: '',},
+    ])
+
+    const handleChangeLanguage = (index, event) => {
+        const values = [...programmingInputs]
+        values[index].language = event.value
+        values[index].experienceLevel = values[index].experienceLevel === '' ? "Novice" : values[index].experienceLevel
+        setProgrammingInputs(values)
+        console.log(values)
+    }
+
+    const handleChangeExperience = (index, event) => {
+        const values = [...programmingInputs]
+        values[index].experienceLevel = event.target.value
+        setProgrammingInputs(values)
+        //console.log(values)
+    }
+
+    const handleAddInput = () => {
+        const values = [...programmingInputs]
+        if (values.length === 5) {
+            //console.log(values)
+            return values
+        } else {
+        setProgrammingInputs([...programmingInputs, { language: '', experienceLevel: '' }])
+        //console.log(values)
+        }
+  }
+
+    const handleRemoveInput = (index) => {
+        const values = [...programmingInputs];
+        values.splice(index, 1);
+        setProgrammingInputs(values)
+        //console.log(values)
+    }
 
     const [currSubForm, setCurrSubForm] = React.useState(0);
 
@@ -78,58 +116,6 @@ export default function Application({applicationId}) {
             })
     }
 
-    const inputArr = [
-        {
-          type: "text",
-          id: 1,
-          value: ""
-        }
-      ];
-    
-      const [arr, setArr] = React.useState(inputArr);
-    
-      const addInput = (e) => {
-        e.preventDefault()
-        setArr(s => {
-            if (s.length == 5){
-                return s
-            }
-            else {
-          const lastId = s[s.length - 1].id;
-          return [
-            ...s,
-            {
-              type: "text",
-              value: ""
-            }
-          ];
-        };
-    });
-  };
-
-  const removeInput = (e) => {
-    e.preventDefault()
-    setArr(s => {
-        if (s.length == 1){
-            return s
-        }
-        else {
-      const lastId = s[s.length - 1].id;
-      return s.slice(0, s.length-1)
-        };
-        });
-      };
-    
-      const handleChange = e => {
-        e.preventDefault();
-
-        const index = e.target.id;
-        setArr(s => {
-          const newArr = s.slice();
-          newArr[index].value = e.target.value;
-          return newArr;
-        });
-      };
 
     React.useEffect(() => {
         // Get List of Colleges.
@@ -371,45 +357,38 @@ export default function Application({applicationId}) {
                     <p><i>Fields marked with * are required</i></p>
                     <div className="programmingSection">
                     <label style={{"width": "500px", "paddingBottom":"30px"}}>Select the programming languages/technology you have experience with (Add up to 5):</label>
-                        {arr.map((item, i) => {
-                            return (
-                            <div className="languageSelect">
-                            
-                            <Controller
-                                name="language"
-                                control={control}
-                                defaultValue={null}
-                                render={({ field, }) => 
-                                <div className="language" style={{"width":"300px", color: "black", fontSize: "15px"}}>
-                                <Select 
-                                    options={ programmingList.map((language) => { 
-                                        return { label: language, value: language};
-                                    })
-                                    }
-                                    onChange={val => field.onChange(val.value)}
+                            <div>
+                            {programmingInputs.map((programmingInput, index) => (
+                               <div key={index}className="languageExp" name="programmingExperience">
+                                    <Controller
+                                    name="languageExperience"
+                                    control={control}
+                                    render={({ field }) =>
+                                    <div className="languageSelect"> 
+                                    <Select
+                                        options={ programmingList.map((languageName) => {
+                                            return {label: languageName, value: languageName}
+                                        })}
+                                        onChange={event => handleChangeLanguage(index, event)}
+                                    />
+                                    </div>
+                                }
                                 />
+                                <select style={{"marginRight":"20px"}} onChange={event => handleChangeExperience(index, event)}>
+                                    <option value="Novice">Novice</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Expert">Expert</option>
+                                </select>
+
+                                <div className="addRemove">
+                                    <div className="addRemoveSpace">
+                                        <button style={{"width":"100px", "fontSize":"15px",}} onClick={() => handleAddInput()}>+</button>
+                                        <button style={{"width":"100px", "fontSize":"20px", "fontWeight":"bold"}} onClick={() => handleRemoveInput()}>-</button>
+                                    </div>
                                 </div>
-                            }
-                            />
-
-                            <select className="experienceLevel"
-                            {...register("experienceLevel", { required:true },)}>
-                                <option value="Novice">Novice</option>
-                                <option value="Intermediate">Intermediate</option>
-                                <option value="Expert">Expert</option>
-                            </select>
+                                </div>
+                            ))}             
                             </div>
-                            );
-                        })}
-                        
-                        <div className="addRemove">
-                        <div className="addRemoveSpace">
-                        <button onClick={addInput} style={{"width":"300px", fontSize:"15px"}}>Add</button>
-
-                        
-                        <button onClick={removeInput} style={{"width":"300px", fontSize:"15px", marginLeft:"20px"}}>Remove</button>
-                        </div>
-                        </div>
                     </div>
                     </div>
                         
@@ -550,7 +529,7 @@ export default function Application({applicationId}) {
                     <div className="form-group form-check">
                     <div className="field">
                         <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
-                        <input name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                        <input style={{"width":"50px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
                         <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
                     </div>
                     </div>

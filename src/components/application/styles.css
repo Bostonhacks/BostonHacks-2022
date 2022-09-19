@@ -26,8 +26,10 @@ input {
 
 
 .languageSelect {
-    display: flex;
-    margin-bottom: 20px;
+    width: 25%;
+    color: black;
+    background-color: white;
+    margin-right: 20px;
 }
 
 .language {
@@ -39,7 +41,8 @@ input {
 }
 
 .phone {
-    width: 900px
+    width: 900px;
+    color: black
 }
 
 .selecter{
@@ -90,6 +93,7 @@ button {
     padding: 15px;
     width: 9%;
     margin-right: 5%;
+    text-align: center;
     cursor: pointer;
 }
 
@@ -103,7 +107,7 @@ button {
 }
 
 a {
-    color: blue;
+    color: yellow;
 }
 
 .questionRow {
@@ -164,4 +168,9 @@ textarea {
 
 .addRemoveSpace {
     margin-right: 20px;
+    display: flex;
+}
+
+.languageExp {
+    display: flex;
 }
