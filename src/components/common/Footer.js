@@ -10,13 +10,13 @@ export default function Footer() {
             <Countdown/>
             <ul className="footer">
                 <li>
-                    <SocialMediaIcon platform='facebook'/>
-                </li>
-                <li>
                     <SocialMediaIcon platform='Instagram'/>
                 </li>
                 <li>
                     <SocialMediaIcon platform='Twitter' />
+                </li>
+                <li>
+                    <SocialMediaIcon platform='facebook'/>
                 </li>
             </ul>
         </div>

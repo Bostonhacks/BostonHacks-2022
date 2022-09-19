@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CRUDTable,
 {
   Fields,
@@ -48,6 +48,7 @@ export default function AdminPanel() {
       const data = await getDocs(applicationsCollectionRef);
       setApplications(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      
       result = result.sort(getSorter(payload.sort));
       return Promise.resolve(result);
     },
@@ -64,6 +65,7 @@ export default function AdminPanel() {
       return Promise.resolve(application);
     },
   };
+
 
   return (
   <div>

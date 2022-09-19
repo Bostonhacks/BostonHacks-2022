@@ -1,3 +1,145 @@
+/* * {
+  z-index: 10;
+} */
+/* svg {
+  width: 80%;
+  padding-left: 10%;
+} */
+
 .sponsor {
-  background-image: url('../components/sponsor/svg/background-gradient.svg');
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: auto;
 }
+
+.title-section {
+  width: 100%;
+  padding-left: 0;
+  height: auto;
+}
+
+/* .twilio-quote {
+  position: relative;
+  bottom: 500px;
+}
+.twilio-bubble {
+  position: absolute;
+  top: 1980px;
+  right: 0px;
+}
+
+.who-are-we-gradient {
+  z-index: 0;
+  position: absolute;
+  top: 3150px;
+  left: -600px;
+}
+
+.why-us {
+  position: relative;
+  top: 380px;
+  left: 30px;
+}
+.why-us-bubble {
+  position: absolute;
+  top: 4300px;
+  left: 0px;
+}
+.chain {
+  position: absolute;
+  top: 5900px;
+  left: 0px;
+}
+.why-us-gradient-1 {
+  position: absolute;
+  top: 3700px;
+  right: -450px;
+}
+.why-us-gradient-2 {
+  position: absolute;
+  top: 4300px;
+  left: 0px;
+}
+
+.sponsor-opps {
+  position: relative;
+  top: 1000px;
+}
+.sponsor-opps-gradient-1 {
+  position: absolute;
+  top: 7400px;
+  right: -300px;
+}
+.sponsor-opps-gradient-2 {
+  position: absolute;
+  top: 8700px;
+  left: -650px;
+}
+.sponsor-opps-gradient-3 {
+  position: absolute;
+  top: 9700px;
+  right: -550px;
+} */
+
+.statistics-section {
+  /* position: relative;
+  top: 1760px; */
+  padding-left: 15%;
+  width: 70%;
+}
+
+/* .statistics-bubble {
+  position: absolute;
+  top: 9650px;
+  left: 0px;
+}
+
+.statistics-gradient {
+  position: absolute;
+  top: 10600px;
+  left: -400px;
+}
+
+.review-section {
+  position: relative;
+  top: 2100px;
+}
+.review-bubble-1 {
+  position: absolute;
+  top: 12200px;
+  right: 0px;
+}
+.review-bubble-2 {
+  position: absolute;
+  top: 13400px;
+  left: 0px;
+}
+.review-gradient {
+  position: absolute;
+  top: 13200px;
+  left: -100px;
+  z-index: 0;
+}
+
+button {
+  position: relative;
+  top: 10px;
+}
+
+.chrome-bar {
+  position: absolute;
+  left: 300px;
+  top: 14700px;
+}
+.sponsor-us-bubble {
+  position: absolute;
+  right: 0px;
+  top: 14900px;
+}
+.sponsor-us-gradient {
+  position: absolute;
+  left: -500px;
+  top: 15000px;
+  z-index: 0;
+} */

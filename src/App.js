@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase-config";
-import Home from "./views/Home";
 import Sponsor from "./views/Sponsor";
 import Admin from "./views/Admin";
 import Login from "./views/Login";
@@ -15,20 +14,11 @@ import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
 import Footer from "./components/common/Footer";
 import Application from "./views/Application";
+import Home from "./views/Home";
 
 // Router
 export default function App() {
   const [user, loading] = useAuthState(auth);
-  // Redirect to login page, if use tries to access a restricted page
-  function RequireAuth({ children }) {
-    const location = useLocation();
-
-    return user ? (
-      children
-    ) : (
-      <Navigate to="/login" replace state={{ path: location.pathname }} />
-    );
-  }
 
   useEffect(() => {
     if (loading) return;
@@ -52,21 +42,18 @@ export default function App() {
         <Route
           path="/application"
           element={
-            <RequireAuth>
-              <Application />
-            </RequireAuth>
+            <Application />
           }
         />
         <Route
           path="/admin"
           element={
-            <RequireAuth>
-              <Admin />
-            </RequireAuth>
+            <Admin />
           }
         />
         <Route path="/login" element={<Login />} />
         <Route path='*' exact={true} element={<NotFound />} />
+
       </Routes>
 
       <Footer />

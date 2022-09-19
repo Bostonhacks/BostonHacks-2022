@@ -16,3 +16,23 @@
     border-radius: 20px;
 }
 
+.accept {
+    border: none;
+    color: #FFF;
+    background: #44CC44;
+    padding: 15px 20px;
+}
+
+.accept:hover {
+    background: #6FE76F;
+}
+
+.decline {
+    border: none;
+    color: #FFF;
+    background: tomato;
+    padding: 15px 20px;
+}
+.decline:hover {
+    background: rgb(255, 147, 128);
+}
