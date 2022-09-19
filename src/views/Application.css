@@ -1,3 +1,21 @@
+.application-status {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.application-status-header {
+    color: white;
+}
+
+.application-status-bar {
+    font-size: 25px;
+    cursor: default;
+    padding: .5% 3%;
+    border-radius: 20px;
+}
+
 .accept {
     border: none;
     color: #FFF;
@@ -18,4 +36,3 @@
 .decline:hover {
     background: rgb(255, 147, 128);
 }
-  
