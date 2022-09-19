@@ -504,7 +504,7 @@ export default function Application({applicationId}) {
                     
 
                     <div className="field">
-                    <label>Autcad Experience?: <i>*</i></label>
+                    <label>Autocad Experience?: <i>*</i></label>
                     <select {...register("autocad", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
