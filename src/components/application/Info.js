@@ -61,6 +61,7 @@ export default function Application({applicationId}) {
                 personalPortfolio: data.personalPortfolio,
 
                 ethnicity: data.ethnicity,
+                gender: data.gender,
                 dietaryRestrictions: data.dietaryRestrictions,
                 sleep: data.sleep,
                 autocad: data.autocad,
@@ -80,6 +81,8 @@ export default function Application({applicationId}) {
     const [programmingInputs, setProgrammingInputs] = React.useState([
         { language: '', experienceLevel: '',},
     ])
+    const [other, setOther] = React.useState();
+    const [showInput, setShowInput] = React.useState(false)
 
     const handleChangeLanguage = (index, event) => {
         const values = [...programmingInputs]
@@ -469,7 +472,19 @@ export default function Application({applicationId}) {
                     </div>
                 
                     {errors.ethnicity?.type === "required" && <span>Please enter a value</span>}
-                   
+                    
+                    <div className="field">
+                        <label>Gender/Pronouns: <i>*</i></label>
+                        <select 
+                        {...register("gender", { required:true })}>
+                            <option value="He/Him/His">He/Him/His</option>
+                            <option value="She/Her/Hers">She/Her/Hers</option>
+                            <option value="They/Them/Theirs">They/Them/Theirs</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    {errors.gender?.type === "required" && <span>Please enter a value</span>}
+                    </div>
+        
 
                     <div className="field">
                     <label>Dietary Restrictions: <i>*</i></label>
