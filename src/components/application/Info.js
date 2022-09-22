@@ -20,6 +20,10 @@ export default function Application({applicationId}) {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
     const navigate = useNavigate();
     async function onSubmit(data) {
+        // Allow null college major
+        if (!data.collegeMajor) {
+            data.collegeMajor = "N/A"
+        }
         // Allow null college minor
         if (!data.collegeMinor) {
             data.collegeMinor = "N/A"
@@ -32,16 +36,13 @@ export default function Application({applicationId}) {
         })
         data.languageExperience = strings.join(", ")
 
-        console.log("submit")
-        console.log(data)
+        // console.log("submit")
+        // console.log(data)
         const userDoc = doc(db, "applications", applicationId);
         await updateDoc(
             userDoc,
             {
-                firstName: data.firstName,
-                lastName: data.lastName,
                 dateOfBirth: data.dateOfBirth,
-                email: data.email,
                 phoneNumber: data.phoneNumber,
 
                 address: data.address,
@@ -62,6 +63,7 @@ export default function Application({applicationId}) {
 
                 ethnicity: data.ethnicity,
                 gender: data.gender,
+                pronoun: data.pronoun,
                 dietaryRestrictions: data.dietaryRestrictions,
                 sleep: data.sleep,
                 autocad: data.autocad,
@@ -81,32 +83,26 @@ export default function Application({applicationId}) {
     const [programmingInputs, setProgrammingInputs] = React.useState([
         { language: '', experienceLevel: '',},
     ])
-    const [other, setOther] = React.useState();
-    const [showInput, setShowInput] = React.useState(false)
 
     const handleChangeLanguage = (index, event) => {
         const values = [...programmingInputs]
         values[index].language = event.value
         values[index].experienceLevel = values[index].experienceLevel === '' ? "Novice" : values[index].experienceLevel
         setProgrammingInputs(values)
-        // console.log(values)
     }
 
     const handleChangeExperience = (index, event) => {
         const values = [...programmingInputs]
         values[index].experienceLevel = event.target.value
         setProgrammingInputs(values)
-        //console.log(values)
     }
 
     const handleAddInput = () => {
         const values = [...programmingInputs]
         if (values.length === 5) {
-            //console.log(values)
             return values
         } else {
         setProgrammingInputs([...programmingInputs, { language: '', experienceLevel: '' }])
-        //console.log(values)
         }
   }
 
@@ -114,7 +110,6 @@ export default function Application({applicationId}) {
         const values = [...programmingInputs];
         values.splice(index, 1);
         setProgrammingInputs(values)
-        //console.log(values)
     }
 
     const [currSubForm, setCurrSubForm] = React.useState(0);
@@ -126,7 +121,9 @@ export default function Application({applicationId}) {
             .then(response => {
                 response.json()
                 .then(data => {
-                    setAddressOptions(data.results);
+                    if (data.results) {
+                        setAddressOptions(data.results);
+                    }
                 })
             })
     }
@@ -172,7 +169,6 @@ export default function Application({applicationId}) {
                     {errors.firstName && <span>Please enter a first name</span>}
                     <br/><br/>
 
-
                     <label>Last Name: <i>*</i></label>
                     <input 
                     {...register("lastName",
@@ -189,38 +185,33 @@ export default function Application({applicationId}) {
                     {errors.dateOfBirth && <span>Please enter a value</span>}
                     <br/><br/>
 
-                    <label>Email: <i>*</i></label>
-                    <input type="email"
-                    placeholder="  john@gmail.com"
-                    {...register("email", 
-                    { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })}/>
-                    <br/>
-                    {errors.email?.type === "required" && <span>Please enter an email</span>}
-                    {errors.email?.type === "pattern" && <span>Please enter a valid email</span>}
+                    <label>Gender: <i>*</i></label>
+                    <select 
+                    {...register("gender", { required:true })}>
+                        <option value="Man">Man</option>
+                        <option value="Woman">Woman</option>
+                        <option value="Non-binary">Non-binary</option>
+                        <option value="Prefer not to answer">Prefer not to answer</option>
+                    </select>
+                    {errors.gender?.type === "required" && <span>Please enter a value</span>}
+                    <br/><br/>
+
+                    <label>Pronouns: <i>*</i></label>
+                    <select 
+                    {...register("pronoun", { required:true })}>
+                        <option value="He/Him/His">He/Him/His</option>
+                        <option value="She/Her/Hers">She/Her/Hers</option>
+                        <option value="They/Them/Theirs">They/Them/Theirs</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to answer">Prefer not to answer</option>
+                    </select>
+                    {errors.pronoun?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
 
                     <label>Phone Number: <i>*</i></label>
-                    <div className="selecter">
-                        {/* <div className="phone">
-                        <Controller
-                            name="phoneCountryCode"
-                            control={control}
-                            rules={{ required: true }}
-                            render={({ field }) => 
-                            <Select 
-                                options={ countryCodeList.map((countryCode) => { 
-                                    return { label: countryCode, value: countryCode};
-                                })
-                                }
-                                {...field}
-                            />}
-                        />
-                        </div> */}
-                        <input 
-                        style={{paddingLeft:'60px'}}
-                        {...register("phoneNumber",
-                        { required: true})} />
-                    </div>
+                    <input 
+                    {...register("phoneNumber",
+                    { required: true})} />
                     <br/>
                     {(errors.phoneNumber?.type === "required" || errors.phoneCountryCode?.type === "required") && <span>Please enter a phone number</span>}
                     <br/><br/>
@@ -252,18 +243,11 @@ export default function Application({applicationId}) {
                             onChange={e => {
                                 field.onChange(e.target.value);
                                 setAddress(e.target.value);
+                                addressSearch()
                             }}
                         />}
                         
                     />
-                     <div style={{
-                        "cursor": "pointer", 
-                        display: "none",
-                        "backgroundColor": "white", 
-                        "width": "45px",
-                        }} onClick={() => addressSearch()}>
-                        Search
-                    </div>
                     </div>
                    
                     {addressOptions.map((option) => {
@@ -278,7 +262,7 @@ export default function Application({applicationId}) {
                     {errors.address && <span>Please enter an address</span>}
                     <br/><br/>
                     
-                    <label>Out of State?: <i>*</i></label>
+                    <label>Outside of Massachusetts: <i>*</i></label>
                     <div className="field">
                         <select {...register("outOfState", { required:true },)}>
                             <option value="No">No</option>
@@ -292,11 +276,10 @@ export default function Application({applicationId}) {
                 <div className={currSubForm !== 2 ? "hide-form" : ""}>
                     <h2>Education Information</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <label>Highest Education Level: <i>*</i></label>
+                    <label>Current Education Level: <i>*</i></label>
                     <select 
                     {...register("highestEducation",
                     { required: true })}>
-                        <option value="High School">High School</option>
                         <option value="College Freshman">College Freshman</option>
                         <option value="College Sophomore">College Sophomore</option>
                         <option value="College Junior">College Junior</option>
@@ -308,27 +291,29 @@ export default function Application({applicationId}) {
                     {errors.highestEducation?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
 
-                    <label>College:</label>
-                <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
-                    <Controller
-                        name="college"
-                        control={control}
-                        render={({ field }) => 
-                        <Select 
-                            options={collegeOptions}
-                            {...field}
-                        />}
-                    />
-                </div>
+                    <label>College: <i>*</i></label>
+                    <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
+                        <Controller
+                            name="college"
+                            control={control}
+                            render={({ field }) => 
+                            <Select 
+                                options={collegeOptions}
+                                {...field}
+                            />}
+                        />
+                    </div>
+                    {errors.college?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
 
-                    <label>Year:</label>
-                    <select {...register("collegeYear")} style={{"width":"300px", color: "black", fontSize: "15px"}}>
+                    <label>Year: <i>*</i></label>
+                    <select {...register("collegeYear", { required: true })} style={{"width":"300px", color: "black", fontSize: "15px"}}>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
                         <option value="2025">2025</option>
                         <option value="2026">2026</option>
                     </select>
+                    {errors.collegeYear?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/><br/>
 
                     <label>Major:</label>
@@ -418,8 +403,8 @@ export default function Application({applicationId}) {
                     <div className="form-group form-check">
                     <div className="field">
                         <label style={{"width":"200px"}} htmlFor="acceptTerms1" className="form-check-label">Email your resume to tech@bostonhacks.io<i>*</i></label>
-                        <input style={{"width":"50px"}} name="acceptTerms1" type="checkbox" {...register('acceptTerms1')} id="acceptTerms1" className={`form-check-input ${errors.acceptTerms1 ? 'is-invalid' : ''}`} />
-                        <div className="invalid-feedback">{errors.acceptTerms1?.message}</div>
+                        <input style={{"width":"50px"}} name="acceptTerms1" type="checkbox" {...register('acceptTerms1', { required: true})} id="acceptTerms1" className={`form-check-input ${errors.acceptTerms1 ? 'is-invalid' : ''}`} />
+                        {errors.acceptTerms1?.type === "required" && <span>Please check the box</span>}
                     </div>
                     </div>
                 </div>
@@ -474,19 +459,6 @@ export default function Application({applicationId}) {
                     {errors.ethnicity?.type === "required" && <span>Please enter a value</span>}
                     
                     <div className="field">
-                        <label>Gender/Pronouns: <i>*</i></label>
-                        <select 
-                        {...register("gender", { required:true })}>
-                            <option value="He/Him/His">He/Him/His</option>
-                            <option value="She/Her/Hers">She/Her/Hers</option>
-                            <option value="They/Them/Theirs">They/Them/Theirs</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    {errors.gender?.type === "required" && <span>Please enter a value</span>}
-                    </div>
-        
-
-                    <div className="field">
                     <label>Dietary Restrictions: <i>*</i></label>
                     <select {...register("dietaryRestrictions", { required:true },)}>
                         <option value="None">None</option>
@@ -519,7 +491,7 @@ export default function Application({applicationId}) {
                     
 
                     <div className="field">
-                    <label>Autocad Experience?: <i>*</i></label>
+                    <label>Autocad Experience: <i>*</i></label>
                     <select {...register("autocad", { required:true },)}>
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
@@ -527,7 +499,7 @@ export default function Application({applicationId}) {
                     </div>
                     {errors.autocad?.type === "required" && <span>Please enter a value</span>}
 
-                <label>Participating in Team Formation?: <i>*</i></label>
+                <label>Would Like to Participate in Team Formation Events: <i>*</i></label>
                     <div className="field">
                     <select {...register("teamFormation", { required:true },)}>
                         <option value="No">No</option>
@@ -553,9 +525,9 @@ export default function Application({applicationId}) {
                     
                     <div className="form-group form-check">
                     <div className="field">
-                        <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>?</label>
-                        <input style={{"width":"50px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
-                        <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
+                        <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><i>*</i></label>
+                        <input style={{"width":"50px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                        {errors.acceptTerms?.type === "required" && <span>Please check the box</span>}
                     </div>
                     </div>
                     <br/>
@@ -568,7 +540,7 @@ export default function Application({applicationId}) {
                     {currSubForm < 6 && <button type="button" className="form-pagination-button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
                 </div>
 
-                <input className={currSubForm !== 6 ? "hide-form" : "submit-button"} type="submit"/>
+                <input className={currSubForm !== 6 ? "hide-form" : "submit-button"} type="submit" label="here"/>
                 {/* {console.log(errors)} */}
             </form>
         </div>
