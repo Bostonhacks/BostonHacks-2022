@@ -136,12 +136,25 @@ export default function Application({applicationId}) {
             .then((resText) => {
                 let collegeOptions = resText.split("\n").map(item => {
                     let schoolName = item.startsWith('"')
-                      ? item.substring(1, item.length - 1)
-                      : item;
+                        ? item.substring(1, item.length - 1)
+                        : item;
+
+                    schoolName = schoolName.endsWith('"')
+                        ? schoolName.substring(0, schoolName.length - 1)
+                        : schoolName;
                     
                     let schoolOption = { label: schoolName, value: schoolName};
                     return schoolOption;
                 });
+
+                collegeOptions = collegeOptions.filter((schoolOption) => {
+                    return !(
+                        schoolOption.label.includes("High School") || 
+                        schoolOption.label.includes("High Schoo") ||
+                        schoolOption.label.includes("Highschool") || 
+                        schoolOption.label.includes("Middle School")
+                    )
+                })
 
                 collegeOptions.splice(0, 1);
                 collegeOptions.push({ label: "Other", value: "Other"});
