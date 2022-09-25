@@ -13,7 +13,8 @@ h2, label {
 label {
     display: block;
     float: left;
-    width: 275px;}
+    width: 75%;
+}
 
 input {
     background: none;
@@ -26,10 +27,9 @@ input {
 
 
 .languageSelect {
-    width: 25%;
+    width: 90%;
     color: black;
     background-color: white;
-    margin-right: 20px;
 }
 
 .language {
@@ -53,9 +53,11 @@ input {
 }
 
 .background {
-    background: linear-gradient(rgb(0, 0, 0) 0%, rgb(48, 71, 115) 52.6%, rgb(245, 226, 246) 99.48%);
+    color: white;
+    background: transparent;
     padding: 0 5% 0 5%;
-    height: 110vh;
+    height: 120vh;
+    width: 70%;
 }
 
 i {
@@ -64,6 +66,12 @@ i {
 
 .hide-form {
     display: none;
+}
+
+.show-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 button {
@@ -120,19 +128,23 @@ a {
 }
 
 input, select {
-    padding: 10px;
-    width: 300px;
+    width: 75%;
+}
+
+input {
+    padding: 1.5%;
+    width: 75%;
+}
+
+select {
+    padding: 1%;
+    width: 78%;
 }
 
 .field {
     flex: 1;
     padding-bottom: 70px;
     position:relative;
-}
-
-.link-field {
-    flex: 1;
-    position: relative;
 }
 
 .questionPage {
@@ -142,9 +154,8 @@ input, select {
 
 .section {
     padding-bottom: 30px;
-    display: flex;
-    flex-direction: column;
 }
+
 textarea {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -166,11 +177,21 @@ textarea {
     display: flex;
 }
 
-.addRemoveSpace {
-    margin-right: 20px;
-    display: flex;
+.add-remove-buttons {
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .languageExp {
-    display: flex;
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    justify-content: center;
+}
+
+.react-selecter {
+    width: 78%;
+    color: black;
+    font-size: 15px;
 }

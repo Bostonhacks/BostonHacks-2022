@@ -169,9 +169,9 @@ export default function Application({applicationId}) {
     }
 
     return (
-        <div className="background" style={{color: "white", background: "transparent"}}>
+        <div className="background">
             <form onSubmit={handleSubmit(onSubmit)} >
-                <div className={currSubForm !== 0 ? "hide-form" : ""} >
+                <div className={currSubForm !== 0 ? "hide-form" : "show-form"} >
                     <h2>General Information:</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <label>First Name: <i>*</i></label>
@@ -230,7 +230,7 @@ export default function Application({applicationId}) {
                     <br/><br/>
                 </div>
                 
-                <div className={currSubForm !== 1 ? "hide-form" : ""}>
+                <div className={currSubForm !== 1 ? "hide-form" : "show-form"}>
                     <h2>Current Semester Address Information</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <label>Address: <i>*</i></label>
@@ -286,7 +286,7 @@ export default function Application({applicationId}) {
                     {errors.outOfState?.type === "required" && <span>Please enter a value</span>}
                 </div>
                 
-                <div className={currSubForm !== 2 ? "hide-form" : ""}>
+                <div className={currSubForm !== 2 ? "hide-form" : "show-form"}>
                     <h2>Education Information</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <label>Current Education Level: <i>*</i></label>
@@ -305,7 +305,7 @@ export default function Application({applicationId}) {
                     <br/><br/>
 
                     <label>College: <i>*</i></label>
-                    <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
+                    <div className="react-selecter">
                         <Controller
                             name="college"
                             control={control}
@@ -320,7 +320,7 @@ export default function Application({applicationId}) {
                     <br/><br/>
 
                     <label>Year: <i>*</i></label>
-                    <select {...register("collegeYear", { required: true })} style={{"width":"300px", color: "black", fontSize: "15px"}}>
+                    <select {...register("collegeYear", { required: true })}>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
                         <option value="2025">2025</option>
@@ -330,7 +330,7 @@ export default function Application({applicationId}) {
                     <br/><br/><br/>
 
                     <label>Major:</label>
-                    <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
+                    <div className="react-selecter">
                     <Controller
                         name="collegeMajor"
                         control={control}
@@ -346,7 +346,7 @@ export default function Application({applicationId}) {
                     <br/><br/>
 
                     <label>Minor:</label>
-                    <div style={{"width":"575px", color: "black", fontSize: "15px"}}>
+                    <div className="react-selecter">
                     <Controller
                         name="collegeMinor"
                         control={control}
@@ -363,15 +363,15 @@ export default function Application({applicationId}) {
                     <br/><br/>
                 </div>
                 
-                <div className={currSubForm !== 3 ? "hide-form" : ""}>
+                <div className={currSubForm !== 3 ? "hide-form" : "show-form"}>
                 <div className="questionBreak">
                     <h2>Programming Experience</h2>
                     <p><i>Fields marked with * are required</i></p>
                     <div className="programmingSection">
-                    <label style={{"width": "500px", "paddingBottom":"30px"}}>Select the programming languages/technology you have experience with (Add up to 5):</label>
+                    <label style={{"paddingBottom":"30px"}}>Select the programming languages/technology you have experience with (Add up to 5):</label>
                             <div>
                             {programmingInputs.map((programmingInput, index) => (
-                               <div key={index}className="languageExp" name="programmingExperience">
+                               <div key={index} className="languageExp" name="programmingExperience">
                                     <Controller
                                     name="languageExperience"
                                     control={control}
@@ -386,17 +386,15 @@ export default function Application({applicationId}) {
                                     </div>
                                 }
                                 />
-                                <select style={{"marginRight":"20px"}} onChange={event => handleChangeExperience(index, event)}>
+                                <select onChange={event => handleChangeExperience(index, event)}>
                                     <option value="Novice">Novice</option>
                                     <option value="Intermediate">Intermediate</option>
                                     <option value="Expert">Expert</option>
                                 </select>
 
                                 <div className="addRemove">
-                                    <div className="addRemoveSpace">
-                                        <button style={{"width":"100px", "fontSize":"15px",}} onClick={() => handleAddInput()}>+</button>
-                                        <button style={{"width":"100px", "fontSize":"20px", "fontWeight":"bold"}} onClick={() => handleRemoveInput()}>-</button>
-                                    </div>
+                                    <button className="add-remove-buttons" onClick={() => handleAddInput()}>+</button>
+                                    <button className="add-remove-buttons" onClick={() => handleRemoveInput()}>-</button>
                                 </div>
                                 </div>
                             ))}             
@@ -413,46 +411,38 @@ export default function Application({applicationId}) {
                     {errors.pastHackathons?.type === "required" && <span>Please enter a value</span>}
                     <br/><br/>
                     
-                    <div className="form-group form-check">
                     <div className="field">
                         <label style={{"width":"200px"}} htmlFor="acceptTerms1" className="form-check-label">Email your resume to tech@bostonhacks.io<i>*</i></label>
                         <input style={{"width":"50px"}} name="acceptTerms1" type="checkbox" {...register('acceptTerms1', { required: true})} id="acceptTerms1" className={`form-check-input ${errors.acceptTerms1 ? 'is-invalid' : ''}`} />
                         {errors.acceptTerms1?.type === "required" && <span>Please check the box</span>}
                     </div>
-                    </div>
                 </div>
 
-                <div className={currSubForm !== 4 ? "hide-form" : ""}>
+                <div className={currSubForm !== 4 ? "hide-form" : "show-form"}>
                 <div className="section">
-                    <h2 style={{"paddingBottom":"50px"}}>Personal Links (Please submit any links you would like to share)</h2>
+                    <h2>Personal Links (Please submit any links you would like to share)</h2>
+                    <p><i>Fields marked with * are required</i></p>
 
-                    <div className="questionPage">
-                    <div className="link-field">
                     <label>Github Profile: </label>
                     <input 
                     {...register("github",)} />
-                    </div>
                     <br/><br/>
 
-                    <div className="link-field">
                     <label>Linkedin Profile: </label>
                     <input 
                     {...register("linkedin",)} />
-                    </div>
                     <br/><br/>
 
-                    <div className="link-field">
                     <label>Personal Portfolio: </label>
                     <input 
                     {...register("personalPortfolio",)} />
-                    </div>
                     <br/><br/>
                 </div>
                 </div>
-                </div>
 
-                <div className={currSubForm !== 5 ? "hide-form" : ""}>
-                    <h2 style={{"paddingBottom":"30px"}}>Miscellaneous Questions</h2>
+                <div className={currSubForm !== 5 ? "hide-form" : "show-form"}>
+                    <h2>Miscellaneous Questions</h2>
+                    <p><i>Fields marked with * are required</i></p>
 
                     <div className="field">
                     <label>Race/Ethnicity: <i>*</i></label>
@@ -522,13 +512,13 @@ export default function Application({applicationId}) {
                     {errors.teamFormation?.type === "required" && <span>Please enter a value</span>}
                 </div> 
 
-                <div className={currSubForm !== 6 ? "hide-form" : ""}>
+                <div className={currSubForm !== 6 ? "hide-form" : "show-form"}>
                     <div className="questionRow">
                     <h2>Why bostonhacks?</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <label style={{"width":"800px"}}>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
+                    <label>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
                     <br/><br/>
-                    <textarea style={{"width":"50%", "height":"200px", "resize":"none"}}
+                    <textarea style={{"width":"70%", "height":"200px", "resize":"none"}}
                     {...register("bostonhacks",
                     { required: true , maxLength: 200, minLength: 50})} />
                     {errors.bostonhacks?.type === "required" && <span>Please enter a value</span>}
