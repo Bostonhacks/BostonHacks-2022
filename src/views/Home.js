@@ -19,7 +19,7 @@ export default function Home() {
             <Theme />
             <img  src={Tracks} style={{width: "100%", height: "auto"}}/>
             <Faq />
-            <img  src={Sponsorhome} style={{width: "60%", paddingLeft: "7.5%", height: "auto"}}/>
+            <img  src={Sponsorhome} style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>
             <Apply />
             <ApplyButton className="button"/>
         </div>

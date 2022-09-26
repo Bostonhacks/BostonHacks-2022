@@ -24,6 +24,7 @@ import StatisticsGradient from '../components/sponsor/StatisticsSection/Statisti
 // import ChromeBar from '../components/sponsor/SponsorUs/ChromeBar';
 // import SponsorUsBubble from '../components/sponsor/SponsorUs/SponsorUsBubble';
 // import SponsorUsGradient from '../components/sponsor/SponsorUs/SponsorUsGradient';
+import Sponsorhome from '../components/home/images/sponsorhome.png'
 import './Sponsor.css';
 
 // Sponsorship page
@@ -55,6 +56,7 @@ export default function Sponsor() {
       {/* <ChromeBar />
       <SponsorUsBubble />
       <SponsorUsGradient /> */}
+      <img  src={Sponsorhome} style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>
     </div>
   );
 }
