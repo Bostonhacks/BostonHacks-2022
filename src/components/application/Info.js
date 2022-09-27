@@ -416,9 +416,9 @@ export default function Application({applicationId}) {
                     <br/><br/>
                     
                     <div className="field">
-                        <label style={{"width":"200px"}} htmlFor="acceptTerms1" className="form-check-label">Email your resume to tech@bostonhacks.io<i>*</i></label>
-                        <input style={{"width":"50px"}} name="acceptTerms1" type="checkbox" {...register('acceptTerms1', { required: true})} id="acceptTerms1" className={`form-check-input ${errors.acceptTerms1 ? 'is-invalid' : ''}`} />
-                        {errors.acceptTerms1?.type === "required" && <span>Please check the box</span>}
+                        <label style={{"width":"200px"}} htmlFor="emailResume" className="form-check-label">Email your resume to tech@bostonhacks.io<i>*</i></label>
+                        <input style={{"width":"50px"}} name="emailResume" type="checkbox" {...register('emailResume', { required: true})} id="emailResume" className={`form-check-input ${errors.emailResume ? 'is-invalid' : ''}`} />
+                        {errors.emailResume?.type === "required" && <span>Please check the box</span>}
                     </div>
                 </div>
 
@@ -533,7 +533,7 @@ export default function Application({applicationId}) {
                     <div className="form-group form-check">
                     <div className="field">
                         <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><i>*</i></label>
-                        <input style={{"width":"50px"}} name="acceptTerms" type="button" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                        <input style={{"width":"50px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
                         {errors.acceptTerms?.type === "required" && <span>Please check the box</span>}
                     </div>
                     </div>
