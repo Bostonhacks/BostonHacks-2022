@@ -49,7 +49,7 @@ export default function Coundown() {
   return (
     <div className="countdown">
       <h1 style={{ color: 'white' }}>Coming Soon</h1>
-      <ul>
+      <ul style={{paddingLeft: 0}}>
         <li>
           <CircularProgressbar
             value={currentTimeLeft.days}

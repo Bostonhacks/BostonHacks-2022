@@ -5,7 +5,8 @@ import { auth } from "../firebase/firebase-config";
 import AdminPanel from "../components/admin/AdminPanel";
 import {
   updateDoc,
-  doc
+  doc,
+  getDoc
 } from "firebase/firestore";
 import { db } from "../firebase/firebase-config";
 
@@ -20,7 +21,15 @@ export default function Admin() {
 
   const checkInUser = async (userId) => {
     const userDoc = doc(db, "applications", userId);
-    await updateDoc(userDoc, {"status": "Checked In"});
+    const docSnap = await getDoc(userDoc);
+
+    if (docSnap.exists()) {
+      await updateDoc(userDoc, {"status": "Checked In"});
+      alert('Checked in ' + docSnap.data().name);
+      console.log("Document data:", docSnap.data());
+    } else {
+      alert("No user found!");
+    }
   }
 
   useEffect(() => {

@@ -25,7 +25,7 @@ export default function App() {
   }, [loading]);
 
   return (
-    <div style={{ background: "linear-gradient(180deg, #000000 0%, #304773 52.6%, #F5E2F6 99.48%)", minWidth:"600px", minHeight: "100vh", width:"100%" }}>
+    <div style={{ background: "linear-gradient(180deg, #000000 0%, #304773 52.6%, #F5E2F6 99.48%)", height: "auto", width:"100%" }}>
       <style jsx="true">{`
         body {
           margin: 0;

@@ -3,7 +3,7 @@ import React from 'react';
 const ReviewSection = () => {
   return (
     <svg
-      className="review-section"
+      className="scaledSvg"
       width="1113"
       height="1696"
       viewBox="0 0 1113 1696"

@@ -19,6 +19,12 @@
   height: auto;
 }
 
+.scaledSvg {
+  width: 80%;
+  padding-left: 10%;
+  height: auto;
+}
+
 /* .twilio-quote {
   position: relative;
   bottom: 500px;

@@ -69,6 +69,17 @@ export default function AdminPanel() {
 
   return (
   <div>
+    <h3 style={{color: "white"}}>Total: {applications.length} Applications</h3>
+
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Not Started"; }).length} Not Started</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Submitted"; }).length} Submitted</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Waitlisted"; }).length} Waitlisted</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Rejected"; }).length} Rejected</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Declined"; }).length} Declined</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Confirmed"; }).length} Confirmed</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Accepted"; }).length} Accepted</h3>
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Checked In"; }).length} Checked In</h3>
+    
     <CRUDTable
       caption="Applications"
       fetchItems={payload => service.fetchItems(payload)}

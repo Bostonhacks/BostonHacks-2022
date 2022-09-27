@@ -19,7 +19,11 @@ import { Container, IconButton } from "@material-ui/core";
 export default function Application({applicationId}) {
     const { register, handleSubmit, watch, formState: { errors }, control, reset } = useForm();
     const navigate = useNavigate();
+
+    const onError = (errors, e) => alert("Skipped " + Object.keys(errors) + " questions! Please go back and anwser all required questions, then submit.");
+
     async function onSubmit(data) {
+        console.log("inside submit")
         // Allow null college major
         if (!data.collegeMajor) {
             data.collegeMajor = "N/A"
@@ -170,7 +174,7 @@ export default function Application({applicationId}) {
 
     return (
         <div className="background">
-            <form onSubmit={handleSubmit(onSubmit)} >
+            <form onSubmit={handleSubmit(onSubmit, onError)} >
                 <div className={currSubForm !== 0 ? "hide-form" : "show-form"} >
                     <h2>General Information:</h2>
                     <p><i>Fields marked with * are required</i></p>
@@ -529,7 +533,7 @@ export default function Application({applicationId}) {
                     <div className="form-group form-check">
                     <div className="field">
                         <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><i>*</i></label>
-                        <input style={{"width":"50px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                        <input style={{"width":"50px"}} name="acceptTerms" type="button" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
                         {errors.acceptTerms?.type === "required" && <span>Please check the box</span>}
                     </div>
                     </div>
