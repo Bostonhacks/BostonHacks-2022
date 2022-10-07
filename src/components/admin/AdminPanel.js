@@ -79,7 +79,8 @@ export default function AdminPanel() {
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Confirmed"; }).length} Confirmed</h3>
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Accepted"; }).length} Accepted</h3>
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Checked In"; }).length} Checked In</h3>
-    
+    <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Submitted" && el.college.label === "Boston University\r"; }).length} Boston University Students Submitted</h3>
+
     <CRUDTable
       caption="Applications"
       fetchItems={payload => service.fetchItems(payload)}
