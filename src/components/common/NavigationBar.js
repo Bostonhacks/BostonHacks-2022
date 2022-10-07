@@ -7,6 +7,7 @@ import {
 import { auth, logout } from "../../firebase/firebase-config";
 import NavbarLogo from "./svg/NavbarLogo";
 import "./NavigationBar.css"
+import styled from "styled-components";
 
 // Navigation bar
 export default function NavigationBar() {
@@ -18,6 +19,14 @@ export default function NavigationBar() {
       navigate("/");
     };
 
+    const Button = styled.button`
+      font-family: 'Montserrat';
+      border: 0;
+      cursor: pointer;
+      padding: 10px 30px;
+      margin-top: 5px;
+    `;
+
     useEffect(() => {
       if (loading) return;
     }, [loading]);
@@ -25,17 +34,17 @@ export default function NavigationBar() {
     return (
       <div>
         <ul className="nav">
-          <li>
+          <li className="logo">
             <Link to="/"><NavbarLogo /></Link>
           </li>
-          <li>
-            {user && <button onClick={handleLogout} style={{	background: "none",	color: "white",	border: "none",	padding: 0,	font: "inherit",	cursor: "pointer",	outline: "inherit"}}>Logout</button>}
+          <li className="button">
+            {user && <Button onClick={handleLogout}>LOGOUT</Button>}
           </li>
-          <li style={{float: "right"}}>
-            <Link to="/sponsor">Sponsors</Link>
+          <li className="navItem">
+            <Link to="/sponsor">SPONSORS</Link>
           </li>
-          <li style={{float: "right"}}>
-            <Link to="/application">Apply</Link>
+          <li className="navItem">
+            <Link to="/application">APPLY</Link>
           </li>
         </ul>
       </div>
