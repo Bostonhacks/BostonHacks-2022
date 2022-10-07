@@ -11,7 +11,8 @@
 }
 
 .nav li {
-  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .nav li a {
@@ -25,4 +26,17 @@
 
 .nav li a:hover {
   background-color: #304773;
+}
+
+.logo {
+  float:left;
+}
+
+.button {
+  float:right;
+}
+
+.navItem {
+  font-family: 'Montserrat';
+  float:right;
 }
