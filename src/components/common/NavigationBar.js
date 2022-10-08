@@ -23,8 +23,13 @@ export default function NavigationBar() {
       font-family: 'Montserrat';
       border: 0;
       cursor: pointer;
-      padding: 10px 30px;
-      margin-top: 5px;
+      padding: 14px 5px;
+      height: 100%;
+      box-shadow: none;
+      font-weight: none;
+      font-weight: inherit;
+      font-size: inherit;
+      color: white;
     `;
 
     useEffect(() => {
