@@ -48,6 +48,7 @@ export const signInWithGoogle = async () => {
     }
   } catch (err) {
     console.error(err);
+
   }
 };
 
