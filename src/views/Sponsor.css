@@ -1,11 +1,3 @@
-/* * {
-  z-index: 10;
-} */
-/* svg {
-  width: 80%;
-  padding-left: 10%;
-} */
-
 .sponsor {
   position: relative;
   overflow-x: hidden;
@@ -15,137 +7,178 @@
 
 .title-section {
   width: 100%;
-  padding-left: 0;
+  height: auto;
+  padding-bottom: 40%;
+}
+
+.twilio-quote {
+  position: absolute;
+  top: 11.4%;
+  left: 15%;
+  width: 70%;
   height: auto;
 }
 
-.scaledSvg {
-  width: 80%;
-  padding-left: 10%;
-  height: auto;
-}
-
-/* .twilio-quote {
-  position: relative;
-  bottom: 500px;
-}
 .twilio-bubble {
   position: absolute;
-  top: 1980px;
-  right: 0px;
+  width: 55%;
+  top: 13.1%;
+  right: 0;
 }
 
+.who-are-we {
+  position: relative;
+  padding-left: 19%;
+  padding-bottom: 22%;
+  height: auto;
+  width: 65%;
+}
 .who-are-we-gradient {
-  z-index: 0;
   position: absolute;
-  top: 3150px;
-  left: -600px;
+  height: auto;
+  width: 40%;
+  left: 0;
+  top: 22.2%;
 }
 
 .why-us {
+  height: auto;
   position: relative;
-  top: 380px;
-  left: 30px;
+  padding-left: 15%;
+  padding-bottom: 33%;
+  width: 80%;
 }
 .why-us-bubble {
   position: absolute;
-  top: 4300px;
-  left: 0px;
+  width: 31%;
+  height: auto;
+  top: 28.6%;
+  left: 0;
 }
+
 .chain {
   position: absolute;
-  top: 5900px;
-  left: 0px;
+  top: 41.2%;
+  left: 0;
 }
 .why-us-gradient-1 {
   position: absolute;
-  top: 3700px;
-  right: -450px;
+  top: 25%;
+  right: 0;
 }
 .why-us-gradient-2 {
   position: absolute;
-  top: 4300px;
-  left: 0px;
+  top: 30%;
+  left: 0%;
 }
 
 .sponsor-opps {
   position: relative;
-  top: 1000px;
+  padding-bottom: 35%;
+  padding-left: 15%;
+  width: 70%;
+  height: auto;
 }
+
 .sponsor-opps-gradient-1 {
   position: absolute;
-  top: 7400px;
-  right: -300px;
+  width: 50%;
+  height: auto;
+  top: 48.5%;
+  right: 0;
 }
 .sponsor-opps-gradient-2 {
   position: absolute;
-  top: 8700px;
-  left: -650px;
+  width: 35%;
+  height: auto;
+  top: 54.4%;
+  left: 0;
 }
 .sponsor-opps-gradient-3 {
   position: absolute;
-  top: 9700px;
-  right: -550px;
-} */
-
-.statistics-section {
-  /* position: relative;
-  top: 1760px; */
-  padding-left: 15%;
-  width: 70%;
+  width: 40%;
+  height: auto;
+  top: 61.5%;
+  right: 0;
 }
 
-/* .statistics-bubble {
+.statistics-section {
+  position: relative;
+  padding-bottom: 20%;
+  padding-left: 15%;
+  width: 70%;
+  height: auto;
+}
+
+.statistics-bubble {
   position: absolute;
-  top: 9650px;
-  left: 0px;
+  width: 40%;
+  height: auto;
+  top: 61.5%;
+  left: 0;
 }
 
 .statistics-gradient {
   position: absolute;
-  top: 10600px;
-  left: -400px;
+  width: 55%;
+  height: auto;
+  top: 66%;
+  left: 0;
 }
 
 .review-section {
   position: relative;
-  top: 2100px;
+  height: auto;
+  width: 70%;
+  padding-bottom: 15%;
+  padding-left: 15%;
 }
+
 .review-bubble-1 {
   position: absolute;
-  top: 12200px;
-  right: 0px;
+  width: 35%;
+  height: auto;
+  top: 76.3%;
+  right: 0;
 }
 .review-bubble-2 {
   position: absolute;
-  top: 13400px;
-  left: 0px;
+  width: 40%;
+  height: auto;
+  top: 83.5%;
+  left: 0;
+  z-index: 1;
 }
 .review-gradient {
   position: absolute;
-  top: 13200px;
-  left: -100px;
+  width: 60%;
+  height: auto;
+  top: 84.2%;
+  left: 0;
   z-index: 0;
-}
-
-button {
-  position: relative;
-  top: 10px;
 }
 
 .chrome-bar {
-  position: absolute;
-  left: 300px;
-  top: 14700px;
+  z-index: 1;
+  height: auto;
+  width: 70%;
+  position: relative;
+  padding-bottom: 9%;
+  padding-left: 15%;
 }
 .sponsor-us-bubble {
+  width: 50%;
+  height: auto;
+  z-index: 2;
   position: absolute;
-  right: 0px;
-  top: 14900px;
+  right: 0;
+  top: 93%;
 }
 .sponsor-us-gradient {
-  position: absolute;
-  left: -500px;
-  top: 15000px;
+  width: 50%;
+  height: auto;
   z-index: 0;
-} */
+  position: absolute;
+  left: 0;
+  top: 93.5%;
+}
