@@ -11,9 +11,6 @@
 }
 
 .nav li a {
-  font-family: presicav, sans-serif;
-  font-weight: 300;
-  font-style: normal;
   display: block;
   color: white;
   text-align: center;
@@ -27,15 +24,14 @@
 }
 
 .logo {
-  float:left;
+  float: left;
 }
 
 .button {
-  float:right;
+  float: right;
 }
 
 .navItem {
   font-family: 'Montserrat';
-  float:right;
+  float: right;
 }
-
