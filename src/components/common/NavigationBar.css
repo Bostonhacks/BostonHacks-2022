@@ -10,10 +10,6 @@
   width: 100%;
 }
 
-.nav li {
-  float: left;
-}
-
 .nav li a {
   font-family: presicav, sans-serif;
   font-weight: 300;
@@ -21,7 +17,7 @@
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 5px;
   height: 29px;
   text-decoration: none;
 }
@@ -29,3 +25,17 @@
 .nav li a:hover {
   background-color: #304773;
 }
+
+.logo {
+  float:left;
+}
+
+.button {
+  float:right;
+}
+
+.navItem {
+  font-family: 'Montserrat';
+  float:right;
+}
+
