@@ -42,7 +42,7 @@ export default function NavigationBar() {
           <li className="logo">
             <Link to="/"><NavbarLogo /></Link>
           </li>
-          <li className="button">
+          <li className="navItem">
             {user && <Button onClick={handleLogout}>LOGOUT</Button>}
           </li>
           <li className="navItem">
