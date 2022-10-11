@@ -6,7 +6,7 @@
   backdrop-filter: blur(95px);
   top: 0;
   position: fixed;
-  z-index: 1;
+  z-index:1;
   width: 100%;
 }
 
@@ -24,14 +24,14 @@
 }
 
 .logo {
-  float: left;
+  float:left;
 }
 
 .button {
-  float: right;
+  float:right;
 }
 
 .navItem {
   font-family: 'Montserrat';
-  float: right;
+  float:right;
 }
