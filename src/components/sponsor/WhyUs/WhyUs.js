@@ -3,7 +3,7 @@ import React from 'react';
 const WhyUs = () => {
   return (
     <svg
-      className="scaledSvg"
+      className="why-us"
       width="1148"
       height="2485"
       viewBox="0 0 1148 2485"
