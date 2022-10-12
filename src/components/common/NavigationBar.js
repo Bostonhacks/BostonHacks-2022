@@ -42,8 +42,11 @@ export default function NavigationBar() {
           <li className="logo">
             <Link to="/"><NavbarLogo /></Link>
           </li>
-          <li className="button">
+          <li className="navItem">
             {user && <Button onClick={handleLogout}>LOGOUT</Button>}
+          </li>
+          <li className="navItem">
+            <a href="https://forms.gle/FoYrDSqjTiKvWPcg6" target="_blank">MENTORS</a>
           </li>
           <li className="navItem">
             <Link to="/sponsor">SPONSORS</Link>
