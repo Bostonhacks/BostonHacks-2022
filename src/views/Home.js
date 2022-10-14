@@ -13,6 +13,7 @@ import './Home.css'
 export default function Home() {
     return (
         <div className='home'>
+            
             <Title/>
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
