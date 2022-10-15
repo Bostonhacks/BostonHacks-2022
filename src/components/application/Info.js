@@ -12,8 +12,7 @@ doc,
 updateDoc,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import shadows from "@material-ui/core/styles/shadows";
-import { Container, IconButton } from "@material-ui/core";
+import schoolCSV from "../applicationOptions/schools.csv"
 
 // Application page
 export default function Application({applicationId}) {
@@ -135,7 +134,7 @@ export default function Application({applicationId}) {
 
     React.useEffect(() => {
         // Get List of Colleges.
-        fetch("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv")
+        fetch(schoolCSV)
             .then((res) => res.text())
             .then((resText) => {
                 let collegeOptions = resText.split("\n").map(item => {
