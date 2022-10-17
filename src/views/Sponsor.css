@@ -4,7 +4,13 @@
   overflow-y: hidden;
   height: auto;
 }
-
+.mlh-banner {
+  position: absolute;
+  top: 0%;
+  right: 2%;
+  height: auto;
+  width: 5%;
+}
 .title-section {
   width: 100%;
   height: auto;
