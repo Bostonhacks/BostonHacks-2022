@@ -7,19 +7,30 @@ import Tracks from '../components/home/images/tracks.png'
 import Faq from '../components/home/svgs/faq'
 import ApplyButton from '../components/home/svgs/applybutton'
 import SponsorButton from '../components/home/svgs/sponsorbutton'
+import Modal from "../components/home/Modal"
 import './Home.css'
 
-
 export default function Home() {
+    const [showModal, setShowModal] = React.useState(false);
+
+    const onShowModal = () => {
+        setShowModal(true);
+    }
+    
+    const onHideModal = () => {
+        setShowModal(false);
+    }
+
     return (
         <div className='home'>
+            <Modal showModal={showModal} onHideModal={onHideModal}/>
             <Title/>
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
             <Theme />
-            <img  src={Tracks} style={{width: "100%", height: "auto"}}/>
+            <img src={Tracks} alt="tracks" className="tracks-img" onClick={() => onShowModal()}/>
             <Faq />
-            <img  src={Sponsorhome} style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>
+            <img  src={Sponsorhome} alt="sponsors" style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>
             <Apply />
             <ApplyButton className="button"/>
         </div>

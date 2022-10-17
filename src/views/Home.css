@@ -13,3 +13,9 @@
     height: auto;
     padding-left: 40%;
 }
+
+.tracks-img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
