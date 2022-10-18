@@ -1,23 +1,33 @@
-th {
-    font: 50px bold helvetica, arial, sans-serif;
+th{
+    font: 3.5vw bold;
+    font-family:  'Montserrat';
     color: #fff;
 }
-tr {
-    font: 20px bold helvetica, arial, sans-serif;
+tr{
+    font: 2vw bold;
+    font-family:  'Montserrat';
+    color: #fff;
+    border: 1px solid white;
+}
+tdd {
+    font: 1.5vw bold;
+    font-family:  'Montserrat';
     color: #fff;
 }
-/*move time to the left*/
-time {
-    font: 20px bold helvetica, arial, sans-serif;
-    color: #fff;
-    text-align: left;
-}
-
-/*make the table wider*/
-table {
+/*center the table cell to the center of the column*/
+td {
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
+    font: 2.25vw bold;
+    font-family:  'Montserrat';
+    color: #fff;
+    border: 1px solid white;
+    padding: 10px;
+}
+table {
     border-spacing: 20px;
-    width: 100%;
-    min-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
 }

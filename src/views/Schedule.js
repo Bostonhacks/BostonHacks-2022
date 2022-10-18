@@ -5,131 +5,180 @@ export default function Schedule() {
         <table>
             <thead>
             <tr>
-                <th></th>
-                <th>Saturday 11/12</th>
-                <th>Sunday 11/13</th>
+                <th>SATURDAY 11/12</th>
+                <th>SUNDAY 11/13</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <time>1:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Check-in for hackers, sponsors, volouteers, etc.. 
+                    <br></br> 
+                    <tdd>Metcalf Ballroom</tdd>
+                    <br></br> 
+                    <tdd>9:00 AM - 9:50 AM</tdd>
+                </td>
+                <td>Midnight Snack - Pizza
+                    <br></br> 
+                    <tdd>Ziskand Lounge</tdd>
+                    <br></br> 
+                    <tdd>12:00 AM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>2:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Opening Ceremony
+                    <br></br> 
+                    <tdd>Metcalf Ballroom</tdd>
+                    <br></br> 
+                    <tdd>10:00 AM - 10:20 AM</tdd>
+                </td>
+                <td>Workshop Technical - Lure Day 2
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>9:00 AM - 9:50 AM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>3:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Begin hacking/finding teams 
+                    <br></br> 
+                    <tdd>Metcalf Ballroom</tdd>
+                    <br></br> 
+                    <tdd>10:30 AM</tdd>
+                </td>
+                <td>Submissions Due
+                    <br></br> 
+                    <tdd>Submission Portal</tdd>
+                    <br></br> 
+                    <tdd>10:30 AM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>4:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Workshop Technical - Data Science
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>11:00 AM - 11:50 AM</tdd>
+                </td>
+                <td>Judging Starts (Round 1)
+                    <br></br> 
+                    <tdd>Metcalf Ballroom</tdd>
+                    <br></br> 
+                    <tdd>11:00 AM - 11:59 AM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>5:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Lunch
+                    <br></br> 
+                    <tdd>Ziskand Lounge</tdd>
+                    <br></br> 
+                    <tdd>12:00 PM - 12:50 PM</tdd>
+                </td>
+                <td>Judging Starts (Round 2)
+                    <br></br> 
+                    <tdd>Metcalf Ballroom</tdd>
+                    <br></br> 
+                    <tdd>12:00 PM - 12:59 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>6:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Workshop Technical - Frontend/backend
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>1:00 PM - 1:50 PM</tdd>
+                </td>
+                <td>Scoring
+                    <br></br> 
+                    <tdd>3rd Floor</tdd>
+                    <br></br> 
+                    <tdd>1:00 PM - 1:59 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>7:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Workshop Technical - Mobile Apps
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>2:00 PM - 2:50 PM</tdd>
+                </td>
+                <td>Closing Ceremony
+                    <br></br> 
+                    <tdd>Metcalf Ballroom</tdd>
+                    <br></br> 
+                    <tdd>2:00 PM - 3:00 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>8:00 AM</time>
-                <td>Monte Falco</td>
-                <td>1658</td>
+                <td>Workshop Technical - Google Cloud
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>3:00 PM - 3:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>9:00 AM</time>
-                <td>Check-in for hackers, sponsors, volouteers, etc.. (Stone Lobby) </td>
-                <td>1658</td>
+                <td>Workshop Technical - Figma
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>4:00 PM - 4:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>10:00 AM</time>
-                <td>Begin hacking/finding teams (10:30)<br></br>Test Data (10:35)</td>
-                <td>1654</td>
+                <td>Workshop Technical - Empathie
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>5:00 PM - 5:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>11:00 AM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
+                <td>Workshop Technical - Celonis
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>6:00 PM - 6:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>12:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
+                <td>Dinner
+                    <br></br> 
+                    <tdd>Ziskand Lounge</tdd>
+                    <br></br> 
+                    <tdd>7:00 PM - 7:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>1:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
+                <td>Workshop Technical - Lure Part 1
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>8:00 PM - 8:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>2:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
+                <td>Workshop Technical - Resume
+                    <br></br> 
+                    <tdd>Terrance</tdd>
+                    <br></br> 
+                    <tdd>9:00 PM - 9:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>3:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
+                <td>Workshop Non-technical - Movie, games, etc..
+                    <br></br> 
+                    <tdd>Backcourt</tdd>
+                    <br></br> 
+                    <tdd>10:00 PM - 10:50 PM</tdd>
+                </td>
             </tr>
             <tr>
-                <time>4:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>5:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>6:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>7:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>8:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>9:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>10:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>11:00 PM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
-            </tr>
-            <tr>
-                <time>12:00 AM</time>
-                <td>Monte Falterona</td>
-                <td>1654</td>
+                <td>Sleeping spaces open
+                    <br></br> 
+                    <tdd>GSU alley</tdd>
+                    <br></br> 
+                    <tdd>11:00 PM</tdd>
+                </td>
             </tr>
             </tbody>
         </table>
