@@ -19,6 +19,16 @@
   text-decoration: none;
 }
 
+@media (max-width: 425px) {
+  .nav li a {
+    font-size: 0.7em;
+  }
+
+  .nav li Button {
+    font-size: 0.7em;
+  }
+}
+
 .nav li a:hover {
   background-color: #304773;
 }
@@ -32,6 +42,6 @@
 }
 
 .navItem {
+  float: right;
   font-family: 'Montserrat';
-  float:right;
 }

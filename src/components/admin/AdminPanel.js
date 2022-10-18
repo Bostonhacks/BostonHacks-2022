@@ -14,6 +14,7 @@ import {
     deleteDoc,
     doc,
 } from "firebase/firestore";
+import CsvDownload from "react-json-to-csv";
 import "./AdminPanel.css";
 
 // For sorting
@@ -80,7 +81,7 @@ export default function AdminPanel() {
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Accepted"; }).length} Accepted</h3>
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Checked In"; }).length} Checked In</h3>
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Submitted" && el.college.label === "Boston University\r"; }).length} Boston University Students Submitted</h3>
-
+    <CsvDownload data={applications}>Export to CSV</CsvDownload>
     <CRUDTable
       caption="Applications"
       fetchItems={payload => service.fetchItems(payload)}
