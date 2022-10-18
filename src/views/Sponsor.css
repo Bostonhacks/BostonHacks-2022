@@ -9,7 +9,8 @@
   top: 0%;
   right: 2%;
   height: auto;
-  width: 5%;
+  width: 15%;
+  max-width: 100px;
 }
 .title-section {
   width: 100%;

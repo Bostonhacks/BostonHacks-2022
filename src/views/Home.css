@@ -1,4 +1,5 @@
 .home {
+    position: relative;
     width: 100%;
     height: auto;
 }
@@ -12,4 +13,13 @@
     width: 20%;
     height: auto;
     padding-left: 40%;
+}
+
+.mlh-banner {
+    position: absolute;
+    top: 0%;
+    right: 2%;
+    height: auto;
+    width: 15%;
+    max-width: 100px;
 }
