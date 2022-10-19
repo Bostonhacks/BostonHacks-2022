@@ -54,6 +54,9 @@ export default function NavigationBar() {
           <li className="navItem">
             <Link to="/application">APPLY</Link>
           </li>
+          <li className="navItem">
+            <Link to="/schedule">SCHEDULE</Link>
+          </li>
         </ul>
       </div>
     );

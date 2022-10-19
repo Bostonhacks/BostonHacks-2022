@@ -13,6 +13,7 @@ import Login from "./views/Login";
 import NavigationBar from "./components/common/NavigationBar";
 import Application from "./views/Application";
 import Home from "./views/Home";
+import Schedule from "./views/Schedule";
 
 // Router
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/schedule" element={<Schedule />} />
         <Route path='*' exact={true} element={<Home />} />
 
       </Routes>
