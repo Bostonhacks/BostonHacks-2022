@@ -1,18 +1,12 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select from 'react-select';
-import "./styles.css";
-import { countryCodeList, countryList, courseList, programmingList } from "../applicationOptions/applicationOptions";
+import "./Info.css";
+import { courseList, programmingList } from "./applicationOptions";
 import { db } from "../../firebase/firebase-config";
-import { query,
-getDocs,
-collection,
-where,
-doc,
-updateDoc,
-} from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import schoolCSV from "../applicationOptions/schools.csv"
+import schoolCSV from "./schools.csv"
 
 // Application page
 export default function Application({applicationId}) {
@@ -39,8 +33,6 @@ export default function Application({applicationId}) {
         })
         data.languageExperience = strings.join(", ")
 
-        // console.log("submit")
-        // console.log(data)
         const userDoc = doc(db, "applications", applicationId);
         await updateDoc(
             userDoc,

@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import {
   Routes,
   Route,
-  Navigate,
-  useLocation
 } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase-config";
@@ -14,6 +12,7 @@ import NavigationBar from "./components/common/NavigationBar";
 import Application from "./views/Application";
 import Home from "./views/Home";
 import Schedule from "./views/Schedule";
+import "./App.css"
 
 // Router
 export default function App() {
@@ -24,7 +23,7 @@ export default function App() {
   }, [loading]);
 
   return (
-    <div style={{ background: "linear-gradient(180deg, #000000 0%, #304773 52.6%, #F5E2F6 99.48%)", minHeight: "100vh", width:"100%", fontFamily:  'Montserrat' }}>
+    <div className="app">
       <style jsx="true">{`
         body {
           margin: 0;
