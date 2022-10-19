@@ -10,9 +10,7 @@ import { auth } from "./firebase/firebase-config";
 import Sponsor from "./views/Sponsor";
 import Admin from "./views/Admin";
 import Login from "./views/Login";
-import NotFound from "./views/NotFound";
 import NavigationBar from "./components/common/NavigationBar";
-import Footer from "./components/common/Footer";
 import Application from "./views/Application";
 import Home from "./views/Home";
 import Schedule from "./views/Schedule";
@@ -54,11 +52,9 @@ export default function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/schedule" element={<Schedule />} />
-        <Route path='*' exact={true} element={<NotFound />} />
+        <Route path='*' exact={true} element={<Home />} />
 
       </Routes>
-
-      <Footer />
     </div>
   );
 }

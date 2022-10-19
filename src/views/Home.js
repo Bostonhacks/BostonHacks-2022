@@ -7,12 +7,15 @@ import Tracks from '../components/home/images/tracks.png'
 import Faq from '../components/home/svgs/faq'
 import ApplyButton from '../components/home/svgs/applybutton'
 import SponsorButton from '../components/home/svgs/sponsorbutton'
+import MLHBanner from '../components/sponsor/MLHBanner/MLHBanner';
+import Footer from "../components/common/Footer";
 import './Home.css'
 
 
 export default function Home() {
     return (
         <div className='home'>
+            <MLHBanner />
             <Title/>
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
@@ -22,6 +25,7 @@ export default function Home() {
             <img  src={Sponsorhome} style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>
             <Apply />
             <ApplyButton className="button"/>
+            <Footer />
         </div>
 
     );
