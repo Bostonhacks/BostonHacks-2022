@@ -15,7 +15,9 @@
 }
 
 .tracks-img {
-    width: 100%;
+    width: 33.33%;
     height: auto;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
 }
