@@ -65,6 +65,7 @@ export default function Application({applicationId}) {
                 teamFormation: data.teamFormation,
 
                 bostonhacks: data.bostonhacks,
+                mlhNewsletter : data.acceptTerms3,
 
                 status: "Submitted"
             }
@@ -539,17 +540,17 @@ export default function Application({applicationId}) {
                     </div>
                     <div className="form-group form-check">
                     <div className="field">
-                            <label style={{"width":"300px"}} htmlFor="acceptTerms" className="form-check-label">I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy.</a> I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy.</a> <i>*</i></label>
-                            <input style={{"width":"50px", "height":"30px", "display":"flex", "alignContent":"center"}} name="acceptTerms" type="checkbox" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
-                            {errors.acceptTerms?.type === "required" && <span>Please check the box</span>}
+                            <label style={{"width":"300px"}} htmlFor="acceptTerms2" className="form-check-label">I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy.</a> I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy.</a> <i>*</i></label>
+                            <input style={{"width":"50px", "height":"30px", "display":"flex", "alignContent":"center"}} name="acceptTerms2" type="checkbox" {...register('acceptTerms2', { required: true})} id="acceptTerms2" className={`form-check-input ${errors.acceptTerms2 ? 'is-invalid' : ''}`} />
+                            {errors.acceptTerms2?.type === "required" && <span>Please check the box</span>}
                     </div>
                     </div>
                     <br/>
                     <br/>
                     <div className="form-group form-check">
                     <div className="field">
-                            <label style={{"width":"300px"}} htmlFor="acceptTerms" className="form-check-label">I authorize MLH to send me an email where I can further opt into the MLH Hacker, Events, or Organizer Newsletters and other communications from MLH.</label>
-                            <input style={{"width":"50px", "height":"30px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms')} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                            <label style={{"width":"300px"}} htmlFor="acceptTerms3" className="form-check-label">I authorize MLH to send me an email where I can further opt into the MLH Hacker, Events, or Organizer Newsletters and other communications from MLH.</label>
+                            <input style={{"width":"50px", "height":"30px"}} name="acceptTerms3" type="checkbox" {...register('acceptTerms3')} id="acceptTerms3" className={`form-check-input ${errors.acceptTerms3 ? 'is-invalid' : ''}`} />
                     </div>
                     </div>
                     <br/>

@@ -72,7 +72,9 @@ export default function Application() {
             </div>
 
             {/* Check user's status, if not started show application */}
-            {application?.status === "Not Started" && <Info applicationId={application.id}/>}
+            {/* {application?.status === "Not Started" && <Info applicationId={application.id}/>} */}
+            {/* Close Applications */}
+            {application?.status === "Not Started" && <h3>Applications Closed</h3>}
 
             {/* Otherwise, show their status */}
             {applicationTypes.includes(application?.status) && 
