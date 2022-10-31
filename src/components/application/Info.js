@@ -39,23 +39,18 @@ export default function Application({applicationId}) {
             {
                 dateOfBirth: data.dateOfBirth,
                 phoneNumber: data.phoneNumber,
-
                 address: data.address,
                 outOfState: data.outOfState,
-
                 highestEducation: data.highestEducation,
                 college: data.college,
                 collegeYear: data.collegeYear,
                 collegeMajor: data.collegeMajor,
                 collegeMinor: data.collegeMinor,
-
                 languageExperience: data.languageExperience,
                 pastHackathons: data.pastHackathons,
-
                 github: data.github,
                 linkedin: data.linkedin,
                 personalPortfolio: data.personalPortfolio,
-
                 ethnicity: data.ethnicity,
                 gender: data.gender,
                 pronoun: data.pronoun,
@@ -63,10 +58,9 @@ export default function Application({applicationId}) {
                 sleep: data.sleep,
                 autocad: data.autocad,
                 teamFormation: data.teamFormation,
-
                 bostonhacks: data.bostonhacks,
                 mlhNewsletter : data.acceptTerms3,
-
+                phase: "Phase 2",
                 status: "Submitted"
             }
         )
