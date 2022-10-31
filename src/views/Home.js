@@ -14,8 +14,10 @@ import './Home.css'
 
 export default function Home() {
     const [showModal, setShowModal] = React.useState(false);
+    const [track, setTrack] = React.useState(0);
 
-    const onShowModal = () => {
+    const onShowModal = (track) => {
+        setTrack(track);
         setShowModal(true);
     }
     
@@ -25,15 +27,15 @@ export default function Home() {
 
     return (
         <div className='home'>
-            <Modal showModal={showModal} onHideModal={onHideModal}/>
+            <Modal showModal={showModal} onHideModal={onHideModal} track={track}/>
             <Title/>
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
             <Theme />
             <div style={{width: "100%", display : 'inline-block'}}>
-                <img src={Track1} alt="tracks" className="tracks-img" onClick={() => onShowModal()}/>
-                <img src={Track2} alt="tracks" className="tracks-img" onClick={() => onShowModal()}/>
-                <img src={Track3} alt="tracks" className="tracks-img" onClick={() => onShowModal()}/>
+                <img src={Track1} alt="tracks" className="tracks-img" onClick={() => onShowModal(0)}/>
+                <img src={Track2} alt="tracks" className="tracks-img" onClick={() => onShowModal(1)}/>
+                <img src={Track3} alt="tracks" className="tracks-img" onClick={() => onShowModal(2)}/>
             </div>
             <Faq />
             <img  src={Sponsorhome} alt="sponsors" style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>

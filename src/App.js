@@ -34,7 +34,6 @@ export default function App() {
       `}</style>
       <NavigationBar />
 
-      <div style={{paddingTop: "75px"}}/>
 
       <Routes>
         <Route path="/" element={<Home />} />
