@@ -2,6 +2,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  height: 57px;
   overflow: hidden;
   backdrop-filter: blur(95px);
   top: 0;

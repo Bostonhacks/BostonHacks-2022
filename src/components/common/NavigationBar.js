@@ -58,6 +58,7 @@ export default function NavigationBar() {
             <Link to="/schedule">SCHEDULE</Link>
           </li>
         </ul>
+        <div style={{paddingTop: "57px"}}/>
       </div>
     );
   }
