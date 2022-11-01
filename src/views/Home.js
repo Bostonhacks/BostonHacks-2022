@@ -3,6 +3,7 @@ import Title from '../components/home/svgs/title'
 import Theme from '../components/home/svgs/theme'
 import Apply from '../components/home/svgs/apply'
 import Sponsorhome from '../components/home/images/sponsorhome.png'
+import TracksHeader from '../components/home/images/tracksHeader.png'
 import Track1 from '../components/home/images/track1.png'
 import Track2 from '../components/home/images/track2.png'
 import Track3 from '../components/home/images/track3.png'
@@ -32,6 +33,7 @@ export default function Home() {
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
             <Theme />
+            <img  src={TracksHeader} alt="tracks" style={{width: "20%", paddingLeft: "40%", height: "auto", paddingBottom: "10px"}}/>
             <h3 className="sideNote">Click each Track for more information!</h3>
             <div style={{width: "100%", display : 'inline-block'}}>
                 <img src={Track1} alt="tracks" className="tracks-img" onClick={() => onShowModal(0)}/>
