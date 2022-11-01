@@ -1,0 +1,34 @@
+th{
+    font: 3.5vw bold;
+    font-family:  'Montserrat';
+    color: #fff;
+}
+tr{
+    font: 2vw bold;
+    font-family:  'Montserrat';
+    color: #fff;
+    border: 1px solid white;
+}
+tdd {
+    font: 1.5vw bold;
+    font-family:  'Montserrat';
+    color: #fff;
+}
+/*center the table cell to the center of the column*/
+td {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    font: 2.25vw bold;
+    font-family:  'Montserrat';
+    color: #fff;
+    border: 1px solid white;
+    padding: 10px;
+}
+table {
+    border-spacing: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    padding-bottom: 250px;
+}

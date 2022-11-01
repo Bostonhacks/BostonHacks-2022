@@ -23,12 +23,15 @@ import StatisticsGradient from '../components/sponsor/StatisticsSection/Statisti
 import ChromeBar from '../components/sponsor/SponsorUs/ChromeBar';
 import SponsorUsBubble from '../components/sponsor/SponsorUs/SponsorUsBubble';
 import SponsorUsGradient from '../components/sponsor/SponsorUs/SponsorUsGradient';
+import MLHBanner from '../components/sponsor/MLHBanner/MLHBanner';
+import Footer from "../components/common/Footer";
 import './Sponsor.css';
 
 // Sponsorship page
 export default function Sponsor() {
   return (
     <div className="sponsor">
+      <MLHBanner />
       <TitleSection />
       <TwilioQuote />
       <TwilioBubble />
@@ -53,6 +56,7 @@ export default function Sponsor() {
       <ChromeBar />
       <SponsorUsBubble />
       <SponsorUsGradient />
+      <Footer />
     </div>
   );
 }

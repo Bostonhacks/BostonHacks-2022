@@ -66,13 +66,15 @@ export default function Application() {
     }, [user, loading, navigate]);
 
     return (
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", paddingBottom: "250px"}}>
             <div style={{color: "white", fontSize: "50px"}}>
               <h3>Welcome Back, {application?.name}!</h3>
             </div>
 
             {/* Check user's status, if not started show application */}
             {application?.status === "Not Started" && <Info applicationId={application.id}/>}
+            {/* Close Applications */}
+            {/* {application?.status === "Not Started" && <h3>Applications Closed</h3>} */}
 
             {/* Otherwise, show their status */}
             {applicationTypes.includes(application?.status) && 

@@ -1,19 +1,12 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select from 'react-select';
-import "./styles.css";
-import { countryCodeList, countryList, courseList, programmingList } from "../applicationOptions/applicationOptions";
+import "./Info.css";
+import { courseList, programmingList } from "./applicationOptions";
 import { db } from "../../firebase/firebase-config";
-import { query,
-getDocs,
-collection,
-where,
-doc,
-updateDoc,
-} from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import shadows from "@material-ui/core/styles/shadows";
-import { Container, IconButton } from "@material-ui/core";
+import schoolCSV from "./schools.csv"
 
 // Application page
 export default function Application({applicationId}) {
@@ -40,31 +33,24 @@ export default function Application({applicationId}) {
         })
         data.languageExperience = strings.join(", ")
 
-        // console.log("submit")
-        // console.log(data)
         const userDoc = doc(db, "applications", applicationId);
         await updateDoc(
             userDoc,
             {
                 dateOfBirth: data.dateOfBirth,
                 phoneNumber: data.phoneNumber,
-
                 address: data.address,
                 outOfState: data.outOfState,
-
                 highestEducation: data.highestEducation,
                 college: data.college,
                 collegeYear: data.collegeYear,
                 collegeMajor: data.collegeMajor,
                 collegeMinor: data.collegeMinor,
-
                 languageExperience: data.languageExperience,
                 pastHackathons: data.pastHackathons,
-
                 github: data.github,
                 linkedin: data.linkedin,
                 personalPortfolio: data.personalPortfolio,
-
                 ethnicity: data.ethnicity,
                 gender: data.gender,
                 pronoun: data.pronoun,
@@ -72,9 +58,9 @@ export default function Application({applicationId}) {
                 sleep: data.sleep,
                 autocad: data.autocad,
                 teamFormation: data.teamFormation,
-
                 bostonhacks: data.bostonhacks,
-
+                mlhNewsletter : data.acceptTerms3,
+                phase: "Phase 2",
                 status: "Submitted"
             }
         )
@@ -135,7 +121,7 @@ export default function Application({applicationId}) {
 
     React.useEffect(() => {
         // Get List of Colleges.
-        fetch("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv")
+        fetch(schoolCSV)
             .then((res) => res.text())
             .then((resText) => {
                 let collegeOptions = resText.split("\n").map(item => {
@@ -417,7 +403,7 @@ export default function Application({applicationId}) {
                     
                     <div className="field">
                         <label style={{"width":"200px"}} htmlFor="emailResume" className="form-check-label">Email your resume to tech@bostonhacks.io<i>*</i></label>
-                        <input style={{"width":"50px"}} name="emailResume" type="checkbox" {...register('emailResume', { required: true})} id="emailResume" className={`form-check-input ${errors.emailResume ? 'is-invalid' : ''}`} />
+                        <input style={{"width":"50px", "height":"30px"}} name="emailResume" type="checkbox" {...register('emailResume', { required: true})} id="emailResume" className={`form-check-input ${errors.emailResume ? 'is-invalid' : ''}`} />
                         {errors.emailResume?.type === "required" && <span>Please check the box</span>}
                     </div>
                 </div>
@@ -520,34 +506,56 @@ export default function Application({applicationId}) {
                     <div className="questionRow">
                     <h2>Why bostonhacks?</h2>
                     <p><i>Fields marked with * are required</i></p>
-                    <label>What are you most excited about attending Bostonhacks? (Min 50 Max 200 Characters): <i>*</i></label>
+                    <label>What are you most excited about attending Bostonhacks? (Min 50 Max 400 Characters): <i>*</i></label>
                     <br/><br/>
                     <textarea style={{"width":"70%", "height":"200px", "resize":"none"}}
                     {...register("bostonhacks",
-                    { required: true , maxLength: 200, minLength: 50})} />
+                    { required: true , maxLength: 400, minLength: 50})} />
                     {errors.bostonhacks?.type === "required" && <span>Please enter a value</span>}
                     {errors.bostonhacks?.type === "minLength" && <span>Answer is too short</span>}
                     {errors.bostonhacks?.type === "maxLength" && <span>Answer is too long</span>}
                     <br/><br/>
+            
+                    </div>
+                    <br></br>
+                </div>
+
+                <div className={currSubForm !== 7 ? "hide-form" : "show-form"}>
                     
+                    <h2>MLH Terms and Conditions</h2>
+                    <p><i>Fields marked with * are required</i></p>
+                    <br/>
+                    <div className="form-group form-check">
+                        <div className="field">
+                            <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><i>*</i></label>
+                            <input style={{"width":"50px", "height":"30px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
+                            {errors.acceptTerms?.type === "required" && <span>Please check the box</span>}
+                        </div>
+                    </div>
                     <div className="form-group form-check">
                     <div className="field">
-                        <label style={{"width":"200px"}} htmlFor="acceptTerms" className="form-check-label">Do you agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><i>*</i></label>
-                        <input style={{"width":"50px"}} name="acceptTerms" type="checkbox" {...register('acceptTerms', { required: true})} id="acceptTerms" className={`form-check-input ${errors.acceptTerms ? 'is-invalid' : ''}`} />
-                        {errors.acceptTerms?.type === "required" && <span>Please check the box</span>}
+                            <label style={{"width":"300px"}} htmlFor="acceptTerms2" className="form-check-label">I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy.</a> I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy.</a> <i>*</i></label>
+                            <input style={{"width":"50px", "height":"30px", "display":"flex", "alignContent":"center"}} name="acceptTerms2" type="checkbox" {...register('acceptTerms2', { required: true})} id="acceptTerms2" className={`form-check-input ${errors.acceptTerms2 ? 'is-invalid' : ''}`} />
+                            {errors.acceptTerms2?.type === "required" && <span>Please check the box</span>}
                     </div>
                     </div>
                     <br/>
-                    
+                    <br/>
+                    <div className="form-group form-check">
+                    <div className="field">
+                            <label style={{"width":"300px"}} htmlFor="acceptTerms3" className="form-check-label">I authorize MLH to send me an email where I can further opt into the MLH Hacker, Events, or Organizer Newsletters and other communications from MLH.</label>
+                            <input style={{"width":"50px", "height":"30px"}} name="acceptTerms3" type="checkbox" {...register('acceptTerms3')} id="acceptTerms3" className={`form-check-input ${errors.acceptTerms3 ? 'is-invalid' : ''}`} />
                     </div>
+                    </div>
+                    <br/>
                 </div>
 
                 <div className="form-pagination-container">
                     {currSubForm > 0 && <button type="button" className="form-pagination-button" onClick={() => setCurrSubForm(currSubForm - 1)}>Previous</button>}
-                    {currSubForm < 6 && <button type="button" className="form-pagination-button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
+                    {currSubForm < 7 && <button type="button" className="form-pagination-button" onClick={() => setCurrSubForm(currSubForm + 1)}>Next</button>}
                 </div>
 
-                <input className={currSubForm !== 6 ? "hide-form" : "submit-button"} type="submit" label="here"/>
+                <input className={currSubForm !== 7 ? "hide-form" : "submit-button"} type="submit" label="here"/>
                 {/* {console.log(errors)} */}
             </form>
         </div>

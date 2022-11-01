@@ -11,6 +11,8 @@ import Faq from '../components/home/svgs/faq'
 import ApplyButton from '../components/home/svgs/applybutton'
 import SponsorButton from '../components/home/svgs/sponsorbutton'
 import Modal from "../components/home/Modal"
+import MLHBanner from '../components/sponsor/MLHBanner/MLHBanner';
+import Footer from "../components/common/Footer";
 import './Home.css'
 
 export default function Home() {
@@ -29,6 +31,7 @@ export default function Home() {
     return (
         <div className='home'>
             <Modal showModal={showModal} onHideModal={onHideModal} track={track}/>
+            <MLHBanner />
             <Title/>
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
@@ -44,6 +47,7 @@ export default function Home() {
             <img  src={Sponsorhome} alt="sponsors" style={{width: "60%", paddingLeft: "20%", height: "auto"}}/>
             <Apply />
             <ApplyButton className="button"/>
+            <Footer />
         </div>
 
     );
