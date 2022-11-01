@@ -8,6 +8,7 @@
 
 # production
 /build
+export.csv
 /.firebase
 
 # misc
