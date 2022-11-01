@@ -32,6 +32,7 @@ export default function Home() {
             <ApplyButton className="button"/>
             <SponsorButton className="button"/>
             <Theme />
+            <h3 className="sideNote">Click each Track for more information!</h3>
             <div style={{width: "100%", display : 'inline-block'}}>
                 <img src={Track1} alt="tracks" className="tracks-img" onClick={() => onShowModal(0)}/>
                 <img src={Track2} alt="tracks" className="tracks-img" onClick={() => onShowModal(1)}/>

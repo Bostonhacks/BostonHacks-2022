@@ -8,6 +8,7 @@
 
 # production
 /build
+export.csv
 
 # misc
 .DS_Store
