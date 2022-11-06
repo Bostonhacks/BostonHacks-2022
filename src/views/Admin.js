@@ -9,6 +9,7 @@ import {
   getDoc
 } from "firebase/firestore";
 import { db } from "../firebase/firebase-config";
+import { ActionCodeOperation } from "firebase/auth";
 
 
 export default function Admin() {
@@ -32,6 +33,36 @@ export default function Admin() {
     }
   }
 
+  const acceptUsers = async (users) => {
+    for (var i = 0; i < users.length; i++) {
+      var userId = users[i];
+      const userDoc = doc(db, "applications", userId);
+      const docSnap = await getDoc(userDoc);
+
+      if (docSnap.exists()) {
+        await updateDoc(userDoc, {"status": "Accepted"});
+      } else {
+        alert("No user found!");
+      }
+    }
+    console.log("accepted")
+  }
+
+  const rejectUsers = async (users) => {
+    for (var i = 0; i < users.length; i++) {
+      var userId = users[i];
+      const userDoc = doc(db, "applications", userId);
+      const docSnap = await getDoc(userDoc);
+
+      if (docSnap.exists()) {
+        await updateDoc(userDoc, {"status": "Rejected"});
+      } else {
+        alert("No user found!");
+      }
+    }
+    console.log("Rejected")
+  }
+
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/login");
@@ -41,6 +72,7 @@ export default function Admin() {
     if (userId !== null) {
       checkInUser(userId)
     }
+    // rejectUsers(['2FGeXeWwcQTWn9NxWPja', '4NPGI5UvLrLCipbNdMrx', '7UTl1p4X7jhXpWtlPQr1', 'LZJQ22aMNK3pa056CZ0Y', 'M4yLxdAwH039ZUgVyPCe', 'N0u3c79SA4dLTSTyk1Xx', 'O41jlZBFhjY1bCWPxXIY', 'OKFW4DAM1MFj1XhaZo60', 'P9i0oR3DLlsA5PDk1taU', 'ZTzsPUNcBJGtZpkipNp2', 'aETa1PAiFBOqTSum5Or6', 'iCv5ma3eUvjbItQL1ObG', 'iZPvG3uOirDi2Da5BjZY', 'jgXlllbq30EvHjp6xxkW', 'kxnwAvGN1pZgelvoyttS', 'nvRRSfxHBpfBKoDMEUqc', 'oRex7XJkVNwW3tooIFXJ', 'rqnVd1lbgDoseQ7Qqaew', 'tiEZzgCoinCCRCtLEqqy', 'uKt1KFXQ4BXHlXl1be67', 'zAuAhyMCIFN9Pyyv8SwG'])
   }, [user, loading, navigate]); 
 
   return (

@@ -5,6 +5,7 @@ import CRUDTable,
   Field,
   UpdateForm,
   DeleteForm,
+  Pagination 
 } from 'react-crud-table';
 import { db } from "../../firebase/firebase-config";
 import {
@@ -14,7 +15,6 @@ import {
     deleteDoc,
     doc,
 } from "firebase/firestore";
-import CsvDownload from "react-json-to-csv";
 import "./AdminPanel.css";
 
 // For sorting
@@ -51,7 +51,16 @@ export default function AdminPanel() {
       let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       
       result = result.sort(getSorter(payload.sort));
-      return Promise.resolve(result);
+      const { activePage, itemsPerPage } = payload.pagination;
+      const start = (activePage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      return Promise.resolve(result.slice(start, end));
+    },
+    fetchTotal: async (payload) => {
+      const data = await getDocs(applicationsCollectionRef);
+      setApplications(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      let result = Array.from(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      return Promise.resolve(result.length);
     },
     update: async (data) => {
       const application = applications.find(t => t.id === data.id);
@@ -67,6 +76,11 @@ export default function AdminPanel() {
     },
   };
 
+  var data = JSON.stringify(applications);
+
+  var stripped = data.replace(/,(?!["{}[\]])/g, "");
+
+  console.log(stripped);
 
   return (
   <div>
@@ -81,7 +95,6 @@ export default function AdminPanel() {
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Accepted"; }).length} Accepted</h3>
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Checked In"; }).length} Checked In</h3>
     <h3 style={{color: "white"}}>Total: {applications.filter(function (el) { return el.status === "Submitted" && el.college.label === "Boston University\r"; }).length} Boston University Students Submitted</h3>
-    <CsvDownload data={applications}>Export to CSV</CsvDownload>
     <CRUDTable
       caption="Applications"
       fetchItems={payload => service.fetchItems(payload)}
@@ -142,6 +155,10 @@ export default function AdminPanel() {
           }
           return errors;
         }}
+      />
+      <Pagination
+        itemsPerPage={25}
+        fetchTotalOfItems={payload => service.fetchTotal(payload)}
       />
     </CRUDTable>
   </div>
