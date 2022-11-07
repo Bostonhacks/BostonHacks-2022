@@ -3,7 +3,7 @@ import datetime
 
 # Before running!
 # Login to bostonhacks.io and Go to /admin and check console.log for the array of jsons for each appplication
-# Then, paste array in export.csv
+# Then, paste array in src/firebase/export.csv
 
 input_file = open ('export.csv')
 json_array = json.load(input_file)
@@ -50,5 +50,11 @@ print(len(BU))
 # List of people who have not responded yet
 accepted = [x for x in store_list if x['status'] == 'Accepted']
 print(len(accepted))
-emails = [x['email'] for x in accepted]
-print(emails)
+# emails = [x['email'] for x in accepted]
+# print(emails)
+# print([x['id'] for x in accepted])
+
+# List of people who have not submitted yet
+notStarted = [x for x in store_list if x['status'] == 'Not Started']
+print(len(notStarted))
+# print([x['id'] for x in notStarted])
