@@ -15,9 +15,9 @@ export default function Schedule() {
                     <br></br> 
                     <tdd>Metcalf Ballroom</tdd>
                     <br></br> 
-                    <tdd>9:00 AM - 9:50 AM</tdd>
+                    <tdd>9:00 AM - 9:59 AM</tdd>
                 </td>
-                <td>Midnight Snack - Pizza
+                <td>Midnight Snack - Ramen
                     <br></br> 
                     <tdd>Ziskand Lounge</tdd>
                     <br></br> 
@@ -29,13 +29,13 @@ export default function Schedule() {
                     <br></br> 
                     <tdd>Metcalf Ballroom</tdd>
                     <br></br> 
-                    <tdd>10:00 AM - 10:20 AM</tdd>
+                    <tdd>10:00 AM - 10:29 AM</tdd>
                 </td>
-                <td>Workshop Technical - Lure Day 2
+                <td>Soft Submission Deadline
                     <br></br> 
                     <tdd>Terrance</tdd>
                     <br></br> 
-                    <tdd>9:00 AM - 9:50 AM</tdd>
+                    <tdd>10:00 AM</tdd>
                 </td>
             </tr>
             <tr>
@@ -45,7 +45,7 @@ export default function Schedule() {
                     <br></br> 
                     <tdd>10:30 AM</tdd>
                 </td>
-                <td>Submissions Due
+                <td>Hard Submission Deadline
                     <br></br> 
                     <tdd>Submission Portal</tdd>
                     <br></br> 
@@ -53,7 +53,7 @@ export default function Schedule() {
                 </td>
             </tr>
             <tr>
-                <td>Workshop Technical - Data Science
+                <td>Workshop Technical - Frontend/backend
                     <br></br> 
                     <tdd>Terrance</tdd>
                     <br></br> 
@@ -71,7 +71,7 @@ export default function Schedule() {
                     <br></br> 
                     <tdd>Ziskand Lounge</tdd>
                     <br></br> 
-                    <tdd>12:00 PM - 12:50 PM</tdd>
+                    <tdd>12:00 PM - 12:59 PM</tdd>
                 </td>
                 <td>Judging Starts (Round 2)
                     <br></br> 
@@ -81,7 +81,7 @@ export default function Schedule() {
                 </td>
             </tr>
             <tr>
-                <td>Workshop Technical - Frontend/backend
+                <td>Workshop Technical - Data Science
                     <br></br> 
                     <tdd>Terrance</tdd>
                     <br></br> 
@@ -109,7 +109,7 @@ export default function Schedule() {
                 </td>
             </tr>
             <tr>
-                <td>Workshop Technical - Google Cloud
+                <td>Workshop Technical - Loru Part 1
                     <br></br> 
                     <tdd>Terrance</tdd>
                     <br></br> 
@@ -145,11 +145,11 @@ export default function Schedule() {
                     <br></br> 
                     <tdd>Ziskand Lounge</tdd>
                     <br></br> 
-                    <tdd>7:00 PM - 7:50 PM</tdd>
+                    <tdd>7:00 PM - 7:59 PM</tdd>
                 </td>
             </tr>
             <tr>
-                <td>Workshop Technical - Lure Part 1
+                <td>Workshop Technical - Loru Part 2
                     <br></br> 
                     <tdd>Terrance</tdd>
                     <br></br> 
@@ -157,7 +157,7 @@ export default function Schedule() {
                 </td>
             </tr>
             <tr>
-                <td>Workshop Technical - Resume
+                <td>Workshop Technical - Google Cloud
                     <br></br> 
                     <tdd>Terrance</tdd>
                     <br></br> 
