@@ -27,7 +27,7 @@ export default function Admin() {
 
     if (docSnap.exists()) {
       await updateDoc(userDoc, {"status": "Checked In"});
-      alert('Checked in ' + docSnap.data().name);
+      alert('Checked in ' + docSnap.data().name + docSnap.data().status);
       console.log("Document data:", docSnap.data());
     } else {
       alert("No user found!");
