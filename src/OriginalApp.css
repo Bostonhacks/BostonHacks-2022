@@ -1,0 +1,11 @@
+.app {
+  background: linear-gradient(
+    180deg,
+    #000000 0%,
+    #304773 52.6%,
+    #f5e2f6 99.48%
+  );
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Montserrat' !important;
+}
