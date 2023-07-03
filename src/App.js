@@ -12,12 +12,17 @@ const App = () => {
       <a href="https://organize.mlh.io/participants/events/9891-bostonhacks">
         <MLHBanner />
       </a>
-      <div></div>
+      <div className="newsletter-container">
+        <h3>Want Email updates on Bostonhacks? Join our newsletter!</h3>
+        <form>
+          <input type="text" placeholder="Email" name="email-input"></input>
+        </form>
+      </div>
       <div className="bhacks-text-container">
-        <h1 className="bhacks-text">Bostonhacks 2024</h1>
+        <h1 className="bhacks-text">Bostonhacks 2023</h1>
       </div>
       <div className="coming-soon-container">
-        <h1 className="coming-soon-text">Coming Soon.</h1>
+        <h1 className="coming-soon-text">Coming Soon in November.</h1>
       </div>
       <div className="buttons-container">
         <a
