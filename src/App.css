@@ -48,12 +48,12 @@
 
 .coming-soon-text {
   font-family: 'Poppins', sans-serif;
-  font-size: 10vw;
+  font-size: 7vw;
   font-weight: 700;
   color: white;
 }
 
-.buttons-container {
+.outer-buttons-container {
   position: relative;
   top: 20%;
   width: 100%;
@@ -61,34 +61,54 @@
   align-items: center;
   justify-content: center;
 }
-.apply-button {
+
+.buttons-container {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttons-container a {
   font-family: 'Poppins', sans-serif;
   color: white;
   text-decoration: none;
-  margin-right: 10%;
 }
 
-.apply-button:hover {
+.buttons-container a:hover {
   color: lightgray;
   transition-duration: 0.3s;
 }
 
-.mlh-code-of-conduct-container {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding-bottom: 1%;
+.email-form {
+  position: relative;
+  top: 40%;
+  width: 100;
   display: flex;
-  justify-content: center;
-}
-.mlh-code-of-conduct {
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  text-decoration: none;
+  align-items: center;
+  flex-direction: column;
 }
 
-.mlh-code-of-conduct:hover {
-  color: lightgray;
+.email-label {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: 400;
+  margin-bottom: 1%;
+}
+
+.email-input {
+  width: 12vw;
+  padding: 7px;
+  outline: 0;
+  background-color: #101010;
+  border-width: 0 0 1px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: 400;
+}
+
+.email-input:focus {
+  border-color: white;
   transition-duration: 0.3s;
 }
 
