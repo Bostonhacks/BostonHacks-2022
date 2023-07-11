@@ -72,6 +72,7 @@
 .buttons-container a {
   font-family: 'Poppins', sans-serif;
   color: white;
+  font-size: 1.2vw;
   text-decoration: none;
 }
 
@@ -94,6 +95,7 @@
   color: white;
   font-weight: 400;
   margin-bottom: 1%;
+  font-size: 1.2vw;
 }
 
 .email-input {
