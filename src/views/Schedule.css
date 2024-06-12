@@ -1,16 +1,16 @@
 th{
-    font: 3.5vw bold;
+    font: 1.25vw bold;
     font-family:  'Montserrat';
     color: #fff;
 }
 tr{
-    font: 2vw bold;
+    font: 1.75vw bold;
     font-family:  'Montserrat';
     color: #fff;
     border: 1px solid white;
 }
 tdd {
-    font: 1.5vw bold;
+    font: 1.25vw bold;
     font-family:  'Montserrat';
     color: #fff;
 }
@@ -19,7 +19,7 @@ td {
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
-    font: 2.25vw bold;
+    font: 1.75vw bold;
     font-family:  'Montserrat';
     color: #fff;
     border: 1px solid white;
